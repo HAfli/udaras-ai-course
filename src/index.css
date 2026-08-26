@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ring: #2E6B4F;
+  }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'cv02','cv03','cv04','ss01';
+  }
+  h1,h2,h3,h4 { @apply font-display; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection { background: #D8E7DC; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-content px-5 sm:px-8; }
+
+  .card {
+    @apply rounded-xl2 border border-ink/10 bg-paper-card shadow-soft;
+  }
+  .card-hover {
+    @apply transition-[box-shadow,transform,border-color] duration-300
+           hover:shadow-lift hover:border-moss-300/70;
+  }
+
+  .eyebrow {
+    @apply text-[.68rem] font-semibold uppercase tracking-[.18em] text-moss-500;
+  }
+  .kicker {
+    @apply text-[.7rem] font-semibold uppercase tracking-[.16em] text-ink-mute;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5
+           text-sm font-semibold transition-colors duration-200;
+  }
+  .btn-primary { @apply btn bg-moss-700 text-paper hover:bg-moss-800; }
+  .btn-ghost   { @apply btn border border-ink/15 text-ink hover:border-moss-400 hover:text-moss-700; }
+  .btn-quiet   { @apply btn px-3 py-1.5 text-ink-soft hover:text-moss-700; }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/12
+           bg-paper-deep/60 px-2.5 py-1 text-[.72rem] font-medium text-ink-soft;
+  }
+
+  .rule { @apply h-px w-full bg-ink/10; }
+
+  .prose-note p { @apply text-[.95rem] leading-relaxed text-ink-soft; }
+
+  .gaeilge { font-style: italic; }
+
+  .contour {
+    background-image:
+      radial-gradient(ellipse 120% 80% at 12% 0%, rgba(46,107,79,.10), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 92% 12%, rgba(176,132,48,.10), transparent 58%);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar { height: 6px; width: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(28,37,33,.18); border-radius: 99px; }
+}
