@@ -19,7 +19,7 @@ Academic website: <https://hafli.github.io/haithem-afli-academic-website/about.h
 | `Udaras-AI-Course.html` | The whole site in one self-contained file | Backup. Double-click it. Works offline, no server. |
 | `README-AI-Course.md` | This document | — |
 
-Nothing here depends on Claude, on an API, on a backend, or on a development server.
+
 The published site is entirely static.
 
 ---
