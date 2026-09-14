@@ -35,6 +35,9 @@ export type ExerciseKind =
   | 'ideas'
   | 'bilingual-lab'
   | 'never-automate'
+  | 'workshop1'
+  | 'rubric'
+  | 'error-spot'
 
 export interface Exercise {
   id: string

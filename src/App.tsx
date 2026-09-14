@@ -13,12 +13,16 @@ import { ResearchPage } from './pages/ResearchPage'
 import { PlanPage } from './pages/PlanPage'
 
 function Router() {
-  const { route, param } = useHashRoute()
+  const { route, param, parts } = useHashRoute()
   const reduce = useReducedMotion()
 
   let page: React.ReactNode
   switch (route) {
-    case 'session': page = <SessionPage id={param} />; break
+    // parts[2], when present (e.g. #/session/s1/story), deep-links straight
+    // to a tab; parts[3] (e.g. #/session/s1/exercises/e1) additionally
+    // auto-opens that exercise's modal — used by the Session 1 PPTX's
+    // per-workshop "Open Workshop N →" links.
+    case 'session': page = <SessionPage id={param} initialTab={parts[2]} openExercise={parts[3]} />; break
     case 'between': page = <BetweenPage id={param} />; break
     case 'frameworks': page = <FrameworksPage />; break
     case 'ai-act': page = <AIActPage />; break

@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Clock } from 'lucide-react'
-import { useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import type { Exercise } from '../data/types'
 import { Modal } from './ui/Modal'
 import { Bi } from './ui/Bi'
@@ -20,7 +20,9 @@ import { BilingualLab } from './exercises/BilingualLab'
 import { NeverAutomate } from './exercises/NeverAutomate'
 import { Clinic } from './exercises/Clinic'
 import { Charter } from './exercises/Charter'
-import { SEVEN_STEPS } from '../data/exerciseContent'
+import { RubricScore } from './exercises/RubricScore'
+import { ErrorSpot } from './exercises/ErrorSpot'
+import { SEVEN_STEPS, WORKSHOP1_QUESTIONS } from '../data/exerciseContent'
 
 function body(ex: Exercise): ReactNode {
   if (ex.id === 'e5b') return <ExperimentLog />
@@ -44,13 +46,27 @@ function body(ex: Exercise): ReactNode {
     case 'never-automate': return <NeverAutomate />
     case 'clinic': return <Clinic />
     case 'charter': return <Charter />
+    case 'workshop1': return (
+      <div>
+        <div className="prose-note"><p>Groups of three or four. The last two questions are the ones that matter.</p></div>
+        <div className="mt-5"><InteractiveWorkflow steps={WORKSHOP1_QUESTIONS} /></div>
+      </div>
+    )
+    case 'rubric': return <RubricScore />
+    case 'error-spot': return <ErrorSpot />
     default: return null
   }
 }
 
-export function ExerciseCard({ ex, i }: { ex: Exercise; i: number }) {
+export function ExerciseCard({ ex, i, autoOpen }: { ex: Exercise; i: number; autoOpen?: boolean }) {
   const [open, setOpen] = useState(false)
   const reduce = useReducedMotion()
+
+  // Deep-linked from the PPTX (e.g. #/session/s1/exercises/e1) — open this
+  // exercise's modal straight away instead of just landing on the tab.
+  useEffect(() => {
+    if (autoOpen) setOpen(true)
+  }, [autoOpen])
 
   return (
     <>

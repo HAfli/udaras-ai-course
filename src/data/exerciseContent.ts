@@ -61,19 +61,114 @@ export const RISK_ITEMS: RiskItem[] = [
   { id: 'r6', label: 'A draft social-media post', level: 'green', why: 'Written to be published. Low risk — the check is on the output, not the input.' },
 ]
 
-/* ---------- Exercise 4 · Prompt ladder ---------- */
+/* ---------- Workshop 2 · Prompt challenge ---------- */
 export const PROMPT_LADDER: { rung: string; text: string; critique: string }[] = [
-  { rung: 'Level 0', text: 'Write something about my business.',
-    critique: 'No role, no reader, no purpose, no length, no language. The model will invent all five, and you will not like its choices.' },
-  { rung: 'Level 1', text: 'Write a social media post about my business.',
-    critique: 'A form, at last. Still nothing about what the business is, who reads it, or what you want them to do.' },
-  { rung: 'Level 2', text: 'Write a Facebook post about my Gaeltacht food business for local customers.',
-    critique: 'Now there is an audience and a platform. The output will be generic but usable as a starting point.' },
-  { rung: 'Level 3', text: 'You are writing for a small artisan food producer in the Gaeltacht. Write a warm, plain Facebook post (60–80 words) announcing that our new season’s produce is available at the Saturday market. Speak to local customers who already know us. No exclamation marks, no hashtags.',
-    critique: 'Role, context, task, constraints and output are all present. This is the level at which AI starts saving real time.' },
-  { rung: 'Level 4', text: 'You are writing for a small artisan food producer in the Gaeltacht. Write a warm, plain Facebook post (60–80 words) announcing that our new season’s produce is available at the Saturday market, for local customers who already know us. No exclamation marks, no hashtags. Give me the Irish version first, then a natural English version — not a word-for-word translation of the Irish, but the same message written properly in English. Then list any Irish terms you were unsure about so I can check them.',
-    critique: 'Bilingual, and — critically — it asks the model to flag its own uncertainty in Irish. That last sentence turns the model into a partner in the review rather than a source of hidden errors.' },
+  { rung: 'Prompt 1', text: 'Write a newsletter about our business.',
+    critique: 'The vague request. No audience, no purpose, no tone, no length, no language. The model will invent all of it, and you will not like its choices.' },
+  { rung: 'Prompt 2', text: 'Write a newsletter about our business, for existing customers, to tell them about our new opening hours.',
+    critique: 'Add who it is for and what it is for. There is now an audience and a purpose — the output will be generic but usable as a starting point.' },
+  { rung: 'Prompt 3', text: 'Write a newsletter about our business, for existing customers, to tell them about our new opening hours. Warm and plain in tone, around 150 words, and it must mention the new hours, the reason for the change, and the effective date.',
+    critique: 'Add how it should sound, how long, and the facts. Tone, length and key information are now fixed rather than guessed.' },
+  { rung: 'Prompt 4', text: 'Write a newsletter about our business, for existing customers, to tell them about our new opening hours. Warm and plain in tone, around 150 words, and it must mention the new hours, the reason for the change, and the effective date. Three short paragraphs, no exclamation marks, do not invent any detail I have not given you. Give me the Irish version first, then a natural English version — not a word-for-word translation — and list any Irish terms you were unsure about.',
+    critique: 'Add shape, limits, source discipline and language. Format, things to avoid, source discipline and bilingual output are all present. This is the level at which AI starts saving real time.' },
 ]
+
+/* ---------- Workshop 1 · Can AI help me? ----------
+   Groups of three or four, twenty-five minutes on one real task from a
+   participant's own week, then sixty seconds each to report back. */
+export const WORKSHOP1_QUESTIONS: { step: string; body: string }[] = [
+  { step: 'What is the task?', body: 'A real one from your own week, not a hypothetical.' },
+  { step: 'How do we currently do it?', body: 'Who does it, how long it takes, what usually goes wrong.' },
+  { step: 'Could AI help?', body: '“No” is a legitimate and useful answer.' },
+  { step: 'Which part could AI do?', body: 'Be specific. Rarely the whole task.' },
+  { step: 'Which part needs a human?', body: 'If you cannot name one, look harder.' },
+  { step: 'What could go wrong?', body: 'Reputational, factual, legal, linguistic.' },
+  { step: 'What would we need to check?', body: 'The specific thing, and the named person who checks it.' },
+]
+
+/* ---------- Workshop 3 · AI judges AI ----------
+   One task (a 150-word promotional message for a fictional Gaeltacht
+   business), three AI outputs, one rubric. Score all three before any
+   model is asked for an opinion. */
+export interface RubricCriterion { id: string; label: string; ask: string }
+export const RUBRIC_CRITERIA: RubricCriterion[] = [
+  { id: 'rc1', label: 'Accuracy', ask: 'Is everything it says actually supported?' },
+  { id: 'rc2', label: 'Relevance', ask: 'Does it speak to the audience we named?' },
+  { id: 'rc3', label: 'Clarity', ask: 'Would a customer understand it on one reading?' },
+  { id: 'rc4', label: 'Creativity', ask: 'Anything a template would not have produced?' },
+  { id: 'rc5', label: 'Appropriate tone', ask: 'Does it sound like us, or like an advertisement?' },
+  { id: 'rc6', label: 'Irish-language quality', ask: 'Grammar, naturalness, register, terminology — where Irish is used.' },
+]
+export const RUBRIC_CLOSING =
+  'Agreement between several AI systems does not make an answer true. The human makes the final decision.'
+export const RUBRIC_CHOICE_PROMPT =
+  'Which output would you choose? Not which scored highest — which would you put your organisation’s name on, and why?'
+
+/* ---------- Workshop 4 · Trust, verify, improve ----------
+   FICTIONAL EXERCISE: THESE CLAIMS ARE INTENTIONALLY UNVERIFIED.
+   West Bay Enterprise Board and the Coastal Craft Grant do not exist. The
+   organisation, the scheme, the figures and the claims were all invented
+   for this exercise, and nothing here describes any real organisation,
+   funding scheme or policy. */
+export const WORKSHOP4_FICTION_WARNING =
+  'FICTIONAL EXERCISE: THESE CLAIMS ARE INTENTIONALLY UNVERIFIED. West Bay Enterprise Board and the Coastal Craft Grant do not exist. The organisation, the scheme, the figures and the claims were all invented for this exercise.'
+
+export type Workshop4Category = 'nothing' | 'factual' | 'unsupported' | 'irrelevant' | 'overconfident' | 'irish'
+export interface Workshop4Item { id: string; text: string; category: Workshop4Category; explain: string }
+export const WORKSHOP4_CATEGORIES: { id: Workshop4Category; label: string }[] = [
+  { id: 'nothing', label: 'Nothing wrong' },
+  { id: 'factual', label: 'Factual error' },
+  { id: 'unsupported', label: 'Unsupported claim' },
+  { id: 'irrelevant', label: 'Irrelevant' },
+  { id: 'overconfident', label: 'Overconfident' },
+  { id: 'irish', label: 'Irish-language problem' },
+]
+export const WORKSHOP4_ITEMS: Workshop4Item[] = [
+  {
+    id: 'w4-1',
+    text: 'West Bay Enterprise Board has supported local enterprise since it was established, and continues to work with businesses across the region.',
+    category: 'irrelevant',
+    explain: 'True in shape, pleasant to read, and beside the point — it supports nothing the reader actually needs to decide.',
+  },
+  {
+    id: 'w4-2',
+    text: 'Grant support of up to 60% of capital costs is available to all businesses in the region under the Coastal Craft Grant.',
+    category: 'factual',
+    explain: 'A precise figure and a named scheme that were never given to it. Numbers, percentages and scheme names are exactly where fabrication concentrates — perfect formatting is not evidence that something exists.',
+  },
+  {
+    id: 'w4-3',
+    text: 'Businesses operating through Irish consistently outperform their English-language counterparts in the region.',
+    category: 'unsupported',
+    explain: 'Flattering, plausible, and stated with no source or basis. No such claim is asserted anywhere in this course — we do not invent Irish-language performance statistics, and neither should a paragraph you are about to publish.',
+  },
+  {
+    id: 'w4-4',
+    text: 'Ireland has a long and rich literary tradition stretching back over a thousand years.',
+    category: 'nothing',
+    explain: 'True and checkable, but it is doing no work in this paragraph. The presence of a correct sentence does not make the paragraph around it trustworthy.',
+  },
+  {
+    id: 'w4-5',
+    text: 'Any business can be certain of approval provided the application is submitted correctly.',
+    category: 'overconfident',
+    explain: 'A guarantee nobody is in a position to give. This is the hardest one to spot, because it reads like the most reliable sentence in the paragraph.',
+  },
+  {
+    id: 'w4-6',
+    text: 'Déanaimid tacaíocht a thabhairt do ghnóanna áitiúla.',
+    category: 'irish',
+    explain:
+      'AI-generated Irish, shown deliberately as an example of an error — not a model to copy. There are three separate problems in it: the plural of "gnó" is not the standard form, the noun after the preposition should be lenited, and the overall shape is English word order wearing Irish vocabulary.',
+  },
+]
+export const WORKSHOP4_IRISH_CORRECTION = {
+  faulty: 'Déanaimid tacaíocht a thabhairt do ghnóanna áitiúla.',
+  corrected: 'Tugaimid tacaíocht do ghnóthaí áitiúla.',
+  note:
+    'A grammar checker such as An Gramadóir catches the plural and the missing lenition. It does not catch the third problem — that the sentence is shaped like English, not Irish. That is exactly the point: a checker catches spelling and mutation; a person catches whether it actually sounds like Irish. Treat Cadhan/An Gramadóir as a useful additional check, never as the final word.',
+}
+export const WORKSHOP4_VERIFY_QUESTION = 'How would you verify this?'
 
 /* ---------- Exercise 5 · Irish review criteria ---------- */
 export const IRISH_REVIEW_CRITERIA = [

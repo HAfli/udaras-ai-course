@@ -12,6 +12,7 @@ import { ProgressIndicator } from '../components/ProgressIndicator'
 import { BetweenCard } from '../components/BetweenCard'
 import { Reveal } from '../components/ui/Reveal'
 import { FeedbackLink } from '../components/FeedbackLink'
+import { StoryPanel } from '../components/story/StoryPanel'
 
 function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
   const { t } = useLang()
@@ -84,7 +85,7 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
   )
 }
 
-export function SessionPage({ id }: { id: string }) {
+export function SessionPage({ id, initialTab, openExercise }: { id: string; initialTab?: string; openExercise?: string }) {
   const { t } = useLang()
   const s = byId(id)
   const reduce = useReducedMotion()
@@ -105,6 +106,7 @@ export function SessionPage({ id }: { id: string }) {
   const stage = JOURNEY.find(j => j.id === s.id)
 
   const tabs = [
+    ...(s.id === 's1' ? [{ id: 'story', label: 'The story', content: <StoryPanel /> }] : []),
     { id: 'overview', label: t('overview'), content: <Overview s={s} /> },
     { id: 'timetable', label: t('timetable'), content: <Timetable slots={s.timetable} /> },
     ...(s.slideGroups.length ? [{ id: 'slides', label: t('slides'), content: <SlideDeck groups={s.slideGroups} /> }] : []),
@@ -116,7 +118,7 @@ export function SessionPage({ id }: { id: string }) {
             <>
               <h2 className="sr-only">Exercises</h2>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {s.exercises.map((e, ix) => <ExerciseCard key={e.id} ex={e} i={ix} />)}
+                {s.exercises.map((e, ix) => <ExerciseCard key={e.id} ex={e} i={ix} autoOpen={e.id === openExercise} />)}
               </div>
             </>
           ),
@@ -165,7 +167,10 @@ export function SessionPage({ id }: { id: string }) {
       </motion.header>
 
       <div className="wrap py-12 sm:py-16">
-        <Tabs tabs={tabs} />
+        {/* key remounts Tabs when the deep-linked tab segment changes (e.g. a
+            PPTX link opened while the session page is already showing) so the
+            requested tab is honoured, not just on first mount. */}
+        <Tabs key={initialTab ?? 'default'} tabs={tabs} initial={initialTab} />
       </div>
 
       {s.betweenAfter && (
