@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { OPENING_SCENE, CLOSING_SCENE, STORY_ACTS, STORY_CHARACTER } from '../../data/story1'
+import { session1 } from '../../data/session1'
 import { MULTIMEDIA_RESOURCES, resourcesFor } from '../../data/multimedia'
 import { MultimediaResourceCard } from '../MultimediaResourceCard'
 import { PromptModelOutput } from '../diagrams/PromptModelOutput'
@@ -46,8 +47,15 @@ export function StoryPanel() {
               <p className="mt-2 font-display text-base leading-snug text-moss-700">{a.question}</p>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{a.beat}</p>
               {(a.exerciseIds?.length ?? 0) > 0 && (
-                <p className="mt-2 text-[.78rem] text-ink-faint">
-                  See the Exercises tab: {a.exerciseIds!.map(id => id.toUpperCase()).join(', ')}
+                <p className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-[.78rem]">
+                  {a.exerciseIds!.map(id => {
+                    const ex = session1.exercises.find(e => e.id === id)
+                    return (
+                      <a key={id} href={`#/session/s1/exercises/${id}`} className="font-semibold text-moss-700 hover:underline">
+                        {ex ? `${ex.number} →` : `${id.toUpperCase()} →`}
+                      </a>
+                    )
+                  })}
                 </p>
               )}
               {a.slideIds.length > 0 && (

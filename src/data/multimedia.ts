@@ -148,17 +148,14 @@ export const MULTIMEDIA_RESOURCES: MultimediaResource[] = [
     questionWhileWatching: '(For between-session viewing) Which of the fixes mentioned would actually be practical in your own organisation?',
     fallback: 'The live GAA real-case discussion (S1-39/S1-40) and Reflection 2 deliver the same lesson hands-on and need no internet connection.',
   },
-  {
-    id: 'S1-V4-PLACEHOLDER',
-    kind: 'video',
-    title: '[Placeholder — no verified short video found]',
-    description:
-      'A genuinely short (30s–2min), reputable, professionally produced explainer on multilingual/low-resource-language AI was searched for and not found with enough confidence to present as verified. Per course policy, nothing was substituted or invented.',
-    slideIds: ['S1-16', 'S1-17'],
-    activityId: 'S1-A2',
-    verified: false,
-    fallback: 'The live "Why Irish matters" moment (S1-17) and the Irish-thread slide (S1-16) carry this content without a video. If a suitable video is identified later, it can be added here without touching the story or slide data.',
-  },
+  // A short, reputable video on multilingual/low-resource-language AI was
+  // searched for and not found with enough confidence to present as
+  // verified (see docs/session1-course-map.md, "Known gaps"). Per course
+  // policy nothing was substituted or invented, and per the redesign
+  // brief a public-facing placeholder is not shown either — the live
+  // "Why Irish matters" moment (S1-17) and the Irish-thread slide (S1-16)
+  // already carry this content without a video. Add a verified entry
+  // here (kind: 'video', slideIds: ['S1-16','S1-17']) if one is found.
 ]
 
 /** Small helper so the website and any future PPTX-generation script read

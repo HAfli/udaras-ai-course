@@ -170,6 +170,116 @@ export const WORKSHOP4_IRISH_CORRECTION = {
 }
 export const WORKSHOP4_VERIFY_QUESTION = 'How would you verify this?'
 
+/* ---------- Shared: privacy guidance (v6.1 PPTX "What never goes into
+   a public AI tool" slide) — used on both live workshop cards and the
+   self-study pages. One source, not re-typed per workshop. ---------- */
+export const PRIVACY_GUIDANCE = {
+  intro: 'The same instinct from Mary’s cybersecurity section applies here — what are we handing over, and to whom?',
+  doNotEnter: [
+    'Confidential information',
+    'Personal information',
+    'Customer information',
+    'Commercially sensitive information',
+    'Passwords or credentials',
+    'Private organisational information',
+    'Sensitive documents',
+    'Anything your organisation’s policy says must not leave the building',
+  ],
+  instruction: 'Use fictional, public or anonymised examples in every workshop this afternoon.',
+}
+
+/* ---------- Shared: AI tool guidance (both workshops) ---------- */
+export const AI_TOOLS_GUIDANCE = {
+  intro: 'Use whichever suitable AI tool you already have access to.',
+  examples: ['ChatGPT', 'Microsoft Copilot', 'Claude', 'Gemini', 'another approved generative AI tool'],
+  note: 'This is not about which company has the best model — it is about deciding when AI is appropriate, communicating a task clearly, checking the output, and retaining human responsibility. No new account is required for either workshop.',
+  fallback: 'No access on the day? Pair up with someone who has a tool, or work from a prepared example output.',
+}
+
+/* ---------- Workshop 1 · report-back structure (v6.1 PPTX) ---------- */
+export const WORKSHOP1_REPORT_BACK = [
+  'Our task was…',
+  'AI could help with…',
+  'A human must still…',
+  'The main risk is…',
+  'We would check it by…',
+]
+
+/* ---------- Workshop 1 · self-study version (same workshop, no
+   facilitator, no group) ---------- */
+export const WORKSHOP1_SELF_STUDY = [
+  'Choose a workplace task.',
+  'Use fictional or anonymised information — never the real confidential version.',
+  'Work through the seven questions above, on your own or with a colleague.',
+  'Decide whether AI should be used at all.',
+  'Identify what AI could realistically do.',
+  'Identify what must remain human.',
+  'Identify one concrete risk.',
+  'Decide how the result would be checked, and by whom.',
+]
+
+/* ---------- Workshop 2 · the two instructions that must never be
+   paraphrased (v6.1 PPTX, preserved verbatim) ---------- */
+export const WORKSHOP2_PRESERVED_INSTRUCTIONS = [
+  'If a detail is missing, leave a clearly marked gap rather than inventing it.',
+  'At the end, list any Irish terms you were unsure about.',
+]
+
+/* ---------- Workshop 2 · group output structure (v6.1 PPTX) ---------- */
+export const WORKSHOP2_OUTPUT_STRUCTURE = [
+  'The original weak prompt.',
+  'The improved prompt.',
+  'The output from the weak prompt.',
+  'The output from the improved prompt.',
+  'One thing that improved.',
+  'One thing that remained wrong.',
+  'One thing you would check before using the result.',
+]
+
+/* ---------- Workshop 2 · self-study version ---------- */
+export const WORKSHOP2_SELF_STUDY = [
+  'Run the weak prompt (Prompt 1) in an AI tool you have access to.',
+  'Record the output.',
+  'Improve the prompt, rung by rung, using Prompts 2–4 as a guide.',
+  'Run the improved prompt.',
+  'Compare both outputs side by side.',
+  'Identify what improved.',
+  'Identify what remained wrong.',
+  'Decide what you would check before using the result.',
+]
+
+/* ---------- Facilitator notes (kept separate from participant
+   instructions — the website's participant-facing cards never depend
+   on these to make sense; they exist for Haithem/Mary). ---------- */
+export const WORKSHOP1_FACILITATOR = {
+  timing: '25 minutes',
+  grouping: '5 groups of 3: task owner, AI operator, checker — roles can rotate.',
+  keyQuestion: 'Who is responsible for checking and signing this off?',
+  secondQuestion: 'What information would you actually have to give the AI?',
+  watchFor: [
+    'Challenge "AI could do everything" with: who signs it off?',
+    'Challenge "AI could do none of it" with: what does the first ten minutes of the task look like?',
+    'Push every group to name one concrete risk and one concrete check.',
+  ],
+  marysRole: 'Focus only on privacy, confidentiality, information security and organisational risk in the group’s proposed workflow — apply the morning material, do not repeat the lecture.',
+  exampleTasks: [
+    'Monthly newsletter', 'Social media post', 'Customer email', 'Meeting notes', 'Survey analysis',
+    'First draft of a funding proposal', 'Document summary', 'Brainstorming',
+    'Translation/drafting into Irish', 'Event description', 'Organising information',
+  ],
+}
+
+export const WORKSHOP2_FACILITATOR = {
+  timing: '25 minutes',
+  grouping: '5 groups of 3.',
+  steps: [
+    'Run Rung 1 live — ask "what do you expect?" before showing output.',
+    'Run Rung 4 live — ask "what changed?"',
+    'Capture on the board: vocabulary, structure, length, tone, audience, assumptions, missing information, Irish-language handling.',
+  ],
+  keyPoint: 'The model did not become more intelligent — we gave it a better brief. Even a very good prompt does not guarantee a correct answer.',
+}
+
 /* ---------- Reflection 1 (S1-W1-REFLECTION) — after Workshop 1 ----------
    Ten minutes. Not a lecture: the facilitator asks, the room answers,
    3-5 observations go on the board, then an explicit connection back to
@@ -203,6 +313,32 @@ export const REFLECTION2_CONNECTION = {
   irish: 'A fluent-looking Irish answer still needs human review.',
   closing: 'A better prompt can improve an answer. It does not remove the need for judgement.',
 }
+
+/* ---------- My first AI experiment (S1-EXP, e5b) — the final,
+   individual, single-instance activity. Distinct from the BETWEEN-
+   SESSION "try AI three times" challenge (three repeats — see
+   session1.ts betweenAfter.steps), which keeps its own field set. */
+export const MY_FIRST_EXPERIMENT_FIELDS: { id: string; label: string; ph: string }[] = [
+  { id: 'task', label: 'One real task I want to try', ph: 'Something from next week, not a test.' },
+  { id: 'tool', label: 'AI tool I might use', ph: 'Whichever one you already have access to.' },
+  { id: 'expect', label: 'What I expect it to help with', ph: 'Time, a first draft, ideas, structure.' },
+  { id: 'wrong', label: 'What could go wrong', ph: 'Be specific.' },
+  { id: 'check', label: 'How I will check the result', ph: 'The method, and who does it.' },
+  { id: 'notEnter', label: 'What information will I NOT put into the AI?', ph: '' },
+  { id: 'decide', label: 'Who will make the final decision?', ph: 'Name the person — it is often you.' },
+]
+
+/* ---------- Between-session "Try AI three times" — matches
+   session1.ts betweenAfter.steps exactly (do not let these drift apart). */
+export const BETWEEN_SESSION_FIELDS: { id: string; label: string; ph: string }[] = [
+  { id: 'task', label: 'Task', ph: 'A real thing from your own week.' },
+  { id: 'prompt', label: 'Prompt', ph: 'Exactly what you typed.' },
+  { id: 'output', label: 'Output', ph: 'In a sentence.' },
+  { id: 'worked', label: 'What worked', ph: '' },
+  { id: 'didnt', label: 'What didn’t', ph: 'The valuable column.' },
+  { id: 'learned', label: 'What I learned', ph: '' },
+  { id: 'checked', label: 'How I checked it', ph: 'And how long checking took.' },
+]
 
 /* ---------- Exercise 5 · Irish review criteria ---------- */
 export const IRISH_REVIEW_CRITERIA = [

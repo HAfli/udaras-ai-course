@@ -65,7 +65,7 @@ export const STORY_ACTS: StoryAct[] = [
     question: 'Wait — what actually IS AI?',
     beat: 'From Aoife’s everyday experience of AI to the honest answer on Irish, the "why Irish matters" moment, and then the technology itself: traditional software, machine learning, generative AI, and how a language model actually generates a sentence.',
     slideIds: Array.from({ length: 18 }, (_, i) => `S1-${i + 13}`),
-    multimediaIds: ['S1-V1', 'S1-V2', 'S1-V4-PLACEHOLDER'],
+    multimediaIds: ['S1-V1', 'S1-V2'],
   },
   {
     id: 'S1-A3',

@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, CalendarDays, Clock, MapPin } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CalendarDays, Clock, MapPin, FileDown } from 'lucide-react'
 import { byId, SESSIONS } from '../data/sessions'
 import { JOURNEY } from '../data/programme'
 import { useLang } from '../i18n/LangContext'
@@ -13,6 +13,8 @@ import { BetweenCard } from '../components/BetweenCard'
 import { Reveal } from '../components/ui/Reveal'
 import { FeedbackLink } from '../components/FeedbackLink'
 import { StoryPanel } from '../components/story/StoryPanel'
+import { SessionJourney } from '../components/story/SessionJourney'
+import { StudySession1 } from '../components/story/StudySession1'
 
 function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
   const { t } = useLang()
@@ -109,11 +111,29 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
     ...(s.id === 's1' ? [{ id: 'story', label: 'The story', content: <StoryPanel /> }] : []),
     { id: 'overview', label: t('overview'), content: <Overview s={s} /> },
     { id: 'timetable', label: t('timetable'), content: <Timetable slots={s.timetable} /> },
-    ...(s.slideGroups.length ? [{ id: 'slides', label: t('slides'), content: <SlideDeck groups={s.slideGroups} /> }] : []),
+    ...(s.slideGroups.length ? [{
+      id: 'slides',
+      label: t('slides'),
+      content: (
+        <>
+          {s.id === 's1' && (
+            <a
+              href={`${import.meta.env.BASE_URL}session1-slides.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary mb-6 inline-flex"
+            >
+              <FileDown className="h-4 w-4" aria-hidden /> Session 1 — Slides (PDF, 52 slides, no speaker notes)
+            </a>
+          )}
+          <SlideDeck groups={s.slideGroups} />
+        </>
+      ),
+    }] : []),
     ...(s.exercises.length
       ? [{
           id: 'exercises',
-          label: `${t('exercises')} (${s.exercises.length})`,
+          label: s.id === 's1' ? `Workshops & activities (${s.exercises.length})` : `${t('exercises')} (${s.exercises.length})`,
           content: (
             <>
               <h2 className="sr-only">Exercises</h2>
@@ -124,6 +144,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
           ),
         }]
       : []),
+    ...(s.id === 's1' ? [{ id: 'study', label: 'Learn it yourself', content: <StudySession1 /> }] : []),
   ]
 
   return (
@@ -165,6 +186,12 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
           </div>
         </div>
       </motion.header>
+
+      {s.id === 's1' && (
+        <div className="wrap pt-10">
+          <SessionJourney />
+        </div>
+      )}
 
       <div className="wrap py-12 sm:py-16">
         {/* key remounts Tabs when the deep-linked tab segment changes (e.g. a
