@@ -43,61 +43,67 @@ else, never re-typed.
 | S1-2 | Meet Aoife. (08:47 · Monday morning) | S1-A1 |  |  |
 | S1-3 | Her workload grows. (09:02) | S1-A1 |  |  |
 | S1-4 | She looks at the workload. (09:08) | S1-A1 |  |  |
-| S1-5 | Following on from Mary | S1-A1 |  |  |
-| S1-6 | Today's question | S1-A1 |  |  |
-| S1-7 | Before we start: what do you think? | S1-A1 |  |  |
-| S1-8 | The wall | S1-A1 |  |  |
-| S1-9 | All three are true | S1-A1 |  |  |
-| S1-10 | How today runs | S1-A1 |  |  |
-| S1-11 | What is AI? | S1-A2 |  |  |
-| S1-12 | AI is already around us | S1-A2 |  |  |
-| S1-13 | Closer to home | S1-A2 |  |  |
-| S1-14 | AI in Irish context | S1-A2 |  | S1-V4 (placeholder) |
-| S1-15 | Why Irish matters | S1-A2 |  | S1-V4 (placeholder) |
-| S1-16 | AI is not one single technology | S1-A2 |  | S1-V2 |
-| S1-17 | Traditional software | S1-A2 |  |  |
-| S1-18 | Machine learning | S1-A2 |  |  |
-| S1-19 | Generative AI | S1-A2 |  |  |
-| S1-20 | Coffee | S1-A2 |  |  |
-| S1-21 | Software, automation or AI? | S1-A2 |  |  |
-| S1-22 | Where each one usually lands | S1-A2 |  |  |
-| S1-23 | Large language models | S1-A2 |  |  |
-| S1-24 | What is a large language model? | S1-A2 |  | S1-V1 |
-| S1-25 | Prediction is not understanding | S1-A2 + S1-A4 |  |  |
-| S1-26 | Fluent is not the same as factual | S1-A2 + S1-A4 |  | S1-V3 |
-| S1-27 | The prompt is the variable | S1-A2 |  |  |
-| S1-28 | Lunch | S1-A2 |  |  |
-| S1-29 | What can AI do for my work? | S1-A3 |  |  |
-| S1-30 | AI as an assistant, not an authority | S1-A3 |  |  |
-| S1-31 | Live demonstration: generate content (S1-D1) | S1-A3 |  |  |
-| S1-32 | Live demonstration: edit a proposal (S1-D2) | S1-A3 |  |  |
-| S1-33 | Live demonstration: create a newsletter (S1-D3) | S1-A3 |  |  |
-| S1-34 | Live demonstration: analyse survey feedback (S1-D4) | S1-A3 |  |  |
-| S1-35 | Live demonstration: ask questions of documents (S1-D5) | S1-A3 |  |  |
-| S1-36 | Afternoon workshops | S1-A5 |  |  |
-| S1-37 | Workshop 1 — Can AI help me? | S1-A5 | S1-W1 (e1) |  |
-| S1-38 | Workshop 2 — The prompt challenge | S1-A5 | S1-W2 (e2) |  |
-| S1-39 | Coffee | S1-A5 |  |  |
-| S1-40 | Workshop 3 — AI judges AI | S1-A5 | S1-W3 (e3) |  |
-| S1-41 | The point of Workshop 3 | S1-A5 |  |  |
-| S1-42 | Real case: GAA match-programme artwork | S1-A4 |  | S1-GAA1 |
-| S1-43 | Real case: more than the strange hands | S1-A4 |  | S1-GAA2 |
-| S1-44 | Workshop 4 — the paragraph, unrevealed | S1-A5 + S1-A4 | S1-W4 (e4) |  |
-| S1-45 | Workshop 4 — two problems revealed | S1-A5 + S1-A4 | S1-W4 (e4) |  |
-| S1-46 | Workshop 4 — Trust, verify, improve | S1-A5 + S1-A4 | S1-W4 (e4) |  |
+| S1-5 | Welcome and expectations (10:00–10:05) | S1-A1 |  |  |
+| S1-6 | Following on from Mary | S1-A1 |  |  |
+| S1-7 | Today's question | S1-A1 |  |  |
+| S1-8 | Before we start: what do you think? | S1-A1 |  |  |
+| S1-9 | The wall | S1-A1 |  |  |
+| S1-10 | All three are true | S1-A1 |  |  |
+| S1-11 | How today runs | S1-A1 |  |  |
+| S1-12 | Cybersecurity foundations · Mary (10:05–10:25) | S1-A1 |  |  |
+| S1-13 | What is AI? | S1-A2 |  |  |
+| S1-14 | AI is already around us | S1-A2 |  |  |
+| S1-15 | Closer to home | S1-A2 |  |  |
+| S1-16 | AI in Irish context | S1-A2 |  | S1-V4 (placeholder) |
+| S1-17 | Why Irish matters | S1-A2 |  | S1-V4 (placeholder) |
+| S1-18 | AI is not one single technology | S1-A2 |  | S1-V2 |
+| S1-19 | Traditional software | S1-A2 |  |  |
+| S1-20 | Machine learning | S1-A2 |  |  |
+| S1-21 | Generative AI | S1-A2 |  |  |
+| S1-22 | Coffee break | S1-A2 |  |  |
+| S1-23 | Software, automation or AI? | S1-A2 |  |  |
+| S1-24 | Where each one usually lands | S1-A2 |  |  |
+| S1-25 | Large language models | S1-A2 |  |  |
+| S1-26 | What is a large language model? | S1-A2 |  | S1-V1 |
+| S1-27 | Prediction is not understanding | S1-A2 + S1-A4 |  |  |
+| S1-28 | Fluent is not the same as factual | S1-A2 + S1-A4 |  | S1-V3 |
+| S1-29 | The prompt is the variable | S1-A2 |  |  |
+| S1-30 | Lunch break | S1-A2 |  |  |
+| S1-31 | What can AI do for my work? | S1-A3 |  |  |
+| S1-32 | AI as an assistant, not an authority | S1-A3 |  |  |
+| S1-33 | What never goes into a public AI tool | S1-A3 |  |  |
+| S1-34 | Live demonstration: generate content (S1-D1) | S1-A3 |  |  |
+| S1-35 | Live demonstration: edit a proposal (S1-D2) | S1-A3 |  |  |
+| S1-36 | Live demonstration: create a newsletter (S1-D3) | S1-A3 |  |  |
+| S1-37 | Live demonstration: analyse survey feedback (S1-D4) | S1-A3 |  |  |
+| S1-38 | Live demonstration: ask questions of documents (S1-D5) | S1-A3 |  |  |
+| S1-39 | Real case: GAA match-programme artwork | S1-A3 + S1-A4 |  | S1-GAA1 |
+| S1-40 | Real case: more than the strange hands | S1-A3 + S1-A4 |  | S1-GAA2 |
+| S1-41 | Afternoon workshops | S1-A5 |  |  |
+| S1-42 | Workshop 1 — Can AI help me? | S1-A5 | S1-W1 (e1) |  |
+| S1-43 | Reflection 1 — What did we learn? | S1-A5 | S1-W1-REFLECTION (e1r) |  |
+| S1-44 | Workshop 2 — Prompt challenge | S1-A5 | S1-W2 (e2) |  |
+| S1-45 | Coffee break | S1-A5 |  |  |
+| S1-46 | Reflection 2 — What changed? | S1-A5 | S1-W2-REFLECTION (e2r) |  |
 | S1-47 | A method you can keep — STOP | S1-A5 |  |  |
-| S1-48 | My first AI experiment | S1-A5 + S1-A6 | S1-EXP (e5b) |  |
+| S1-48 | My first AI experiment | S1-A6 | S1-EXP (e5b) |  |
 | S1-49 | Before Session 2: try AI three times | S1-A6 |  |  |
 | S1-50 | What we said today | S1-A6 |  |  |
 | S1-51 | Session 2 preview | S1-A6 |  |  |
 | S1-52 | Go raibh maith agaibh | S1-A6 |  |  |
 
-*S1-A2 + S1-A4 on slides 25/26/44–46 is intentional, not an error: the
-concept (fluent ≠ factual) is taught mid-morning as part of Act 2's
-technical explanation, and dramatised properly that afternoon in
-Workshop 4 (Act 5) — so those slides genuinely belong to both. Likewise
-S1-48 sits at the seam between Act 5 (the last workshop item) and Act 6
-(the return to Aoife), which is why both acts claim it.*
+*S1-A2 + S1-A4 on slides 27/28 and S1-A3 + S1-A4 on slides 39/40 are
+intentional, not an error: fluent ≠ factual is taught mid-morning as
+part of Act 2's technical explanation, and lands again that afternoon
+in the real GAA case (Act 3's closing beat, and Act 4's payoff) — so
+those slides genuinely belong to both.*
+
+**Workshop 3 (AI judges AI) and Workshop 4 (Trust, verify, improve) are
+NOT Session 1 activities as of v6.0** — see "v6.0 — two workshops, not
+four" below. Their ids (`e3`, `e4`) and components (`RubricScore.tsx`,
+`ErrorSpot.tsx`) remain in the codebase, reserved for Session 2, but are
+not in `session1.ts`'s `exercises[]` array and have no working
+`#/session/s1/exercises/e3` or `/e4` deep link.
 
 ## Worksheet cross-reference
 
@@ -210,6 +216,77 @@ this pass:
   verification aid, not a final authority; results were interpreted by
   hand (e.g. a predicative "ceart" flag on the proposal-demo checklist
   image was judged a false positive, not a real error, and left as-is).
+
+## v6.0 — two workshops, not four (current baseline)
+
+`Udaras_AI_Course_Session_1_MTU_v6.0_DRAFT.pptx` is a pedagogical
+redesign of the afternoon, not a visual one. Still **52 slides** — 5
+removed (Workshop 3's two slides, Workshop 4's three-stage reveal), 5
+added (Welcome, the Mary divider, the privacy slide, and two
+Reflections) — and `session1.ts`/`story1.ts`/`multimedia.ts` are
+renumbered to match exactly.
+
+**The afternoon is now:** Workshop 1 → Reflection 1 → Workshop 2 →
+Reflection 2 → My first AI experiment. Workshop 3 (AI judges AI) and
+Workshop 4 (Trust, verify, improve) are **not run as Session 1
+participant workshops**. Their pedagogical value is not deleted from
+the course — `RubricScore.tsx`, `ErrorSpot.tsx` and their
+`exerciseContent.ts` data all remain in the codebase — but they are no
+longer in `session1.ts`'s `exercises[]` array, have no working Session 1
+deep link, and do not appear in the Session 1 timetable. The concepts
+they carried (AI can be wrong, output needs checking, Irish needs human
+judgement) are still taught in passing; the deeper hands-on exercises
+move to Session 2 (see the STOP slide's new "The deeper version of this
+→ Session 2" pointer, and the Session 2 preview slide).
+
+**The day is reordered at the start:** Welcome and expectations
+(10:00–10:05, pure logistics — purpose, experience levels, scepticism,
+structure, laptop/phone use, breaks, ground rules) now comes **before**
+Mary's cybersecurity foundations (10:05–10:25), not after. The existing
+cybersecurity→AI bridge slide ("Following on from Mary") is unchanged —
+it already made exactly the connection the redesign asked for:
+cybersecurity asks "what are we allowing in?", AI asks "what are we
+handing over, and what will we do with what comes back?".
+
+**New content:**
+- **S1-33 — "What never goes into a public AI tool"**, a new slide
+  directly connecting Mary's cybersecurity framing to the afternoon:
+  confidential/personal/customer/commercially-sensitive information,
+  passwords, private organisational information, sensitive documents,
+  anything policy restricts.
+- **S1-43 / S1-46 — Reflection 1 and Reflection 2**, ten minutes each,
+  deliberately not lectures: six questions, a facilitator-captured
+  handful of observations, then an explicit callout connecting back to
+  the morning (S1-A2's teaching) and closing on "AI is an assistant, not
+  an authority." / "A better prompt can improve an answer. It does not
+  remove the need for judgement." respectively.
+- **Explicit 5×3 groups** (task owner / AI operator / checker, roles can
+  rotate) on Workshop 1, replacing "groups of three or four".
+- Workshop 1/2 facilitator instructions (key questions, what to watch
+  for, AI-tool guidance, example tasks) moved into PowerPoint **speaker
+  notes** rather than inflating the slides — the website's exercise
+  cards (`e1`, `e2`) remain the detailed participant workbook.
+
+**Website:** new `ExerciseKind: 'reflection'`, backed by
+`REFLECTION1_QUESTIONS`/`REFLECTION1_CONNECTION` and
+`REFLECTION2_QUESTIONS`/`REFLECTION2_CONNECTION` in
+`exerciseContent.ts`, rendered by `src/components/exercises/Reflection.tsx`
+(which reuses the site's existing `ReflectionCard` for the actual
+question/notes UI — including its "nothing here is saved or sent
+anywhere" disclosure, so Reflections 1 and 2 need no new data-collection
+wording). New exercise ids: `e1r` (S1-W1-REFLECTION), `e2r`
+(S1-W2-REFLECTION). `e3` and `e4` are no longer in `session1.ts`'s
+`exercises[]` array.
+
+**A genuine python-pptx pitfall hit and fixed during this rebuild:**
+deleting slides and then adding new ones (in that order) in the same
+`Presentation` object can make python-pptx hand out a slide-partname
+that collides with an existing, untouched slide — producing a package
+with duplicate `ppt/slides/slideN.xml` entries. python-pptx itself reads
+such a file back without complaint; PowerPoint refuses to open it. Fixed
+by doing every addition first (while the full original slide count is
+still intact) and only then performing deletions — see the ordering note
+in `build_v6.py`.
 
 ## Keeping this in sync
 

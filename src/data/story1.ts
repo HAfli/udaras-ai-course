@@ -29,7 +29,7 @@ export const OPENING_SCENE = {
 }
 
 export const CLOSING_SCENE = {
-  time: '15:25',
+  time: '15:20',
   label: 'Monday, later',
   line: 'Aoife’s working day is nearly over.',
   questions: [
@@ -55,8 +55,8 @@ export const STORY_ACTS: StoryAct[] = [
     act: 1,
     title: 'AI has already entered the room',
     question: 'How much AI have you already used before 9am?',
-    beat: 'Mary has just taken us through protecting ourselves online. Now we ask a different question: how do we invite AI in without giving up our judgement?',
-    slideIds: Array.from({ length: 13 }, (_, i) => `S1-${i + 1}`),
+    beat: 'A short welcome, then Mary takes us through protecting ourselves online. Now we ask a different question: how do we invite AI in without giving up our judgement?',
+    slideIds: Array.from({ length: 12 }, (_, i) => `S1-${i + 1}`),
   },
   {
     id: 'S1-A2',
@@ -64,7 +64,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'What are we actually dealing with?',
     question: 'Wait — what actually IS AI?',
     beat: 'From Aoife’s everyday experience of AI to the honest answer on Irish, the "why Irish matters" moment, and then the technology itself: traditional software, machine learning, generative AI, and how a language model actually generates a sentence.',
-    slideIds: Array.from({ length: 15 }, (_, i) => `S1-${i + 14}`),
+    slideIds: Array.from({ length: 18 }, (_, i) => `S1-${i + 13}`),
     multimediaIds: ['S1-V1', 'S1-V2', 'S1-V4-PLACEHOLDER'],
   },
   {
@@ -72,8 +72,8 @@ export const STORY_ACTS: StoryAct[] = [
     act: 3,
     title: 'AI as a workplace assistant',
     question: 'Could it help me?',
-    beat: 'Aoife tries AI on five real tasks. Each one: real problem → prompt → output → what might go wrong → what would you check → human decision.',
-    slideIds: Array.from({ length: 7 }, (_, i) => `S1-${i + 29}`),
+    beat: 'Aoife tries AI on five real tasks — each one: real problem → prompt → output → what might go wrong → what would you check → human decision — then a real case (not a demo): could AI get this wrong even when it looks fine?',
+    slideIds: Array.from({ length: 10 }, (_, i) => `S1-${i + 31}`),
     exerciseIds: [],
   },
   {
@@ -81,19 +81,18 @@ export const STORY_ACTS: StoryAct[] = [
     act: 4,
     title: 'The moment AI fools us',
     question: 'Would you believe this?',
-    beat: 'A real case first (AI-generated GAA match-programme artwork, May 2024 — genuinely posted, shown as the original screenshot): culturally recognisable, not culturally appropriate. Then the fictional Coastal Craft paragraph, revealed in three stages rather than all at once. Fluent is not the same as factual — introduced early, investigated properly this afternoon.',
-    slideIds: ['S1-25', 'S1-26', 'S1-42', 'S1-43', 'S1-44', 'S1-45', 'S1-46'],
-    exerciseIds: ['e4'],
-    multimediaIds: ['S1-V3', 'S1-GAA1', 'S1-GAA2'],
+    beat: 'A real case (AI-generated GAA match-programme artwork, May 2024 — genuinely posted, shown as the original screenshot): culturally recognisable, not culturally appropriate. Fluent is not the same as factual — introduced early, this is where it lands this afternoon. The deeper fictional-paragraph exercise built on the same idea (Workshop 4) is not run in Session 1 — it moves to Session 2.',
+    slideIds: ['S1-27', 'S1-28', 'S1-39', 'S1-40'],
+    multimediaIds: ['S1-GAA1', 'S1-GAA2'],
   },
   {
     id: 'S1-A5',
     act: 5,
     title: 'Now you are the reviewer',
-    question: 'Which model would you trust? None of them gets the final vote. You do.',
-    beat: 'Four workshops, one mission each: help Aoife decide where AI fits, sharpen a weak prompt, judge three AI outputs against each other, and investigate the flawed grant paragraph line by line. Then STOP before anything leaves the building.',
-    slideIds: Array.from({ length: 13 }, (_, i) => `S1-${i + 36}`),
-    exerciseIds: ['e1', 'e2', 'e3', 'e4'],
+    question: 'Should AI do this? Not just "can it."',
+    beat: 'Two workshops, one mission each, with a reflection straight after: help Aoife decide where AI fits, then sharpen a weak prompt. The deeper AI-judges-AI exercise (Workshop 3) is not run in Session 1 — it moves to Session 2. STOP is introduced as a method to carry forward.',
+    slideIds: Array.from({ length: 7 }, (_, i) => `S1-${i + 41}`),
+    exerciseIds: ['e1', 'e1r', 'e2', 'e2r'],
   },
   {
     id: 'S1-A6',

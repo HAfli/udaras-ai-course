@@ -22,10 +22,17 @@ import { Clinic } from './exercises/Clinic'
 import { Charter } from './exercises/Charter'
 import { RubricScore } from './exercises/RubricScore'
 import { ErrorSpot } from './exercises/ErrorSpot'
-import { SEVEN_STEPS, WORKSHOP1_QUESTIONS } from '../data/exerciseContent'
+import { Reflection } from './exercises/Reflection'
+import {
+  SEVEN_STEPS, WORKSHOP1_QUESTIONS,
+  REFLECTION1_QUESTIONS, REFLECTION1_CONNECTION,
+  REFLECTION2_QUESTIONS, REFLECTION2_CONNECTION,
+} from '../data/exerciseContent'
 
 function body(ex: Exercise): ReactNode {
   if (ex.id === 'e5b') return <ExperimentLog />
+  if (ex.id === 'e1r') return <Reflection questions={REFLECTION1_QUESTIONS} connection={REFLECTION1_CONNECTION} />
+  if (ex.id === 'e2r') return <Reflection questions={REFLECTION2_QUESTIONS} connection={REFLECTION2_CONNECTION} />
   switch (ex.kind) {
     case 'hallucination-quiz': return <HallucinationQuiz />
     case 'sorter': return <TaskSorter />

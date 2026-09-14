@@ -170,6 +170,40 @@ export const WORKSHOP4_IRISH_CORRECTION = {
 }
 export const WORKSHOP4_VERIFY_QUESTION = 'How would you verify this?'
 
+/* ---------- Reflection 1 (S1-W1-REFLECTION) — after Workshop 1 ----------
+   Ten minutes. Not a lecture: the facilitator asks, the room answers,
+   3-5 observations go on the board, then an explicit connection back to
+   the morning. */
+export const REFLECTION1_QUESTIONS = [
+  'Where did AI look genuinely useful?',
+  'Where did we decide NOT to use AI?',
+  'What surprised you?',
+  'What could go wrong?',
+  'What information would you not give an AI system?',
+  'Who remains responsible for the final result?',
+]
+export const REFLECTION1_CONNECTION = {
+  morningIdea: 'AI can help, but it has limitations.',
+  lesson: '“Can AI do it?” is not the same question as “Should AI do it?”',
+  closing: 'AI is an assistant, not an authority.',
+}
+
+/* ---------- Reflection 2 (S1-W2-REFLECTION) — after Workshop 2 ---------- */
+export const REFLECTION2_QUESTIONS = [
+  'What changed when we improved the prompt?',
+  'Which instruction made the biggest difference?',
+  'Did the better prompt eliminate all errors?',
+  'What did the AI still misunderstand?',
+  'What would you check before using the answer?',
+  'Would you use the same prompt again?',
+]
+export const REFLECTION2_CONNECTION = {
+  prediction: 'The model responds to the information we give it.',
+  fluency: 'A polished answer can still contain errors.',
+  irish: 'A fluent-looking Irish answer still needs human review.',
+  closing: 'A better prompt can improve an answer. It does not remove the need for judgement.',
+}
+
 /* ---------- Exercise 5 · Irish review criteria ---------- */
 export const IRISH_REVIEW_CRITERIA = [
   { id: 'c1', label: 'Grammar', ga: 'Gramadach', ask: 'Is it correct? Look hard at initial mutations, the genitive, and verb forms.' },

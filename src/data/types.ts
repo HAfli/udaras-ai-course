@@ -38,6 +38,7 @@ export type ExerciseKind =
   | 'workshop1'
   | 'rubric'
   | 'error-spot'
+  | 'reflection'
 
 export interface Exercise {
   id: string
