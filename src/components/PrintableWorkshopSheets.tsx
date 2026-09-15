@@ -26,7 +26,7 @@ export function PrintableWorkshopSheets({ className = '' }: { className?: string
             <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
               <a
                 href={`#/session/s1/exercises/${s.id}`}
-                className="inline-flex items-center gap-1 font-semibold text-ink hover:text-moss-700 hover:underline"
+                className="inline-flex items-center gap-1 font-semibold text-ink hover:text-atlantic hover:underline"
               >
                 Open online <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
               </a>
@@ -34,7 +34,7 @@ export function PrintableWorkshopSheets({ className = '' }: { className?: string
                 href={`${import.meta.env.BASE_URL}${WORKSHOP_PDF[s.id]}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-semibold text-ink hover:text-moss-700 hover:underline"
+                className="inline-flex items-center gap-1 font-semibold text-ink hover:text-atlantic hover:underline"
               >
                 Printable PDF <FileDown className="h-3.5 w-3.5" aria-hidden />
               </a>

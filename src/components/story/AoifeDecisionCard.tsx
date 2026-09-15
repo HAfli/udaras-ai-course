@@ -16,7 +16,7 @@ export function AoifeDecisionCard() {
       <img
         src={aoifeFocus}
         alt="Close-up of Aoife, considering the reply before it goes out."
-        className="aspect-[6/5] w-full rounded-xl2 border border-ink/10 object-cover sm:aspect-[4/5]"
+        className="aspect-[6/5] w-full object-cover sm:aspect-[4/5]"
         width={360}
         height={340}
       />
@@ -35,7 +35,7 @@ export function AoifeDecisionCard() {
                 onClick={() => setChoice(o.id)}
                 aria-pressed={on}
                 className={`border-b-2 px-0.5 pb-1 text-[1.05rem] font-semibold transition-colors ${
-                  on ? 'border-moss-600 text-moss-800' : 'border-transparent text-ink-mute hover:border-ink/25 hover:text-ink'
+                  on ? 'border-ink text-ink' : 'border-transparent text-ink-mute hover:border-ink/25 hover:text-ink'
                 }`}
               >
                 {o.label}

@@ -38,7 +38,7 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
                   transition={{ duration: 0.35, delay: Math.min(i * 0.05, 0.4) }}
                   className="flex gap-3.5 text-[.98rem] leading-relaxed text-ink-soft"
                 >
-                  <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-moss-400" />
+                  <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint" />
                   {o}
                 </motion.li>
               ))}
@@ -48,39 +48,32 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
 
         <section aria-labelledby="km">
           <h2 id="km" className="eyebrow">{t('keyMessages')}</h2>
-          <div className="mt-4 space-y-2.5">
-            {s.keyMessages.map((m, i) => (
-              <motion.p
-                key={m}
-                initial={reduce ? false : { opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.4, delay: Math.min(i * 0.06, 0.4) }}
-                className="rounded-xl2 border border-ink/8 bg-paper-card px-5 py-4 font-display text-lg leading-snug"
-              >
+          <div className="mt-4 divide-y divide-ink/12 border-t border-ink/12">
+            {s.keyMessages.map(m => (
+              <p key={m} className="py-3.5 font-display text-lg leading-snug">
                 {m}
-              </motion.p>
+              </p>
             ))}
           </div>
         </section>
 
         <section aria-labelledby="out">
           <h2 id="out" className="eyebrow">{t('outputs')}</h2>
-          <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+          <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
             {s.outputs.map(o => (
-              <li key={o} className="card p-4 text-sm leading-relaxed text-ink-soft">{o}</li>
+              <li key={o} className="border-l-2 border-ink/20 pl-3 text-sm leading-relaxed text-ink-soft">{o}</li>
             ))}
           </ul>
         </section>
       </div>
 
-      <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
-        <div className="card border-moss-200 bg-moss-50/60 p-5">
-          <p className="kicker text-moss-600">{t('irishComponent')}</p>
-          <p className="mt-2 text-sm leading-relaxed text-moss-800">{s.irishComponent}</p>
+      <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+        <div className="border-t-2 border-ink pt-4">
+          <p className="kicker">{t('irishComponent')}</p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.irishComponent}</p>
         </div>
-        <div className="card border-lichen/30 bg-lichen-soft/25 p-5">
-          <p className="kicker text-lichen-deep">{t('safetyComponent')}</p>
+        <div className="border-t border-ink/25 pt-4">
+          <p className="kicker">{t('safetyComponent')}</p>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.safetyComponent}</p>
         </div>
       </div>
@@ -139,7 +132,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
             <>
               <h2 className="sr-only">Exercises</h2>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {s.exercises.map((e, ix) => <ExerciseCard key={e.id} ex={e} i={ix} autoOpen={e.id === openExercise} />)}
+                {s.exercises.map(e => <ExerciseCard key={e.id} ex={e} autoOpen={e.id === openExercise} />)}
               </div>
             </>
           ),
@@ -168,7 +161,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
             <Bi v={s.title} />
           </h1>
 
-          <p className="mt-4 font-display text-xl text-moss-600 sm:text-2xl">
+          <p className="mt-4 font-display text-xl italic text-ink-soft sm:text-2xl">
             {s.strapline.ga ? <GaLine ga={s.strapline.ga} needsValidation={s.strapline.needsValidation} /> : s.strapline.en}
           </p>
           {s.strapline.ga && <p className="mt-1 text-sm text-ink-mute">{s.strapline.en}</p>}
@@ -179,7 +172,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
             {s.location && <span className="chip"><MapPin className="h-3.5 w-3.5" aria-hidden /> {s.location}</span>}
           </div>
 
-          <div className="mt-8 max-w-3xl border-l-2 border-moss-400 pl-6">
+          <div className="mt-8 max-w-3xl border-l-2 border-ink pl-6">
             <p className="kicker">{t('centralQuestion')}</p>
             <p className="mt-2 font-display text-xl leading-snug sm:text-2xl">
               <Bi v={s.centralQuestion} />

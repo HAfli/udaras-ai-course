@@ -15,25 +15,26 @@ export function StoryPanel() {
   const gaa = GAA_CASE_RESOURCES
 
   return (
-    <div className="space-y-16">
-      {/* Opening scene — image and text as one composition, not a card */}
-      <section className="grid gap-8 sm:grid-cols-[16rem_1fr] sm:items-center">
+    <div className="space-y-20">
+      {/* Opening scene — a large photograph leads, the way a feature
+          article opens on its subject rather than a UI hero image. */}
+      <section>
         <img
           src={aoifeMorning}
           alt="Aoife at her laptop, early on Monday morning, with the Gaeltacht coast through the window behind her."
-          className="aspect-[6/5] w-full rounded-xl2 border border-ink/10 object-cover"
+          className="aspect-[16/10] w-full max-w-2xl object-cover"
           width={450}
           height={350}
         />
-        <div>
+        <div className="mt-6 max-w-2xl">
           <p className="kicker">{OPENING_SCENE.time} · {OPENING_SCENE.label}</p>
-          <p className="mt-2 font-display text-2xl font-semibold leading-snug sm:text-3xl">{OPENING_SCENE.line}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <p className="mt-2 font-display text-3xl font-semibold leading-snug sm:text-4xl">{OPENING_SCENE.line}</p>
+          <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
             {OPENING_SCENE.tasks.map(t => (
               <span key={t} className="chip">{t}</span>
             ))}
           </div>
-          <div className="mt-4 space-y-1.5">
+          <div className="mt-5 space-y-1.5 border-t border-ink/15 pt-5">
             {OPENING_SCENE.questions.map(q => (
               <p key={q} className="font-display text-lg text-ink">{q}</p>
             ))}
@@ -45,10 +46,10 @@ export function StoryPanel() {
       {/* The six acts — a real sequence, so numbering earns its place */}
       <section aria-labelledby="acts-h">
         <h2 id="acts-h" className="eyebrow">The six acts of today</h2>
-        <ol className="mt-6 divide-y divide-ink/10 border-t border-ink/10">
+        <ol className="mt-6 divide-y divide-ink/15 border-t border-ink/15">
           {STORY_ACTS.map(a => (
-            <li key={a.id} className="grid gap-3 py-7 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
-              <span aria-hidden className="font-display text-3xl font-semibold leading-none text-ink-faint sm:text-4xl">
+            <li key={a.id} className="grid gap-3 py-8 sm:grid-cols-[4rem_1fr] sm:gap-6">
+              <span aria-hidden className="fig-num text-4xl sm:text-5xl">
                 {String(a.act).padStart(2, '0')}
               </span>
               <div>
@@ -57,24 +58,20 @@ export function StoryPanel() {
                 <p className="mt-2.5 max-w-2xl text-[.98rem] leading-relaxed text-ink-soft">{a.beat}</p>
 
                 {a.id === 'S1-A4' && (
-                  <div className="mt-5 grid gap-4 sm:grid-cols-[1fr_10rem]">
-                    <figure>
-                      <img
-                        src={gaaTweet}
-                        alt={gaa[0].title}
-                        className="w-full max-w-sm rounded-xl2 border border-ink/10"
-                      />
-                      <figcaption className="mt-2 max-w-sm text-[.78rem] leading-relaxed text-ink-faint">
+                  <div className="mt-8 max-w-2xl border-t border-ink/15 pt-8">
+                    <p className="eyebrow">Real case · May 2024</p>
+                    <p className="pull-quote mt-3">
+                      Culturally recognisable — not culturally appropriate.
+                    </p>
+                    <figure className="mt-6">
+                      <img src={gaaTweet} alt={gaa[0].title} className="w-full max-w-md" />
+                      <figcaption className="mt-2 max-w-md text-[.78rem] leading-relaxed text-ink-faint">
                         {gaa[0].description} — {gaa[0].source}
                       </figcaption>
                     </figure>
-                    <figure>
-                      <img
-                        src={gaaCrest}
-                        alt={gaa[1].title}
-                        className="w-full rounded-xl2 border border-ink/10"
-                      />
-                      <figcaption className="mt-2 text-[.78rem] leading-relaxed text-ink-faint">
+                    <figure className="mt-6 flex items-start gap-5">
+                      <img src={gaaCrest} alt={gaa[1].title} className="w-32 shrink-0" />
+                      <figcaption className="text-[.85rem] leading-relaxed text-ink-soft">
                         {gaa[1].description}
                       </figcaption>
                     </figure>
@@ -82,11 +79,11 @@ export function StoryPanel() {
                 )}
 
                 {(a.exerciseIds?.length ?? 0) > 0 && (
-                  <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[.85rem]">
+                  <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[.85rem]">
                     {a.exerciseIds!.map(id => {
                       const ex = session1.exercises.find(e => e.id === id)
                       return (
-                        <a key={id} href={`#/session/s1/exercises/${id}`} className="font-semibold text-moss-700 hover:underline">
+                        <a key={id} href={`#/session/s1/exercises/${id}`} className="font-semibold text-atlantic hover:underline">
                           {ex ? `${ex.number} →` : `${id.toUpperCase()} →`}
                         </a>
                       )
@@ -104,13 +101,13 @@ export function StoryPanel() {
         </ol>
       </section>
 
-      <section aria-labelledby="diagrams-h" className="grid gap-8 sm:grid-cols-2">
+      <section aria-labelledby="diagrams-h" className="grid gap-10 sm:grid-cols-2">
         <div>
-          <h2 id="diagrams-h" className="eyebrow mb-3">How a language model actually answers</h2>
+          <h2 id="diagrams-h" className="eyebrow mb-4">How a language model actually answers</h2>
           <PromptModelOutput />
         </div>
         <div>
-          <h2 className="eyebrow mb-3">Why Irish matters</h2>
+          <h2 className="eyebrow mb-4">Why Irish matters</h2>
           <IrishChain />
         </div>
       </section>
@@ -122,28 +119,28 @@ export function StoryPanel() {
 
       <section aria-labelledby="video-h">
         <h2 id="video-h" className="eyebrow mb-3">Video and multimedia</h2>
-        <p className="text-sm text-ink-mute">
+        <p className="max-w-2xl text-sm text-ink-mute">
           Live demonstrations do most of the work in Session 1. These are optional further-viewing links —
           none is embedded or auto-played, and each has a fallback that needs no internet connection.
         </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="mt-5 divide-y divide-ink/15 border-t border-ink/15">
           {MULTIMEDIA_RESOURCES.map(r => <MultimediaResourceCard key={r.id} r={r} />)}
         </div>
       </section>
 
       {/* Closing scene — the day's light has changed */}
-      <section className="grid gap-8 sm:grid-cols-[16rem_1fr] sm:items-center">
+      <section>
         <img
           src={aoifeDusk}
           alt="Aoife, from behind, looking out at the sea at sunset — the same working day, later."
-          className="aspect-[6/5] w-full rounded-xl2 border border-ink/10 object-cover"
+          className="aspect-[16/9] w-full max-w-2xl object-cover"
           width={240}
           height={160}
         />
-        <div>
+        <div className="mt-6 max-w-2xl">
           <p className="kicker">{CLOSING_SCENE.time} · {CLOSING_SCENE.label}</p>
-          <p className="mt-2 font-display text-xl font-semibold leading-snug sm:text-2xl">{CLOSING_SCENE.line}</p>
-          <div className="mt-3 space-y-1.5">
+          <p className="mt-2 font-display text-2xl font-semibold leading-snug sm:text-3xl">{CLOSING_SCENE.line}</p>
+          <div className="mt-4 space-y-1.5 border-t border-ink/15 pt-4">
             {CLOSING_SCENE.questions.map(q => (
               <p key={q} className="font-display text-lg text-ink">{q}</p>
             ))}

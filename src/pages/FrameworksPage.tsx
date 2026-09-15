@@ -20,7 +20,7 @@ export function FrameworksPage() {
         </div>
       </header>
 
-      <div className="wrap space-y-4 py-12 sm:py-16">
+      <div className="wrap py-4">
         <h2 className="sr-only">The four frameworks</h2>
         {FRAMEWORKS.map((f, i) => <FrameworkCard key={f.id} f={f} i={i} />)}
       </div>

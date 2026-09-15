@@ -14,11 +14,11 @@ export function FacilitatorPhoto({ className = '' }: { className?: string }) {
   if (step >= SOURCES.length) {
     return (
       <div
-        className={`grid place-items-center rounded-xl2 border-2 border-dashed border-lichen bg-lichen-soft/30 p-6 text-center ${className}`}
+        className={`grid place-items-center border border-dashed border-ink/30 bg-paper-deep p-6 text-center ${className}`}
         role="img"
         aria-label={FACILITATOR.photoPlaceholder}
       >
-        <p className="text-sm font-semibold leading-relaxed text-lichen-deep">
+        <p className="text-sm font-semibold leading-relaxed text-ink-mute">
           {FACILITATOR.photoPlaceholder}
         </p>
         <p className="mt-2 max-w-[22ch] text-xs leading-relaxed text-ink-mute">
@@ -37,7 +37,7 @@ export function FacilitatorPhoto({ className = '' }: { className?: string }) {
       loading="lazy"
       decoding="async"
       onError={() => setStep(s => s + 1)}
-      className={`h-full w-full rounded-xl2 border border-ink/10 object-cover shadow-soft ${className}`}
+      className={`h-full w-full object-cover ${className}`}
     />
   )
 }

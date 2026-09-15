@@ -1,15 +1,14 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Coffee, Lightbulb, MessagesSquare, PenLine, FlaskConical } from 'lucide-react'
 import { useState } from 'react'
 import type { TimetableSlot } from '../data/types'
 import { Bi } from './ui/Bi'
 
 const KIND = {
-  teach:    { Icon: Lightbulb,      label: 'Teaching',  cls: 'bg-moss-100 text-moss-700' },
-  activity: { Icon: MessagesSquare, label: 'Activity',  cls: 'bg-lichen-soft text-lichen-deep' },
-  lab:      { Icon: FlaskConical,   label: 'Hands-on',  cls: 'bg-heather-soft text-heather' },
-  reflect:  { Icon: PenLine,        label: 'Reflection',cls: 'bg-paper-deep text-ink-soft' },
-  break:    { Icon: Coffee,         label: 'Break',     cls: 'bg-transparent text-ink-faint' },
+  teach:    { label: 'Teaching' },
+  activity: { label: 'Activity' },
+  lab:      { label: 'Hands-on' },
+  reflect:  { label: 'Reflection' },
+  break:    { label: 'Break' },
 } as const
 
 export function Timetable({ slots }: { slots: TimetableSlot[] }) {
@@ -37,15 +36,12 @@ export function Timetable({ slots }: { slots: TimetableSlot[] }) {
               disabled={!s.detail}
               onClick={() => setOpen(on ? null : i)}
               aria-expanded={s.detail ? on : undefined}
-              className={`flex w-full items-start gap-4 rounded-xl px-2 py-3 text-left transition-colors ${
-                s.detail ? 'hover:bg-moss-50/70' : 'cursor-default'
+              className={`flex w-full items-start gap-4 px-2 py-3 text-left transition-colors ${
+                s.detail ? 'hover:bg-paper-card' : 'cursor-default'
               } ${isBreak ? 'opacity-65' : ''}`}
             >
               <span className="w-[4.3rem] shrink-0 pt-0.5 text-right font-mono text-[.72rem] font-medium text-ink-mute">
                 {s.time}
-              </span>
-              <span aria-hidden className={`relative z-10 grid h-8 w-8 shrink-0 place-items-center rounded-lg ${k.cls}`}>
-                <k.Icon className="h-[15px] w-[15px]" />
               </span>
               <span className="min-w-0 flex-1 pt-0.5">
                 <span className={`block text-[.95rem] font-semibold leading-snug ${isBreak ? 'text-ink-mute' : ''}`}>

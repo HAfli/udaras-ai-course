@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --ring: #2E6B4F;
+    --ring: #1F2E3B;
   }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
@@ -32,21 +32,20 @@
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 3px;
-    border-radius: 4px;
   }
-  ::selection { background: #D8E7DC; }
+  ::selection { background: #DCE3E8; }
 }
 
 @layer components {
   .wrap { @apply mx-auto w-full max-w-content px-5 sm:px-8; }
 
-  .card {
-    @apply rounded-xl2 border border-ink/10 bg-paper-card shadow-soft;
-  }
-  .card-hover {
-    @apply transition-[box-shadow,transform,border-color] duration-300
-           hover:shadow-lift hover:border-moss-300/70;
-  }
+  /* A flat document block — hairline border only, no radius, no shadow.
+     Used sparingly, only where content genuinely needs a boundary
+     (the exercise modal shell, a reference document). Most content on
+     this site needs no container at all. */
+  .card { @apply border border-ink/15 bg-paper-card; }
+  .card-hover { @apply transition-colors duration-300 hover:border-ink/35; }
+  .doc { @apply border border-ink/15 bg-paper-card; }
 
   .eyebrow {
     @apply text-[.68rem] font-semibold uppercase tracking-[.18em] text-ink-mute;
@@ -55,29 +54,33 @@
     @apply text-[.7rem] font-semibold uppercase tracking-[.16em] text-ink-mute;
   }
 
+  /* Editorial buttons — a stamped rectangle, not a pill. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5
+    @apply inline-flex items-center justify-center gap-2 rounded-[2px] px-5 py-2.5
            text-sm font-semibold transition-colors duration-200;
   }
-  .btn-primary { @apply btn bg-moss-700 text-paper hover:bg-moss-800; }
-  .btn-ghost   { @apply btn border border-ink/15 text-ink hover:border-moss-400 hover:text-moss-700; }
-  .btn-quiet   { @apply btn px-3 py-1.5 text-ink-soft hover:text-moss-700; }
+  .btn-primary { @apply btn bg-ink text-paper hover:bg-atlantic-deep; }
+  .btn-ghost   { @apply btn border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-paper; }
+  .btn-quiet   { @apply btn px-3 py-1.5 text-ink-soft hover:text-ink; }
 
+  /* Metadata as typography — a small tracked label with a rule before
+     it, not a rounded pill badge. Several sit in a row separated by
+     their own left rule, the way a masthead credit line runs. */
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/12
-           bg-paper-deep/60 px-2.5 py-1 text-[.72rem] font-medium text-ink-soft;
+    @apply inline-flex items-center gap-1.5 border-l border-ink/25 pl-2 text-[.72rem]
+           font-medium uppercase tracking-wide text-ink-mute;
   }
 
-  .rule { @apply h-px w-full bg-ink/10; }
+  .rule { @apply h-px w-full bg-ink/15; }
+  .rule-thick { @apply h-px w-full bg-ink; }
 
   .prose-note p { @apply text-[.95rem] leading-relaxed text-ink-soft; }
 
   .gaeilge { font-style: italic; }
 
-  /* Formerly a two-colour radial-gradient "glow" behind every page header —
-     exactly the decorative-gradient / AI-glow effect this design now
-     avoids. Kept as a class (six pages reference it) but intentionally
-     a no-op: the header's quiet flat paper tone carries it instead. */
+  /* Formerly a two-colour radial-gradient "glow" behind every page header.
+     Kept as a class (several pages reference it) but intentionally a
+     no-op — a flat page never needs it. */
   .contour {
   }
 
@@ -85,23 +88,22 @@
   .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(28,37,33,.18); border-radius: 99px; }
 
   /* -------------------------------------------------------------- *
-   *  "The Working Light" — editorial primitives, used alongside
-   *  (not instead of) the card system above, so content that isn't
-   *  a discrete comparable item doesn't have to look like one.
+   *  Editorial primitives — the actual visual system. A page is
+   *  built from these, not from cards.
    * -------------------------------------------------------------- */
 
-  /* A flat, document-style block: hairline border, no shadow, no
-     radius theatrics. For reference/contractual content that should
-     feel like a real document, not a feature card. */
-  .doc { @apply border border-ink/12 bg-paper-card; }
-
   /* A narrow column for sustained reading (story prose, reflections). */
-  .col-read { @apply mx-auto max-w-[38rem]; }
+  .col-read { @apply mx-auto max-w-prose; }
 
   /* An isolated, large-scale statement — for the handful of lines in
      this course that are load-bearing ("Prediction is not
      understanding.", "Fluent is not the same as factual."). */
   .pull-quote { @apply font-display text-[1.7rem] font-medium leading-[1.25] sm:text-[2.1rem]; }
+
+  /* A large ghost numeral marking a real sequence (a journey stage, a
+     story act, a workshop step) — never decoration on non-sequential
+     content. */
+  .fig-num { @apply font-display font-semibold leading-none text-ink-faint tabular-nums; }
 
   /* Bilingual heading pair: Irish leads, set in the display face at
      full size; English follows as a supporting line in the interface

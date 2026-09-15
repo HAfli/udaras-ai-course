@@ -18,7 +18,7 @@ export function IrishChain() {
       <img
         src={signpost}
         alt="A Gaeltacht signpost reading Fáilte, Gaeltacht, An Ceantar, Ár dTeanga, Ár bPobal, above a coastal view."
-        className="h-full w-full rounded-xl2 border border-ink/10 object-cover"
+        className="h-full w-full object-cover"
         width={225}
         height={381}
       />

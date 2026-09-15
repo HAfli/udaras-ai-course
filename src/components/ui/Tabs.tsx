@@ -22,14 +22,14 @@ export function Tabs({ tabs, initial }: { tabs: Tab[]; initial?: string }) {
               aria-controls={`${uid}-p-${t.id}`}
               onClick={() => setActive(t.id)}
               className={`relative whitespace-nowrap px-4 py-3 text-sm font-semibold transition-colors ${
-                on ? 'text-moss-700' : 'text-ink-mute hover:text-ink'
+                on ? 'text-ink' : 'text-ink-mute hover:text-ink'
               }`}
             >
               {t.label}
               {on && (
                 <motion.span
                   layoutId={reduce ? undefined : `${uid}-underline`}
-                  className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-moss-600"
+                  className="absolute inset-x-3 -bottom-px h-[2px] bg-ink"
                 />
               )}
             </button>

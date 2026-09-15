@@ -5,12 +5,12 @@ export function MultimediaResourceCard({ r }: { r: MultimediaResource }) {
   const isPlaceholder = r.verified === false
 
   return (
-    <div className={`card p-4 ${isPlaceholder ? 'border-dashed border-ink/20' : ''}`}>
+    <div className="py-5">
       <div className="flex items-start gap-2.5">
         {isPlaceholder ? (
           <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" aria-hidden />
         ) : (
-          <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-moss-600" aria-hidden />
+          <PlayCircle className="mt-0.5 h-4 w-4 shrink-0 text-ink-mute" aria-hidden />
         )}
         <div className="min-w-0">
           <p className="text-sm font-semibold text-ink">{r.title}</p>
@@ -25,7 +25,7 @@ export function MultimediaResourceCard({ r }: { r: MultimediaResource }) {
       </dl>
 
       {r.questionWhileWatching && (
-        <p className="mt-2.5 border-l-2 border-lichen/50 pl-3 text-[.82rem] italic leading-relaxed text-ink-mute">
+        <p className="mt-2.5 border-l-2 border-ink/20 pl-3 text-[.82rem] italic leading-relaxed text-ink-mute">
           While watching: {r.questionWhileWatching}
         </p>
       )}
@@ -39,7 +39,7 @@ export function MultimediaResourceCard({ r }: { r: MultimediaResource }) {
           href={r.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center gap-1.5 text-[.82rem] font-semibold text-moss-700 hover:underline"
+          className="mt-3 inline-flex items-center gap-1.5 text-[.82rem] font-semibold text-atlantic hover:underline"
         >
           Watch on {r.source} <ExternalLink className="h-3 w-3" aria-hidden />
         </a>

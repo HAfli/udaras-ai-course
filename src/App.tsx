@@ -53,7 +53,7 @@ export default function App() {
     <LangProvider>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-moss-700 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-paper"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-paper"
       >
         Skip to content
       </a>

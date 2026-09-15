@@ -1,5 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import type { Exercise } from '../data/types'
 import { Modal } from './ui/Modal'
@@ -84,7 +83,7 @@ function body(ex: Exercise): ReactNode {
             {WORKSHOP2_OUTPUT_STRUCTURE.map((s, i) => <li key={s}>{i + 1}. {s}</li>)}
           </ol>
         </div>
-        <p className="rounded-xl2 bg-moss-50 px-4 py-3 text-sm font-semibold text-moss-800">
+        <p className="border-y border-ink/15 py-3 text-sm font-semibold italic text-ink">
           Did the better prompt make the answer more useful? Not: did it make the answer true.
         </p>
         <SelfStudySteps steps={WORKSHOP2_SELF_STUDY} />
@@ -162,9 +161,8 @@ function body(ex: Exercise): ReactNode {
   }
 }
 
-export function ExerciseCard({ ex, i, autoOpen }: { ex: Exercise; i: number; autoOpen?: boolean }) {
+export function ExerciseCard({ ex, autoOpen }: { ex: Exercise; autoOpen?: boolean }) {
   const [open, setOpen] = useState(false)
-  const reduce = useReducedMotion()
 
   // Deep-linked from the PPTX (e.g. #/session/s1/exercises/e1) — open this
   // exercise's modal straight away instead of just landing on the tab.
@@ -174,43 +172,35 @@ export function ExerciseCard({ ex, i, autoOpen }: { ex: Exercise; i: number; aut
 
   return (
     <>
-      <motion.button
+      <button
         onClick={() => setOpen(true)}
-        initial={reduce ? false : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.45, delay: Math.min(i * 0.06, 0.4) }}
-        className="card card-hover group flex h-full flex-col p-5 text-left"
+        className="group flex h-full flex-col border-t-2 border-ink py-5 text-left"
       >
         <div className="flex items-center gap-3">
-          <span className="kicker text-moss-600">{ex.number}</span>
+          <span className="kicker">{ex.number}</span>
           {ex.minutes && (
             <span className="ml-auto inline-flex items-center gap-1 text-[.7rem] font-medium text-ink-faint">
               <Clock className="h-3 w-3" aria-hidden /> {ex.minutes} min
             </span>
           )}
         </div>
-        <h3 className="mt-2.5 font-display text-lg font-semibold leading-snug">
+        <h3 className="mt-2.5 font-display text-lg font-semibold leading-snug group-hover:underline">
           <Bi v={ex.title} />
         </h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{ex.purpose}</p>
         {ex.lesson && (
-          <p className="mt-3 border-l-2 border-lichen/50 pl-3 text-sm italic leading-relaxed text-ink-mute">
+          <p className="mt-3 border-l-2 border-ink/20 pl-3 text-sm italic leading-relaxed text-ink-mute">
             {ex.lesson}
           </p>
         )}
-        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-moss-700">
-          Open exercise
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-        </span>
-      </motion.button>
+      </button>
 
       <Modal
         open={open}
         onClose={() => setOpen(false)}
         title={
           <>
-            <p className="kicker text-moss-600">{ex.number}</p>
+            <p className="kicker">{ex.number}</p>
             <h3 className="mt-1 font-display text-xl font-semibold leading-snug sm:text-2xl">
               <Bi v={ex.title} />
             </h3>

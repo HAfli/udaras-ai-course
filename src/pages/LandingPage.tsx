@@ -27,22 +27,22 @@ export function LandingPage() {
       <MeetFacilitator />
 
       {/* Ten questions */}
-      <section aria-labelledby="ten-h" className="border-y border-ink/10 bg-moss-800 text-paper">
+      <section aria-labelledby="ten-h" className="border-y border-ink/15 bg-ink text-paper">
         <div className="wrap grid gap-12 py-20 lg:grid-cols-[minmax(0,22rem)_1fr] lg:py-24">
           <Reveal>
-            <p className="eyebrow text-moss-200">The pedagogical spine</p>
+            <p className="eyebrow text-paper/60">The pedagogical spine</p>
             <h2 id="ten-h" className="mt-3 font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">
               This course is not trying to make anyone an AI engineer
             </h2>
-            <p className="mt-4 text-[1.02rem] leading-relaxed text-moss-100/85">
+            <p className="mt-4 text-[1.02rem] leading-relaxed text-paper/75">
               It is trying to make people literate enough to answer ten questions with confidence. Every session,
               exercise and slide on this site earns its place by answering one of them.
             </p>
           </Reveal>
           <ol className="grid gap-x-8 gap-y-px sm:grid-cols-2">
             {TEN_QUESTIONS.map((q, i) => (
-              <li key={q} className="flex items-baseline gap-4 border-b border-paper/10 py-4">
-                <span aria-hidden className="font-mono text-[.72rem] font-bold text-moss-300">
+              <li key={q} className="flex items-baseline gap-4 border-b border-paper/15 py-4">
+                <span aria-hidden className="font-mono text-[.72rem] font-bold text-paper/60">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="text-[1.05rem] font-medium leading-snug">{q}</span>
@@ -76,7 +76,7 @@ export function LandingPage() {
                   <h3 className="font-display text-xl font-semibold"><Bi v={f.title} /></h3>
                   <p className="mt-1 text-sm text-ink-soft">{f.question}</p>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-moss-700 sm:self-center">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-atlantic sm:self-center">
                   Open
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
                 </span>

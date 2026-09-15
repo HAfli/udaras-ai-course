@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useLang } from '../i18n/LangContext'
@@ -18,7 +17,6 @@ export function Nav() {
   const { hash } = useHashRoute()
   const [open, setOpen] = useState(false)
   const [solid, setSolid] = useState(false)
-  const reduce = useReducedMotion()
 
   useEffect(() => {
     const on = () => setSolid(window.scrollY > 24)
@@ -32,65 +30,52 @@ export function Nav() {
   return (
     <header
       className={`sticky top-0 z-40 transition-colors duration-300 ${
-        solid ? 'border-b border-ink/10 bg-paper/90 backdrop-blur-md' : 'border-b border-transparent'
+        solid ? 'border-b border-ink/15 bg-paper/95 backdrop-blur-sm' : 'border-b border-transparent'
       }`}
     >
-      <div className="wrap flex h-16 items-center gap-4">
-        <a href="#/" className="group flex min-w-0 items-center gap-3">
-          <span aria-hidden className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-moss-700 text-[.65rem] font-bold tracking-tight text-paper">
-            AI
+      <div className="wrap flex h-16 items-center gap-6">
+        <a href="#/" className="min-w-0">
+          <span className="block truncate font-display text-[1.05rem] font-semibold leading-tight">
+            Building AI Confidence
           </span>
-          <span className="min-w-0">
-            <span className="block truncate font-display text-[.95rem] font-semibold leading-tight">
-              Building AI Confidence
-            </span>
-            <span className="block truncate text-[.68rem] uppercase tracking-[.14em] text-ink-mute">
-              MTU · Údarás na Gaeltachta
-            </span>
+          <span className="block truncate text-[.66rem] uppercase tracking-[.16em] text-ink-mute">
+            MTU · Údarás na Gaeltachta
           </span>
         </a>
 
-        <nav aria-label="Main" className="ml-auto hidden items-center gap-1 lg:flex">
+        <nav aria-label="Main" className="ml-auto hidden items-center gap-7 lg:flex">
           {LINKS.map(l => {
             const on = hash === l.to || (l.to !== '#/' && hash.startsWith(l.to))
             return (
               <a
                 key={l.to}
                 href={l.to}
-                className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
-                  on ? 'text-moss-700' : 'text-ink-soft hover:text-ink'
+                aria-current={on ? 'page' : undefined}
+                className={`border-b-2 py-1 text-[.82rem] font-semibold uppercase tracking-[.06em] transition-colors ${
+                  on ? 'border-ink text-ink' : 'border-transparent text-ink-mute hover:text-ink'
                 }`}
               >
                 {t(l.key)}
-                {on && (
-                  <motion.span
-                    layoutId={reduce ? undefined : 'nav-pill'}
-                    className="absolute inset-0 -z-10 rounded-full bg-moss-100/70"
-                    transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                  />
-                )}
               </a>
             )
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 lg:ml-2">
-          <div
-            role="group"
-            aria-label="Language"
-            className="flex items-center overflow-hidden rounded-full border border-ink/15 text-[.72rem] font-semibold"
-          >
-            {(['ga', 'en'] as const).map(l => (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                aria-pressed={lang === l}
-                className={`px-2.5 py-1.5 uppercase tracking-wider transition-colors ${
-                  lang === l ? 'bg-moss-700 text-paper' : 'text-ink-mute hover:text-ink'
-                }`}
-              >
-                {l}
-              </button>
+        <div className="ml-auto flex items-center gap-3 lg:ml-0">
+          <div role="group" aria-label="Language" className="flex items-center gap-0.5 text-[.72rem] font-semibold">
+            {(['ga', 'en'] as const).map((l, i) => (
+              <span key={l} className="flex items-center gap-0.5">
+                {i > 0 && <span aria-hidden className="text-ink-faint">/</span>}
+                <button
+                  onClick={() => setLang(l)}
+                  aria-pressed={lang === l}
+                  className={`px-1 py-1.5 uppercase tracking-wider transition-colors ${
+                    lang === l ? 'text-ink underline decoration-2 underline-offset-4' : 'text-ink-faint hover:text-ink-mute'
+                  }`}
+                >
+                  {l}
+                </button>
+              </span>
             ))}
           </div>
           <button
@@ -105,10 +90,10 @@ export function Nav() {
       </div>
 
       {open && (
-        <nav aria-label="Main" className="border-t border-ink/10 bg-paper-card lg:hidden">
+        <nav aria-label="Main" className="border-t border-ink/15 bg-paper-card lg:hidden">
           <div className="wrap flex flex-col py-2">
             {LINKS.map(l => (
-              <a key={l.to} href={l.to} className="border-b border-ink/5 py-3 text-sm font-medium text-ink-soft last:border-0">
+              <a key={l.to} href={l.to} className="border-b border-ink/10 py-3 text-sm font-medium text-ink-soft last:border-0">
                 {t(l.key)}
               </a>
             ))}
