@@ -6,7 +6,7 @@ import { InteractiveWorkflow } from '../InteractiveWorkflow'
 import { PromptLadder } from '../exercises/PromptLadder'
 import { Reflection } from '../exercises/Reflection'
 import { ExperimentLog } from '../exercises/ExperimentLog'
-import { PrivacyNotice, AIToolsNotice, SelfStudySteps } from '../exercises/WorkshopExtras'
+import { PrivacyNotice, AIToolsNotice, SelfStudySteps, PrintLink } from '../exercises/WorkshopExtras'
 import {
   WORKSHOP1_QUESTIONS, WORKSHOP1_REPORT_BACK, WORKSHOP1_SELF_STUDY,
   WORKSHOP2_PRESERVED_INSTRUCTIONS, WORKSHOP2_OUTPUT_STRUCTURE, WORKSHOP2_SELF_STUDY,
@@ -111,6 +111,7 @@ export function StudySession1() {
         </div>
         <PrivacyNotice />
         <SelfStudySteps steps={WORKSHOP1_SELF_STUDY} />
+        <PrintLink exerciseId="e1" />
       </Step>
 
       <Step n={5} title={`${r1.number} — ${r1.en}`} ga={r1.ga}>
@@ -140,6 +141,7 @@ export function StudySession1() {
           A better prompt can make an answer more useful. It does not make the answer automatically true.
         </p>
         <SelfStudySteps steps={WORKSHOP2_SELF_STUDY} />
+        <PrintLink exerciseId="e2" />
       </Step>
 
       <Step n={7} title={`${r2.number} — ${r2.en}`} ga={r2.ga}>

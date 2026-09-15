@@ -23,7 +23,7 @@ import { Charter } from './exercises/Charter'
 import { RubricScore } from './exercises/RubricScore'
 import { ErrorSpot } from './exercises/ErrorSpot'
 import { Reflection } from './exercises/Reflection'
-import { PrivacyNotice, AIToolsNotice, SelfStudySteps, FacilitatorNotes, SlideLink } from './exercises/WorkshopExtras'
+import { PrivacyNotice, AIToolsNotice, SelfStudySteps, FacilitatorNotes, SlideLink, PrintLink } from './exercises/WorkshopExtras'
 import {
   SEVEN_STEPS, WORKSHOP1_QUESTIONS,
   REFLECTION1_QUESTIONS, REFLECTION1_CONNECTION,
@@ -33,9 +33,9 @@ import {
   WORKSHOP2_PRESERVED_INSTRUCTIONS, WORKSHOP2_OUTPUT_STRUCTURE, WORKSHOP2_SELF_STUDY, WORKSHOP2_FACILITATOR,
 } from '../data/exerciseContent'
 
-/** Slide-page numbers in Udaras_AI_Course_Session_1_MTU_v6.1_DRAFT.pptx
- *  (and the published participant PDF, same page numbers) for each
- *  activity — verified against the actual file, never guessed. */
+/** Slide-page numbers in the corrected Session 1 deck (v6.2) and the
+ *  published participant PDF (same page numbers) for each activity —
+ *  verified against the actual rendered PDF, never guessed. */
 const SLIDE_PAGE: Record<string, number> = {
   e1: 42, e1r: 43, e2: 44, e2r: 46, e5b: 48,
 }
@@ -95,7 +95,10 @@ function body(ex: Exercise): ReactNode {
           </ul>
           <p>{WORKSHOP2_FACILITATOR.keyPoint}</p>
         </FacilitatorNotes>
-        <SlideLink page={SLIDE_PAGE.e2} />
+        <div className="flex flex-wrap gap-x-5 gap-y-1">
+          <SlideLink page={SLIDE_PAGE.e2} />
+          <PrintLink exerciseId="e2" />
+        </div>
       </div>
     )
     case 'irish-review': return <IrishReview />
@@ -147,7 +150,10 @@ function body(ex: Exercise): ReactNode {
           <p><strong>Mary's role:</strong> {WORKSHOP1_FACILITATOR.marysRole}</p>
           <p><strong>If a group is stuck for a task:</strong> {WORKSHOP1_FACILITATOR.exampleTasks.join(', ')}. Examples only — use a fictional or anonymised version.</p>
         </FacilitatorNotes>
-        <SlideLink page={SLIDE_PAGE.e1} />
+        <div className="flex flex-wrap gap-x-5 gap-y-1">
+          <SlideLink page={SLIDE_PAGE.e1} />
+          <PrintLink exerciseId="e1" />
+        </div>
       </div>
     )
     case 'rubric': return <RubricScore />

@@ -15,6 +15,7 @@ import { FeedbackLink } from '../components/FeedbackLink'
 import { StoryPanel } from '../components/story/StoryPanel'
 import { SessionJourney } from '../components/story/SessionJourney'
 import { StudySession1 } from '../components/story/StudySession1'
+import { PrintableWorkshopSheets } from '../components/PrintableWorkshopSheets'
 
 function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
   const { t } = useLang()
@@ -188,8 +189,9 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
       </motion.header>
 
       {s.id === 's1' && (
-        <div className="wrap pt-10">
+        <div className="wrap space-y-8 pt-10">
           <SessionJourney />
+          <PrintableWorkshopSheets />
         </div>
       )}
 

@@ -74,7 +74,7 @@ export const PROMPT_LADDER: { rung: string; text: string; critique: string }[] =
 ]
 
 /* ---------- Workshop 1 · Can AI help me? ----------
-   Groups of three or four, twenty-five minutes on one real task from a
+   5 groups of 3, twenty-five minutes on one real task from a
    participant's own week, then sixty seconds each to report back. */
 export const WORKSHOP1_QUESTIONS: { step: string; body: string }[] = [
   { step: 'What is the task?', body: 'A real one from your own week, not a hypothetical.' },

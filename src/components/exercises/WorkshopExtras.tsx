@@ -2,6 +2,14 @@ import type { ReactNode } from 'react'
 import { ShieldAlert, Sparkles, GraduationCap, ChevronDown } from 'lucide-react'
 import { PRIVACY_GUIDANCE, AI_TOOLS_GUIDANCE } from '../../data/exerciseContent'
 
+/** Published, verified printable A4 workshop sheets — filenames only
+ *  exist here and in PrintableWorkshopSheets.tsx, so a rename never
+ *  needs to be repeated at each call site. */
+export const WORKSHOP_PDF: Record<string, string> = {
+  e1: 'Session_1_Workshop_1_Can_AI_Help_Me.pdf',
+  e2: 'Session_1_Workshop_2_Prompt_Challenge.pdf',
+}
+
 /** "What never goes into a public AI tool" — shared between Workshop 1
  *  and Workshop 2's live and self-study content, so the list is typed
  *  once, not per-workshop. */
@@ -99,6 +107,28 @@ export function SlideLink({ page, range }: { page?: number; range?: string }) {
       ) : (
         range && <>See this in the slides → PPTX {range}</>
       )}
+    </p>
+  )
+}
+
+/** "Print the workshop sheet →" — links to the standalone A4 PDF that
+ *  covers the same workshop end to end (title/roles/steps/questions/
+ *  worked example/expected output), so a live participant or a
+ *  self-study reader can print it and complete the workshop without
+ *  referring back to this page. */
+export function PrintLink({ exerciseId }: { exerciseId: keyof typeof WORKSHOP_PDF }) {
+  const file = WORKSHOP_PDF[exerciseId]
+  if (!file) return null
+  return (
+    <p className="text-[.78rem] text-ink-faint">
+      <a
+        href={`${import.meta.env.BASE_URL}${file}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold text-moss-700 hover:underline"
+      >
+        Print the workshop sheet → (PDF)
+      </a>
     </p>
   )
 }
