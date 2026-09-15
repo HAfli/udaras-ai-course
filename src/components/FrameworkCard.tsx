@@ -4,15 +4,14 @@ import { useState } from 'react'
 import type { Framework } from '../data/types'
 import { Bi } from './ui/Bi'
 
-const TONE = {
-  moss:    { node: 'border-moss-300 bg-moss-50', on: 'bg-moss-700 text-paper border-moss-700' },
-  lichen:  { node: 'border-lichen/40 bg-lichen-soft/40', on: 'bg-lichen text-paper border-lichen' },
-  heather: { node: 'border-heather/35 bg-heather-soft/40', on: 'bg-heather text-paper border-heather' },
-}
+// One functional accent for every framework's active step — the four
+// frameworks are differentiated by their number and content, not by
+// four different brand colours standing in for identity.
+const NODE = 'border-ink/15 bg-paper-card'
+const ON = 'bg-moss-700 text-paper border-moss-700'
 
 export function FrameworkCard({ f, i }: { f: Framework; i: number }) {
   const [active, setActive] = useState<number | null>(null)
-  const tone = TONE[f.tone]
 
   return (
     <section className="card p-6 sm:p-8" aria-labelledby={`fw-${f.id}`}>
@@ -30,7 +29,7 @@ export function FrameworkCard({ f, i }: { f: Framework; i: number }) {
               <button
                 onClick={() => setActive(on ? null : si)}
                 aria-expanded={on}
-                className={`w-full rounded-xl2 border px-4 py-3.5 text-left transition-all duration-300 ${on ? tone.on : `${tone.node} hover:-translate-y-0.5`}`}
+                className={`w-full rounded-xl2 border px-4 py-3.5 text-left transition-all duration-300 ${on ? ON : `${NODE} hover:border-ink/30`}`}
               >
                 <span className="flex items-start justify-between gap-2">
                   <span className={on ? 'text-paper' : 'text-ink'}>

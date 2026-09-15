@@ -27,7 +27,7 @@ export function IrishChain() {
         <ol className="mt-3 space-y-3.5">
           {STEPS.map((s, i) => (
             <li key={s.label} className="flex items-baseline gap-3 border-b border-ink/8 pb-3.5 last:border-0 last:pb-0">
-              <span className="font-mono text-[.7rem] font-bold text-moss-600">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-[.7rem] font-bold text-ink-faint">{String(i + 1).padStart(2, '0')}</span>
               <div>
                 <p className="font-display text-base font-semibold text-ink">{s.label}</p>
                 <p className="mt-0.5 text-sm leading-relaxed text-ink-soft">{s.note}</p>

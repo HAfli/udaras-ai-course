@@ -54,7 +54,7 @@ export function AoifeDecisionCard() {
                 <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">{chosen.outcome}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{chosen.reasoning}</p>
               </div>
-              <p className="pull-quote mt-6 text-moss-800">{AOIFE_DECISION.lesson}</p>
+              <p className="pull-quote mt-6 text-ink">{AOIFE_DECISION.lesson}</p>
             </motion.div>
           )}
         </AnimatePresence>

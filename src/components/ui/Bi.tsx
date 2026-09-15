@@ -2,7 +2,18 @@ import { useLang } from '../../i18n/LangContext'
 
 type Val = { ga?: string; en: string; needsValidation?: boolean }
 
-const VALIDATION_CLS = 'decoration-dotted decoration-lichen underline underline-offset-[6px] decoration-2'
+/** A quiet notation marking "this string is awaiting linguistic
+ *  validation" — content-status metadata, not a decoration laid across
+ *  the Irish text itself. The Irish heading it follows carries no
+ *  styling change at all, so the language reads as fully confident. */
+function ValidationMark() {
+  return (
+    <span className="validation-mark" title="Irish awaiting linguistic validation">
+      <span aria-hidden>†</span>
+      <span className="sr-only"> (Irish awaiting linguistic validation)</span>
+    </span>
+  )
+}
 
 /** Renders a bilingual content value. Irish leads, at full size in the
  *  display face; English follows as a supporting line sized relative to
@@ -20,24 +31,19 @@ export function Bi({ v, className, compact }: { v: Val; className?: string; comp
 
   if (compact || !v.ga) {
     const { text, flagged } = tx(v)
-    if (!flagged) return <span className={className}>{text}</span>
     return (
-      <span className={`${className ?? ''} ${VALIDATION_CLS}`} title="Irish awaiting linguistic validation">
+      <span className={className}>
         {text}
-        <span className="sr-only"> (Irish awaiting linguistic validation)</span>
+        {flagged && <ValidationMark />}
       </span>
     )
   }
 
   return (
     <span className={className}>
-      <span
-        lang="ga"
-        className={`bi-ga block ${v.needsValidation ? VALIDATION_CLS : ''}`}
-        title={v.needsValidation ? 'Irish awaiting linguistic validation' : undefined}
-      >
+      <span lang="ga" className="bi-ga block">
         {v.ga}
-        {v.needsValidation && <span className="sr-only"> (Irish awaiting linguistic validation)</span>}
+        {v.needsValidation && <ValidationMark />}
       </span>
       <span lang="en" className="bi-en">{v.en}</span>
     </span>
@@ -48,12 +54,9 @@ export function Bi({ v, className, compact }: { v: Val; className?: string; comp
  *  the Irish line is part of the message rather than a translation. */
 export function GaLine({ ga, needsValidation, className }: { ga: string; needsValidation?: boolean; className?: string }) {
   return (
-    <span
-      className={`${className ?? ''} gaeilge ${needsValidation ? 'decoration-dotted decoration-lichen underline underline-offset-[6px] decoration-2' : ''}`}
-      title={needsValidation ? 'Irish awaiting linguistic validation' : undefined}
-      lang="ga"
-    >
+    <span className={`${className ?? ''} gaeilge`} lang="ga">
       {ga}
+      {needsValidation && <ValidationMark />}
     </span>
   )
 }

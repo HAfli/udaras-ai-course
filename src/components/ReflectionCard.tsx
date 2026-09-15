@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
+import { Bi } from './ui/Bi'
 
 export interface ReflectionPrompt { id: string; prompt: string; ga?: string; needsValidation?: boolean }
 
@@ -20,16 +21,10 @@ export function ReflectionCard({ prompts, columns = 1 }: { prompts: ReflectionPr
             transition={{ duration: 0.45, delay: i * 0.08 }}
             className="card block p-5"
           >
-            <span className="block font-display text-lg leading-snug">{p.prompt}</span>
-            {p.ga && (
-              <span
-                lang="ga"
-                className={`mt-1 block text-sm text-moss-600 ${p.needsValidation ? 'gaeilge decoration-dotted decoration-lichen underline underline-offset-4 decoration-2' : 'gaeilge'}`}
-                title={p.needsValidation ? 'Irish awaiting linguistic validation' : undefined}
-              >
-                {p.ga}
-              </span>
-            )}
+            <Bi
+              v={{ en: p.prompt, ga: p.ga, needsValidation: p.needsValidation }}
+              className="block font-display text-lg leading-snug"
+            />
             <textarea
               rows={3}
               value={v[p.id] ?? ''}

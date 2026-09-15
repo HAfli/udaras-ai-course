@@ -26,7 +26,7 @@ export function StoryPanel() {
           height={350}
         />
         <div>
-          <p className="kicker text-moss-600">{OPENING_SCENE.time} · {OPENING_SCENE.label}</p>
+          <p className="kicker">{OPENING_SCENE.time} · {OPENING_SCENE.label}</p>
           <p className="mt-2 font-display text-2xl font-semibold leading-snug sm:text-3xl">{OPENING_SCENE.line}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {OPENING_SCENE.tasks.map(t => (
@@ -48,12 +48,12 @@ export function StoryPanel() {
         <ol className="mt-6 divide-y divide-ink/10 border-t border-ink/10">
           {STORY_ACTS.map(a => (
             <li key={a.id} className="grid gap-3 py-7 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
-              <span aria-hidden className="font-display text-3xl font-semibold leading-none text-moss-400 sm:text-4xl">
+              <span aria-hidden className="font-display text-3xl font-semibold leading-none text-ink-faint sm:text-4xl">
                 {String(a.act).padStart(2, '0')}
               </span>
               <div>
                 <h3 className="font-display text-xl font-semibold leading-snug sm:text-2xl">{a.title}</h3>
-                <p className="mt-1.5 font-display text-lg text-moss-700">{a.question}</p>
+                <p className="mt-1.5 font-display text-lg italic text-ink-soft">{a.question}</p>
                 <p className="mt-2.5 max-w-2xl text-[.98rem] leading-relaxed text-ink-soft">{a.beat}</p>
 
                 {a.id === 'S1-A4' && (
@@ -141,7 +141,7 @@ export function StoryPanel() {
           height={160}
         />
         <div>
-          <p className="kicker text-dusk-deep">{CLOSING_SCENE.time} · {CLOSING_SCENE.label}</p>
+          <p className="kicker">{CLOSING_SCENE.time} · {CLOSING_SCENE.label}</p>
           <p className="mt-2 font-display text-xl font-semibold leading-snug sm:text-2xl">{CLOSING_SCENE.line}</p>
           <div className="mt-3 space-y-1.5">
             {CLOSING_SCENE.questions.map(q => (

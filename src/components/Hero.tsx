@@ -32,21 +32,15 @@ export function Hero() {
             <span>Údarás na Gaeltachta</span>
           </p>
 
-          <h1 className="mt-6 max-w-2xl text-[2.1rem] leading-[1.08] tracking-[-0.01em] sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="mt-6 max-w-2xl text-[2.6rem] leading-[1.04] tracking-[-0.015em] sm:text-6xl lg:text-[4rem]">
             <Bi
               v={{ en: CONTRACT.title, ga: CONTRACT.titleGa, needsValidation: CONTRACT.titleGaNeedsValidation }}
               className="font-semibold"
             />
           </h1>
 
-          <p className="mt-7 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-medium text-ink-soft">
-            <span>AI Literacy</span>
-            <span aria-hidden className="text-lichen">/</span>
-            <span>AI Safety</span>
-            <span aria-hidden className="text-lichen">/</span>
-            <span>Business</span>
-            <span aria-hidden className="text-lichen">/</span>
-            <span lang="ga">Gaeilge</span>
+          <p className="mt-7 text-sm font-medium text-ink-mute">
+            AI Literacy, AI Safety, Business, <span lang="ga">Gaeilge</span>
           </p>
 
           <div className="mt-10 max-w-xl border-l-2 border-moss-400 pl-6 sm:pl-8">
@@ -68,17 +62,17 @@ export function Hero() {
                   </span>
                 </span>
                 {i < SEQUENCE.length - 1 && (
-                  <ArrowRight className="h-3.5 w-3.5 shrink-0 text-lichen" aria-hidden />
+                  <ArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-faint" aria-hidden />
                 )}
               </li>
             ))}
           </ol>
 
-          <div className="mt-10 inline-block rounded-xl2 border border-moss-200 bg-moss-50/70 px-6 py-5">
-            <p className="font-display text-xl font-semibold text-moss-800 sm:text-2xl" lang="ga">
+          <div className="mt-10 max-w-xl border-t border-ink/12 pt-5">
+            <p className="font-display text-xl font-semibold text-ink sm:text-2xl" lang="ga">
               AI don Ghaeilge — ní AI in ionad na Gaeilge.
             </p>
-            <p className="mt-1.5 text-[.78em] text-moss-700">AI for Irish — not AI instead of Irish.</p>
+            <p className="mt-1.5 text-[.78em] text-ink-mute">AI for Irish — not AI instead of Irish.</p>
           </div>
 
           <p className="mt-9 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-ink-soft">
@@ -105,12 +99,12 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto w-full max-w-[22rem] lg:mx-0"
+          className="mx-auto w-full max-w-[26rem] lg:mx-0 lg:max-w-none"
         >
           <img
             src={aoifeMorning}
             alt="A woman working at a laptop in a Gaeltacht kitchen-office, looking out over the coast — the course's recurring workplace scene."
-            className="aspect-[6/5] w-full rounded-xl2 border border-ink/10 object-cover shadow-soft"
+            className="aspect-[6/5] w-full object-cover lg:aspect-[4/5]"
             width={450}
             height={350}
           />

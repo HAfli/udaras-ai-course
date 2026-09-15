@@ -49,7 +49,7 @@
   }
 
   .eyebrow {
-    @apply text-[.68rem] font-semibold uppercase tracking-[.18em] text-moss-500;
+    @apply text-[.68rem] font-semibold uppercase tracking-[.18em] text-ink-mute;
   }
   .kicker {
     @apply text-[.7rem] font-semibold uppercase tracking-[.16em] text-ink-mute;
@@ -74,10 +74,11 @@
 
   .gaeilge { font-style: italic; }
 
+  /* Formerly a two-colour radial-gradient "glow" behind every page header —
+     exactly the decorative-gradient / AI-glow effect this design now
+     avoids. Kept as a class (six pages reference it) but intentionally
+     a no-op: the header's quiet flat paper tone carries it instead. */
   .contour {
-    background-image:
-      radial-gradient(ellipse 120% 80% at 12% 0%, rgba(46,107,79,.10), transparent 60%),
-      radial-gradient(ellipse 90% 70% at 92% 12%, rgba(176,132,48,.10), transparent 58%);
   }
 
   .scrollbar-thin::-webkit-scrollbar { height: 6px; width: 6px; }
@@ -108,4 +109,12 @@
      by <Bi>. Stacks taller rather than shrinking either language. */
   .bi-ga { @apply font-display not-italic; }
   .bi-en { @apply mt-1 block text-[.78em] font-sans font-normal leading-snug text-ink-soft; }
+
+  /* Content-validation marker: a quiet notation, not a decoration laid
+     across display type. Marks "this string is awaiting linguistic
+     validation" without implying Irish itself is deficient — the Irish
+     text carries no styling change at all. */
+  .validation-mark {
+    @apply ml-1 inline-block align-super text-[.5em] font-sans font-semibold not-italic text-ink-faint;
+  }
 }

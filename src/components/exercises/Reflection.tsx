@@ -28,7 +28,7 @@ export function Reflection({ questions, connection, closingKey = 'closing' }: Re
       <div className="mt-5 grid gap-4 rounded-xl2 bg-paper-deep p-4 sm:grid-cols-3">
         {entries.map(([label, text]) => (
           <div key={label}>
-            <p className="text-[.68rem] font-bold uppercase tracking-wide text-ink-faint">
+            <p className="text-[.68rem] font-bold uppercase tracking-wide text-ink-mute">
               {label.replace(/([a-z])([A-Z])/g, '$1 $2')}
             </p>
             <p className="mt-1 text-sm text-ink-soft">{text}</p>
@@ -36,9 +36,9 @@ export function Reflection({ questions, connection, closingKey = 'closing' }: Re
         ))}
       </div>
       {closing && (
-        <div className="mt-4 rounded-xl2 px-4 py-3 text-center font-bold text-ink" style={{ background: '#FFC700' }}>
+        <p className="pull-quote mt-6 border-t border-ink/12 pt-5 text-ink">
           {closing}
-        </div>
+        </p>
       )}
     </div>
   )

@@ -97,7 +97,7 @@ export function LandingPage() {
           </div>
           <div className="grid gap-8 px-6 py-7 sm:px-8 lg:grid-cols-2">
             <div>
-              <p className="text-[.72rem] font-bold uppercase tracking-wider text-moss-700">Contractual</p>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-mute">Contractual</p>
               <dl className="mt-4 space-y-3 text-sm">
                 {[
                   ['Project title', CONTRACT.title],
@@ -115,17 +115,17 @@ export function LandingPage() {
               </dl>
             </div>
             <div>
-              <p className="text-[.72rem] font-bold uppercase tracking-wider text-lichen-deep">Notes</p>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-mute">Notes</p>
               <ul className="mt-4 space-y-3">
                 {CONTRACT.contractNotes.map(n => (
                   <li key={n} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
-                    <span aria-hidden className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-lichen" />
+                    <span aria-hidden className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint" />
                     {n}
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 border-l-2 border-moss-400 pl-5">
-                <p className="kicker text-moss-600">The iterative principle</p>
+              <div className="mt-5 border-l-2 border-ink/20 pl-5">
+                <p className="kicker">The iterative principle</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{CONTRACT.iterativePrinciple}</p>
               </div>
             </div>
