@@ -8,23 +8,18 @@ const ICONS: Record<string, typeof Users> = {
   prep: Users, s1: Sparkles, b1: FlaskConical, s2: ShieldCheck, b2: Wrench, s3: Languages, s4: Stethoscope,
 }
 
-function Node({ s, i }: { s: Stage; i: number }) {
+function Node({ s }: { s: Stage }) {
   const Icon = ICONS[s.id] ?? Users
   const between = s.kind === 'between'
-  const reduce = useReducedMotion()
 
   return (
-    <motion.a
+    <a
       href={s.route}
       className={`group relative flex flex-1 flex-col rounded-xl2 border p-5 text-left transition-all duration-300 focus-visible:outline-offset-4 ${
         between
           ? 'border-dashed border-ink/20 bg-paper-deep/40 hover:border-lichen hover:bg-lichen-soft/30'
           : 'border-ink/10 bg-paper-card shadow-soft hover:-translate-y-1 hover:border-moss-300 hover:shadow-lift'
       }`}
-      initial={reduce ? false : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="flex items-center gap-3">
         <span
@@ -53,7 +48,7 @@ function Node({ s, i }: { s: Stage; i: number }) {
         Open
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
       </span>
-    </motion.a>
+    </a>
   )
 }
 
@@ -82,9 +77,9 @@ export function Journey() {
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         />
         <ol className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-7">
-          {JOURNEY.map((s, i) => (
+          {JOURNEY.map(s => (
             <li key={s.id} className="flex">
-              <Node s={s} i={i} />
+              <Node s={s} />
             </li>
           ))}
         </ol>

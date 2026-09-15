@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react'
 import { UI, type Lang, type UIKey } from './strings'
 
 interface Ctx {
@@ -12,12 +12,19 @@ interface Ctx {
 const LangCtx = createContext<Ctx | null>(null)
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>('en')
+  // Irish is a primary language of this course, not a fallback — the
+  // site opens in Irish. The toggle still switches interface chrome
+  // (nav labels, tab labels) freely in either direction.
+  const [lang, setLangState] = useState<Lang>('ga')
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l)
     document.documentElement.lang = l
   }, [])
+
+  // Keep <html lang> correct for the initial render too, not only after
+  // the toggle is used.
+  useEffect(() => { document.documentElement.lang = lang }, [lang])
 
   const t = useCallback((k: UIKey) => UI[lang][k], [lang])
 

@@ -32,7 +32,9 @@ export function ProgressIndicator({ currentId }: { currentId: string }) {
                 ) : (
                   <span aria-hidden className={`h-1.5 w-1.5 rounded-full ${now ? 'bg-paper' : 'bg-ink-faint'}`} />
                 )}
-                <span className="whitespace-nowrap"><Bi v={s.label} /></span>
+                {/* compact: this is a wayfinding rail, not the content itself —
+                    the destination page's own <h1> carries the full bilingual heading */}
+                <span className="whitespace-nowrap"><Bi v={s.label} compact /></span>
               </a>
               {i < JOURNEY.length - 1 && (
                 <motion.span

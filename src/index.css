@@ -15,6 +15,14 @@
       transition-duration: .001ms !important;
     }
   }
+  html, body {
+    /* A horizontally-scrollable rail (ProgressIndicator) can otherwise
+       leak its intrinsic width to the page's own scroll box on some
+       mobile browsers even though it visually clips itself correctly —
+       this is the standard guard against that, and does not affect the
+       rail's own internal scrolling. */
+    overflow-x: hidden;
+  }
   body {
     @apply bg-paper text-ink font-sans antialiased;
     font-feature-settings: 'cv02','cv03','cv04','ss01';
@@ -74,4 +82,30 @@
 
   .scrollbar-thin::-webkit-scrollbar { height: 6px; width: 6px; }
   .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(28,37,33,.18); border-radius: 99px; }
+
+  /* -------------------------------------------------------------- *
+   *  "The Working Light" — editorial primitives, used alongside
+   *  (not instead of) the card system above, so content that isn't
+   *  a discrete comparable item doesn't have to look like one.
+   * -------------------------------------------------------------- */
+
+  /* A flat, document-style block: hairline border, no shadow, no
+     radius theatrics. For reference/contractual content that should
+     feel like a real document, not a feature card. */
+  .doc { @apply border border-ink/12 bg-paper-card; }
+
+  /* A narrow column for sustained reading (story prose, reflections). */
+  .col-read { @apply mx-auto max-w-[38rem]; }
+
+  /* An isolated, large-scale statement — for the handful of lines in
+     this course that are load-bearing ("Prediction is not
+     understanding.", "Fluent is not the same as factual."). */
+  .pull-quote { @apply font-display text-[1.7rem] font-medium leading-[1.25] sm:text-[2.1rem]; }
+
+  /* Bilingual heading pair: Irish leads, set in the display face at
+     full size; English follows as a supporting line in the interface
+     face, never below ~75% of the Irish size and never dimmed. Used
+     by <Bi>. Stacks taller rather than shrinking either language. */
+  .bi-ga { @apply font-display not-italic; }
+  .bi-en { @apply mt-1 block text-[.78em] font-sans font-normal leading-snug text-ink-soft; }
 }

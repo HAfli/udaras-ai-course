@@ -4,12 +4,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper:   { DEFAULT: '#F6F2EA', deep: '#EDE7DA', card: '#FFFDF8' },
+        // Cooler, less bakery-cream paper tone — measured against the
+        // wood/wall neutrals in the real Aoife photography rather than a
+        // generic warm cream.
+        paper:   { DEFAULT: '#F0EFE8', deep: '#E5E2D6', card: '#FBFAF6' },
         ink:     { DEFAULT: '#1C2521', soft: '#3E4A44', mute: '#4F5C57', faint: '#596661' },
         moss:    { 50:'#EEF4EF', 100:'#D8E7DC', 200:'#B0CCB9', 300:'#7FAC8F', 400:'#4E8767', 500:'#2E6B4F', 600:'#235640', 700:'#1B4433', 800:'#143427', 900:'#0E241B' },
         lichen:  { DEFAULT: '#B08430', soft: '#E8D9B6', deep: '#7A5A1E' },
         heather: { DEFAULT: '#544868', soft: '#E3DDEA' },
         risk: { green:'#2E6B4F', amber:'#8A5A16', red:'#9E3B2E' },
+        // "The Working Light" — the day's coastal light as a restrained
+        // narrative accent for Session 1 only. DEFAULT tones (sampled from
+        // the real Aoife/coastline photography) are for backgrounds, tints
+        // and borders only; `deep` variants are contrast-checked (5.7:1 /
+        // 7.1:1 against `paper`) for use as text or icon colour.
+        dawn: { DEFAULT: '#C4E5F9', soft: '#EAF4FC', deep: '#366088' },
+        dusk: { DEFAULT: '#BC785E', soft: '#F5E8E1', deep: '#7A3F2B' },
       },
       fontFamily: {
         display: ['Fraunces', 'Iowan Old Style', 'Georgia', 'serif'],

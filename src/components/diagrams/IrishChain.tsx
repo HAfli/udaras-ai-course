@@ -1,4 +1,4 @@
-import { ArrowDown } from 'lucide-react'
+import signpost from '../../assets/gaeltacht-signpost.jpg'
 
 const STEPS = [
   { label: 'AI', note: 'Systems that learn patterns from data.' },
@@ -10,29 +10,32 @@ const STEPS = [
 
 /** AI → Language → Irish → Business → Human judgement — the chain behind
  *  the "Why Irish matters" moment, kept deliberately free of any invented
- *  statistic or benchmark. */
+ *  statistic or benchmark. Set against a real Gaeltacht signpost rather
+ *  than an icon row, since this is a real place, not an abstract idea. */
 export function IrishChain() {
   return (
-    <div className="card p-5 sm:p-6">
-      <p className="kicker text-moss-600">Why this matters</p>
-      <ol className="mt-4 space-y-1">
-        {STEPS.map((s, i) => (
-          <li key={s.label}>
-            <div className="flex items-start gap-3 rounded-xl2 border border-ink/10 bg-paper-deep/40 px-4 py-3">
-              <span className="font-mono text-[.7rem] font-bold text-ink-faint">{String(i + 1).padStart(2, '0')}</span>
+    <div className="grid gap-5 sm:grid-cols-[9rem_1fr]">
+      <img
+        src={signpost}
+        alt="A Gaeltacht signpost reading Fáilte, Gaeltacht, An Ceantar, Ár dTeanga, Ár bPobal, above a coastal view."
+        className="h-full w-full rounded-xl2 border border-ink/10 object-cover"
+        width={225}
+        height={381}
+      />
+      <div>
+        <p className="eyebrow">Why this matters</p>
+        <ol className="mt-3 space-y-3.5">
+          {STEPS.map((s, i) => (
+            <li key={s.label} className="flex items-baseline gap-3 border-b border-ink/8 pb-3.5 last:border-0 last:pb-0">
+              <span className="font-mono text-[.7rem] font-bold text-moss-600">{String(i + 1).padStart(2, '0')}</span>
               <div>
                 <p className="font-display text-base font-semibold text-ink">{s.label}</p>
                 <p className="mt-0.5 text-sm leading-relaxed text-ink-soft">{s.note}</p>
               </div>
-            </div>
-            {i < STEPS.length - 1 && (
-              <div className="flex justify-center py-1">
-                <ArrowDown className="h-4 w-4 text-ink-faint" aria-hidden />
-              </div>
-            )}
-          </li>
-        ))}
-      </ol>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   )
 }

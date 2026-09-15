@@ -1,5 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, CalendarDays, MapPin, Languages, Layers } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Hero } from '../components/Hero'
 import { Journey } from '../components/Journey'
 import { MeetFacilitator } from '../components/MeetFacilitator'
@@ -7,39 +6,19 @@ import { Reveal } from '../components/ui/Reveal'
 import { CONTRACT, TEN_QUESTIONS, FRAMEWORKS } from '../data/programme'
 import { Bi } from '../components/ui/Bi'
 
-const FACTS = [
-  { Icon: Layers, label: 'Structure', value: '4 sessions + planning day' },
-  { Icon: CalendarDays, label: 'Duration', value: '6–8 weeks · Aug–Oct 2026' },
-  { Icon: Languages, label: 'Language', value: 'Through the medium of Irish' },
-  { Icon: MapPin, label: 'Venue', value: 'Campas Íosagáin' },
-]
-
 export function LandingPage() {
-  const reduce = useReducedMotion()
-
   return (
     <>
       <Hero />
 
-      {/* At a glance */}
+      {/* At a glance — one editorial line, not a four-tile stat grid */}
       <section aria-label="Programme at a glance" className="border-y border-ink/10 bg-paper-card">
-        <div className="wrap grid gap-px sm:grid-cols-2 lg:grid-cols-4">
-          {FACTS.map((f, i) => (
-            <motion.div
-              key={f.label}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="flex items-start gap-3.5 py-7 sm:pr-8"
-            >
-              <f.Icon className="mt-0.5 h-[18px] w-[18px] shrink-0 text-moss-500" aria-hidden />
-              <div>
-                <p className="kicker">{f.label}</p>
-                <p className="mt-1 text-[.95rem] font-semibold leading-snug">{f.value}</p>
-              </div>
-            </motion.div>
-          ))}
+        <div className="wrap py-8">
+          <p className="max-w-3xl text-[1.05rem] leading-relaxed text-ink-soft">
+            <strong className="font-semibold text-ink">Four sessions, plus a planning day</strong> — 6–8 weeks,
+            August to October 2026 — <strong className="font-semibold text-ink">delivered through the medium of
+            Irish</strong> at Campas Íosagáin.
+          </p>
         </div>
       </section>
 
@@ -62,25 +41,19 @@ export function LandingPage() {
           </Reveal>
           <ol className="grid gap-x-8 gap-y-px sm:grid-cols-2">
             {TEN_QUESTIONS.map((q, i) => (
-              <motion.li
-                key={q}
-                initial={reduce ? false : { opacity: 0, x: -8 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.5) }}
-                className="flex items-baseline gap-4 border-b border-paper/10 py-4"
-              >
+              <li key={q} className="flex items-baseline gap-4 border-b border-paper/10 py-4">
                 <span aria-hidden className="font-mono text-[.72rem] font-bold text-moss-300">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="text-[1.05rem] font-medium leading-snug">{q}</span>
-              </motion.li>
+              </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* Frameworks teaser */}
+      {/* Frameworks teaser — a divided list, like the ten questions above,
+          not a fourth card grid on the same page */}
       <section aria-labelledby="fw-h" className="wrap py-20 sm:py-24">
         <Reveal>
           <p className="eyebrow">Four frameworks</p>
@@ -92,40 +65,31 @@ export function LandingPage() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        <ol className="mt-10 divide-y divide-ink/10 border-y border-ink/10">
           {FRAMEWORKS.map((f, i) => (
-            <motion.a
-              key={f.id}
-              href="#/frameworks"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="card card-hover group p-6"
-            >
-              <p className="kicker text-moss-600">Framework {i + 1}</p>
-              <h3 className="mt-2 font-display text-xl font-semibold"><Bi v={f.title} /></h3>
-              <p className="mt-2 text-sm text-ink-soft">{f.question}</p>
-              <p className="mt-4 flex flex-wrap gap-x-2 gap-y-1 text-[.78rem] font-bold uppercase tracking-wide text-ink-mute">
-                {f.steps.map((s, si) => (
-                  <span key={s.label.en}>
-                    {s.label.en}{si < f.steps.length - 1 && <span className="ml-2 text-lichen" aria-hidden>→</span>}
-                  </span>
-                ))}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-moss-700">
-                Open framework
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
-              </span>
-            </motion.a>
+            <li key={f.id}>
+              <a href="#/frameworks" className="group flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:gap-8">
+                <span aria-hidden className="font-mono text-[.75rem] font-bold text-ink-faint sm:w-6">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="flex-1">
+                  <h3 className="font-display text-xl font-semibold"><Bi v={f.title} /></h3>
+                  <p className="mt-1 text-sm text-ink-soft">{f.question}</p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-moss-700 sm:self-center">
+                  Open
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
-      {/* Contractual basis */}
+      {/* Contractual basis — a document, not a feature card */}
       <section aria-labelledby="contract-h" className="wrap pb-24">
-        <div className="card overflow-hidden">
-          <div className="border-b border-ink/8 bg-paper-deep/50 px-6 py-5 sm:px-8">
+        <div className="doc">
+          <div className="border-b border-ink/12 px-6 py-5 sm:px-8">
             <p className="eyebrow">Source of truth</p>
             <h2 id="contract-h" className="mt-1.5 font-display text-2xl font-semibold">
               What is contractual, and what is proposed
@@ -133,7 +97,7 @@ export function LandingPage() {
           </div>
           <div className="grid gap-8 px-6 py-7 sm:px-8 lg:grid-cols-2">
             <div>
-              <span className="chip border-moss-300 bg-moss-50 text-moss-700">Contractual</span>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-moss-700">Contractual</p>
               <dl className="mt-4 space-y-3 text-sm">
                 {[
                   ['Project title', CONTRACT.title],
@@ -151,7 +115,7 @@ export function LandingPage() {
               </dl>
             </div>
             <div>
-              <span className="chip border-lichen/40 bg-lichen-soft/40 text-lichen-deep">Notes</span>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-lichen-deep">Notes</p>
               <ul className="mt-4 space-y-3">
                 {CONTRACT.contractNotes.map(n => (
                   <li key={n} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
@@ -160,9 +124,9 @@ export function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 rounded-xl2 border border-moss-200 bg-moss-50/70 p-5">
+              <div className="mt-5 border-l-2 border-moss-400 pl-5">
                 <p className="kicker text-moss-600">The iterative principle</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-moss-800">{CONTRACT.iterativePrinciple}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{CONTRACT.iterativePrinciple}</p>
               </div>
             </div>
           </div>
