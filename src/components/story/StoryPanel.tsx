@@ -6,8 +6,6 @@ import { PromptModelOutput } from '../diagrams/PromptModelOutput'
 import { IrishChain } from '../diagrams/IrishChain'
 import { AoifeDecisionCard } from './AoifeDecisionCard'
 import { Reveal } from '../ui/Reveal'
-import aoifeMorning from '../../assets/aoife-morning.jpg'
-import aoifeDusk from '../../assets/aoife-dusk.jpg'
 import gaaTweet from '../../assets/gaa-tweet.png'
 import gaaCrest from '../../assets/gaa-crest.png'
 
@@ -18,25 +16,18 @@ export function StoryPanel() {
 
   return (
     <div className="-mt-8 space-y-20">
-      {/* Opening scene — a full-bleed photograph, then a bold colour-field
-          caption band, the way a campaign film opens on its subject. */}
+      {/* Opening scene — a full-bleed colour field built entirely from
+          type: the time itself as the dominant visual element, the way a
+          campaign film opens on a title card rather than a face. */}
       <section>
-        <div className="bleed">
-          <img
-            src={aoifeMorning}
-            alt="Aoife at her laptop, early on Monday morning, with the Gaeltacht coast through the window behind her."
-            className="aspect-[16/8] w-full object-cover"
-            width={450}
-            height={350}
-          />
-        </div>
         <div className="bleed bg-atlantic text-paper">
-          <div className="wrap py-10 sm:py-14">
-            <p className="text-[.72rem] font-semibold uppercase tracking-[.16em] text-paper/65">
-              {OPENING_SCENE.time} · {OPENING_SCENE.label}
+          <div className="wrap py-14 sm:py-20">
+            <p className="text-[.72rem] font-semibold uppercase tracking-[.2em] text-paper/70">
+              {OPENING_SCENE.label}
             </p>
-            <p className="mt-3 font-display text-3xl font-semibold leading-snug sm:text-5xl">{OPENING_SCENE.line}</p>
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium uppercase tracking-wide text-paper/80">
+            <p className="display-huge mt-3 tabular-nums">{OPENING_SCENE.time}</p>
+            <p className="mt-6 max-w-2xl font-display text-3xl font-semibold leading-snug sm:text-5xl">{OPENING_SCENE.line}</p>
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium uppercase tracking-wide text-paper/85">
               {OPENING_SCENE.tasks.map(t => <span key={t}>{t}</span>)}
             </div>
             <div className="mt-6 space-y-1.5 border-t border-paper/25 pt-6">
@@ -44,7 +35,7 @@ export function StoryPanel() {
                 <p key={q} className="font-display text-xl sm:text-2xl">{q}</p>
               ))}
             </div>
-            <p className="mt-5 text-sm text-paper/70">{STORY_CHARACTER.name} — {STORY_CHARACTER.role}</p>
+            <p className="mt-5 text-sm text-paper/85">{STORY_CHARACTER.name} — {STORY_CHARACTER.role}</p>
           </div>
         </div>
       </section>
@@ -134,23 +125,17 @@ export function StoryPanel() {
         </div>
       </section>
 
-      {/* Closing scene — the day's light has changed */}
+      {/* Closing scene — the same title-card device as the opening, in the
+          day's later colour, so the two bookend each other without a
+          second photograph. */}
       <section>
-        <div className="bleed">
-          <img
-            src={aoifeDusk}
-            alt="Aoife, from behind, looking out at the sea at sunset — the same working day, later."
-            className="aspect-[16/8] w-full object-cover"
-            width={240}
-            height={160}
-          />
-        </div>
         <div className="bleed bg-ink text-paper">
-          <div className="wrap py-10 sm:py-14">
-            <p className="text-[.72rem] font-semibold uppercase tracking-[.16em] text-gold">
-              {CLOSING_SCENE.time} · {CLOSING_SCENE.label}
+          <div className="wrap py-14 sm:py-20">
+            <p className="text-[.72rem] font-semibold uppercase tracking-[.2em] text-gold">
+              {CLOSING_SCENE.label}
             </p>
-            <p className="mt-3 font-display text-2xl font-semibold leading-snug sm:text-4xl">{CLOSING_SCENE.line}</p>
+            <p className="display-huge mt-3 text-[2.75rem] tabular-nums sm:text-[4.5rem]">{CLOSING_SCENE.time}</p>
+            <p className="mt-6 max-w-xl font-display text-2xl font-semibold leading-snug sm:text-4xl">{CLOSING_SCENE.line}</p>
             <div className="mt-5 space-y-1.5 border-t border-paper/20 pt-5">
               {CLOSING_SCENE.questions.map(q => (
                 <p key={q} className="font-display text-lg sm:text-xl">{q}</p>
