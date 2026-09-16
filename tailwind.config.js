@@ -4,19 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm off-white / raw paper stock, not a bakery cream.
-        paper:   { DEFAULT: '#EBE9E2', deep: '#DEDBCF', card: '#F7F6F1' },
-        ink:     { DEFAULT: '#1C2521', soft: '#3E4A44', mute: '#4F5C57', faint: '#596661' },
-        // The single sparse identity accent — a deep, desaturated Atlantic
-        // slate blue, the colour of the sea and sky already present in the
-        // real course photography, used only for links and the rare
-        // emphasis word. Not a UI brand colour: no fills, no outlines,
-        // no badges.
-        atlantic: { DEFAULT: '#33475A', deep: '#1F2E3B', soft: '#DCE3E8' },
+        // Clean campaign off-white — the "quiet" state between bold
+        // colour-field sections, not a card background.
+        paper:   { DEFAULT: '#F6F3EC', deep: '#EAE6DA', card: '#FBFAF6' },
+        ink:     { DEFAULT: '#12181B', soft: '#3A4448', mute: '#4C5559', faint: '#5A6367' },
+        // The campaign palette — used boldly, in large full-section colour
+        // fields (hero, chapter breaks, statement moments), not as small
+        // UI accents. Each hue has one job: atlantic is the primary
+        // campaign field, emerald marks Irish-identity moments, gold is
+        // energy/action (CTAs, numerals), coral is one rare emphasis.
+        atlantic: { DEFAULT: '#0A3D5C', deep: '#072A40', soft: '#DCE7EE' },
+        emerald:  { DEFAULT: '#0B6E4F', deep: '#084F39', soft: '#DCEEE5' },
+        gold:     { DEFAULT: '#F2B705', deep: '#C99400', text: '#9A7200', soft: '#FDF2CC' },
+        coral:    { DEFAULT: '#D6553F', deep: '#B03F2C', soft: '#F8E0DA' },
         // Kept only for exercises/reference pages that rely on it for
         // semantic meaning (a correct-answer highlight, a caution note,
         // unverified-content marking) — never used as decorative brand
-        // colour on an editorial surface (Hero, Journey, Landing, Story).
+        // colour on an editorial surface.
         moss:    { 50:'#EEF4EF', 100:'#D8E7DC', 200:'#B0CCB9', 300:'#7FAC8F', 400:'#4E8767', 500:'#2E6B4F', 600:'#235640', 700:'#1B4433', 800:'#143427', 900:'#0E241B' },
         lichen:  { DEFAULT: '#B08430', soft: '#E8D9B6', deep: '#7A5A1E' },
         heather: { DEFAULT: '#544868', soft: '#E3DDEA' },

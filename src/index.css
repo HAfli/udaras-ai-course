@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --ring: #1F2E3B;
+    --ring: #0A3D5C;
   }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
@@ -33,7 +33,7 @@
     outline: 2px solid var(--ring);
     outline-offset: 3px;
   }
-  ::selection { background: #DCE3E8; }
+  ::selection { background: #F2B705; color: #12181B; }
 }
 
 @layer components {
@@ -62,6 +62,14 @@
   .btn-primary { @apply btn bg-ink text-paper hover:bg-atlantic-deep; }
   .btn-ghost   { @apply btn border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-paper; }
   .btn-quiet   { @apply btn px-3 py-1.5 text-ink-soft hover:text-ink; }
+
+  /* The one dominant call-to-action treatment — bold, filled, large.
+     Used once per screen, not repeated as the default button everywhere. */
+  .btn-cta {
+    @apply inline-flex items-center gap-3 rounded-[2px] bg-gold px-7 py-4
+           text-base font-bold uppercase tracking-wide text-ink transition-colors
+           duration-200 hover:bg-gold-deep;
+  }
 
   /* Metadata as typography — a small tracked label with a rule before
      it, not a rounded pill badge. Several sit in a row separated by
@@ -95,10 +103,23 @@
   /* A narrow column for sustained reading (story prose, reflections). */
   .col-read { @apply mx-auto max-w-prose; }
 
+  /* Break out of a `.wrap`-contained parent to full viewport width —
+     for the handful of moments (a scene photograph, a colour-field
+     chapter break) that should bleed edge to edge even inside a
+     narrower tab or page container. */
+  .bleed { @apply relative left-1/2 right-1/2 -mx-[50vw] w-screen; }
+
   /* An isolated, large-scale statement — for the handful of lines in
      this course that are load-bearing ("Prediction is not
      understanding.", "Fluent is not the same as factual."). */
-  .pull-quote { @apply font-display text-[1.7rem] font-medium leading-[1.25] sm:text-[2.1rem]; }
+  .pull-quote { @apply font-display text-[1.85rem] font-medium leading-[1.2] sm:text-[2.4rem]; }
+
+  /* Campaign-scale display type — a whole viewport's worth of headline,
+     used once per major section, not as the everyday heading size. */
+  .display-huge {
+    @apply font-display font-semibold leading-[0.95] tracking-[-0.02em];
+    font-size: clamp(2.75rem, 4vw + 1.5rem, 6.5rem);
+  }
 
   /* A large ghost numeral marking a real sequence (a journey stage, a
      story act, a workshop step) — never decoration on non-sequential
@@ -110,13 +131,16 @@
      face, never below ~75% of the Irish size and never dimmed. Used
      by <Bi>. Stacks taller rather than shrinking either language. */
   .bi-ga { @apply font-display not-italic; }
-  .bi-en { @apply mt-1 block text-[.78em] font-sans font-normal leading-snug text-ink-soft; }
+  /* currentColor + opacity (not a fixed dark shade) so English stays
+     clearly legible whether the heading sits on paper or on one of the
+     bold campaign colour fields — never invisible, always secondary. */
+  .bi-en { @apply mt-1 block text-[.78em] font-sans font-normal leading-snug text-current opacity-90; }
 
   /* Content-validation marker: a quiet notation, not a decoration laid
      across display type. Marks "this string is awaiting linguistic
      validation" without implying Irish itself is deficient — the Irish
      text carries no styling change at all. */
   .validation-mark {
-    @apply ml-1 inline-block align-super text-[.5em] font-sans font-semibold not-italic text-ink-faint;
+    @apply ml-1 inline-block align-super text-[.5em] font-sans font-semibold not-italic text-current opacity-90;
   }
 }

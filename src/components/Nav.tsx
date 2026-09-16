@@ -1,4 +1,4 @@
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useLang } from '../i18n/LangContext'
 import { useHashRoute } from '../hooks/useHashRoute'
@@ -61,7 +61,7 @@ export function Nav() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3 lg:ml-0">
+        <div className="ml-auto flex items-center gap-4 lg:ml-0">
           <div role="group" aria-label="Language" className="flex items-center gap-0.5 text-[.72rem] font-semibold">
             {(['ga', 'en'] as const).map((l, i) => (
               <span key={l} className="flex items-center gap-0.5">
@@ -78,6 +78,9 @@ export function Nav() {
               </span>
             ))}
           </div>
+          <a href="#/session/s1" className="hidden items-center gap-2 bg-gold px-4 py-2 text-[.78rem] font-bold uppercase tracking-wide text-ink transition-colors hover:bg-gold-deep sm:inline-flex">
+            {lang === 'ga' ? 'Tosaigh leis an Seisiún 1' : 'Start Session 1'} <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+          </a>
           <button
             className="btn-quiet lg:hidden"
             onClick={() => setOpen(o => !o)}

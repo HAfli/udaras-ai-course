@@ -11,61 +11,67 @@ import aoifeDusk from '../../assets/aoife-dusk.jpg'
 import gaaTweet from '../../assets/gaa-tweet.png'
 import gaaCrest from '../../assets/gaa-crest.png'
 
+const ACT_COLOUR = ['border-atlantic', 'border-emerald', 'border-gold', 'border-coral', 'border-atlantic', 'border-emerald']
+
 export function StoryPanel() {
   const gaa = GAA_CASE_RESOURCES
 
   return (
-    <div className="space-y-20">
-      {/* Opening scene — a large photograph leads, the way a feature
-          article opens on its subject rather than a UI hero image. */}
+    <div className="-mt-8 space-y-20">
+      {/* Opening scene — a full-bleed photograph, then a bold colour-field
+          caption band, the way a campaign film opens on its subject. */}
       <section>
-        <img
-          src={aoifeMorning}
-          alt="Aoife at her laptop, early on Monday morning, with the Gaeltacht coast through the window behind her."
-          className="aspect-[16/10] w-full max-w-2xl object-cover"
-          width={450}
-          height={350}
-        />
-        <div className="mt-6 max-w-2xl">
-          <p className="kicker">{OPENING_SCENE.time} · {OPENING_SCENE.label}</p>
-          <p className="mt-2 font-display text-3xl font-semibold leading-snug sm:text-4xl">{OPENING_SCENE.line}</p>
-          <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
-            {OPENING_SCENE.tasks.map(t => (
-              <span key={t} className="chip">{t}</span>
-            ))}
+        <div className="bleed">
+          <img
+            src={aoifeMorning}
+            alt="Aoife at her laptop, early on Monday morning, with the Gaeltacht coast through the window behind her."
+            className="aspect-[16/8] w-full object-cover"
+            width={450}
+            height={350}
+          />
+        </div>
+        <div className="bleed bg-atlantic text-paper">
+          <div className="wrap py-10 sm:py-14">
+            <p className="text-[.72rem] font-semibold uppercase tracking-[.16em] text-paper/65">
+              {OPENING_SCENE.time} · {OPENING_SCENE.label}
+            </p>
+            <p className="mt-3 font-display text-3xl font-semibold leading-snug sm:text-5xl">{OPENING_SCENE.line}</p>
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium uppercase tracking-wide text-paper/80">
+              {OPENING_SCENE.tasks.map(t => <span key={t}>{t}</span>)}
+            </div>
+            <div className="mt-6 space-y-1.5 border-t border-paper/25 pt-6">
+              {OPENING_SCENE.questions.map(q => (
+                <p key={q} className="font-display text-xl sm:text-2xl">{q}</p>
+              ))}
+            </div>
+            <p className="mt-5 text-sm text-paper/70">{STORY_CHARACTER.name} — {STORY_CHARACTER.role}</p>
           </div>
-          <div className="mt-5 space-y-1.5 border-t border-ink/15 pt-5">
-            {OPENING_SCENE.questions.map(q => (
-              <p key={q} className="font-display text-lg text-ink">{q}</p>
-            ))}
-          </div>
-          <p className="mt-4 text-sm text-ink-mute">{STORY_CHARACTER.name} — {STORY_CHARACTER.role}</p>
         </div>
       </section>
 
-      {/* The six acts — a real sequence, so numbering earns its place */}
-      <section aria-labelledby="acts-h">
+      {/* The six acts — major visual chapters, not cards */}
+      <section aria-labelledby="acts-h" className="wrap">
         <h2 id="acts-h" className="eyebrow">The six acts of today</h2>
-        <ol className="mt-6 divide-y divide-ink/15 border-t border-ink/15">
-          {STORY_ACTS.map(a => (
-            <li key={a.id} className="grid gap-3 py-8 sm:grid-cols-[4rem_1fr] sm:gap-6">
-              <span aria-hidden className="fig-num text-4xl sm:text-5xl">
+        <ol className="mt-8 divide-y divide-ink/15">
+          {STORY_ACTS.map((a, i) => (
+            <li key={a.id} className={`grid gap-4 border-t-4 py-10 sm:grid-cols-[6rem_1fr] sm:gap-8 ${ACT_COLOUR[i]}`}>
+              <span aria-hidden className="fig-num text-5xl sm:text-7xl">
                 {String(a.act).padStart(2, '0')}
               </span>
               <div>
-                <h3 className="font-display text-xl font-semibold leading-snug sm:text-2xl">{a.title}</h3>
-                <p className="mt-1.5 font-display text-lg italic text-ink-soft">{a.question}</p>
-                <p className="mt-2.5 max-w-2xl text-[.98rem] leading-relaxed text-ink-soft">{a.beat}</p>
+                <h3 className="font-display text-2xl font-semibold uppercase leading-snug sm:text-3xl">{a.title}</h3>
+                <p className="mt-2 font-display text-lg italic text-ink-soft">{a.question}</p>
+                <p className="mt-3 max-w-2xl text-[.98rem] leading-relaxed text-ink-soft">{a.beat}</p>
 
                 {a.id === 'S1-A4' && (
-                  <div className="mt-8 max-w-2xl border-t border-ink/15 pt-8">
+                  <div className="mt-10 max-w-2xl border-t border-ink/15 pt-8">
                     <p className="eyebrow">Real case · May 2024</p>
-                    <p className="pull-quote mt-3">
-                      Culturally recognisable — not culturally appropriate.
+                    <p className="mt-3 font-display text-[1.9rem] font-semibold leading-[1.1] sm:text-[2.6rem]">
+                      When AI looks culturally familiar, but gets the culture wrong.
                     </p>
-                    <figure className="mt-6">
-                      <img src={gaaTweet} alt={gaa[0].title} className="w-full max-w-md" />
-                      <figcaption className="mt-2 max-w-md text-[.78rem] leading-relaxed text-ink-faint">
+                    <figure className="mt-8">
+                      <img src={gaaTweet} alt={gaa[0].title} className="w-full max-w-lg" />
+                      <figcaption className="mt-2 max-w-lg text-[.78rem] leading-relaxed text-ink-faint">
                         {gaa[0].description} — {gaa[0].source}
                       </figcaption>
                     </figure>
@@ -101,7 +107,7 @@ export function StoryPanel() {
         </ol>
       </section>
 
-      <section aria-labelledby="diagrams-h" className="grid gap-10 sm:grid-cols-2">
+      <section aria-labelledby="diagrams-h" className="wrap grid gap-10 sm:grid-cols-2">
         <div>
           <h2 id="diagrams-h" className="eyebrow mb-4">How a language model actually answers</h2>
           <PromptModelOutput />
@@ -112,12 +118,12 @@ export function StoryPanel() {
         </div>
       </section>
 
-      <section aria-labelledby="decide-h">
+      <section aria-labelledby="decide-h" className="wrap">
         <h2 id="decide-h" className="eyebrow mb-6">Now you decide</h2>
         <Reveal><AoifeDecisionCard /></Reveal>
       </section>
 
-      <section aria-labelledby="video-h">
+      <section aria-labelledby="video-h" className="wrap">
         <h2 id="video-h" className="eyebrow mb-3">Video and multimedia</h2>
         <p className="max-w-2xl text-sm text-ink-mute">
           Live demonstrations do most of the work in Session 1. These are optional further-viewing links —
@@ -130,20 +136,26 @@ export function StoryPanel() {
 
       {/* Closing scene — the day's light has changed */}
       <section>
-        <img
-          src={aoifeDusk}
-          alt="Aoife, from behind, looking out at the sea at sunset — the same working day, later."
-          className="aspect-[16/9] w-full max-w-2xl object-cover"
-          width={240}
-          height={160}
-        />
-        <div className="mt-6 max-w-2xl">
-          <p className="kicker">{CLOSING_SCENE.time} · {CLOSING_SCENE.label}</p>
-          <p className="mt-2 font-display text-2xl font-semibold leading-snug sm:text-3xl">{CLOSING_SCENE.line}</p>
-          <div className="mt-4 space-y-1.5 border-t border-ink/15 pt-4">
-            {CLOSING_SCENE.questions.map(q => (
-              <p key={q} className="font-display text-lg text-ink">{q}</p>
-            ))}
+        <div className="bleed">
+          <img
+            src={aoifeDusk}
+            alt="Aoife, from behind, looking out at the sea at sunset — the same working day, later."
+            className="aspect-[16/8] w-full object-cover"
+            width={240}
+            height={160}
+          />
+        </div>
+        <div className="bleed bg-ink text-paper">
+          <div className="wrap py-10 sm:py-14">
+            <p className="text-[.72rem] font-semibold uppercase tracking-[.16em] text-gold">
+              {CLOSING_SCENE.time} · {CLOSING_SCENE.label}
+            </p>
+            <p className="mt-3 font-display text-2xl font-semibold leading-snug sm:text-4xl">{CLOSING_SCENE.line}</p>
+            <div className="mt-5 space-y-1.5 border-t border-paper/20 pt-5">
+              {CLOSING_SCENE.questions.map(q => (
+                <p key={q} className="font-display text-lg sm:text-xl">{q}</p>
+              ))}
+            </div>
           </div>
         </div>
       </section>

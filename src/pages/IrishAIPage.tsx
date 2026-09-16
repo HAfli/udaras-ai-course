@@ -8,6 +8,8 @@ import { Reveal } from '../components/ui/Reveal'
 import { session3 } from '../data/sessions'
 import { IRISH_OPPORTUNITIES } from '../data/exerciseContent'
 import { FeedbackLink } from '../components/FeedbackLink'
+import { IrishChain } from '../components/diagrams/IrishChain'
+import signpost from '../assets/gaeltacht-signpost.jpg'
 
 const CONTRIBUTIONS = [
   { label: 'Publish in Irish', body: 'Every Irish-language page, post and document you publish is Irish that exists in the digital world. That is not a metaphor — it is literally the material these systems are short of.' },
@@ -21,21 +23,35 @@ export function IrishAIPage() {
 
   return (
     <div>
-      <header className="border-b border-ink/15 bg-ink text-paper">
-        <div className="wrap py-16 sm:py-24">
-          <p className="eyebrow text-paper/60">Session 3 · The signature session</p>
-          <h1 className="mt-4 max-w-3xl text-[2.2rem] font-semibold leading-[1.08] sm:text-6xl" lang="ga">
-            AI don Ghaeilge — ní AI in ionad na Gaeilge.
+      <header className="relative overflow-hidden bg-emerald text-paper">
+        <img
+          src={signpost}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+        <div className="wrap relative py-20 sm:py-28">
+          <p className="text-[.72rem] font-semibold uppercase tracking-[.16em] text-paper/90">
+            Session 3 · The signature session
+          </p>
+          <h1 className="display-huge mt-5 max-w-4xl" lang="ga">
+            AI don Ghaeilge —<br />ní AI in ionad na Gaeilge.
           </h1>
-          <p className="mt-4 text-xl text-paper/80 sm:text-2xl">AI for Irish — not AI instead of Irish.</p>
-          <p className="mt-8 max-w-2xl text-[1.1rem] leading-relaxed text-paper/75">
+          <p className="mt-5 text-xl text-paper/90 sm:text-2xl">AI for Irish — not AI instead of Irish.</p>
+          <p className="mt-8 max-w-2xl text-[1.1rem] leading-relaxed text-paper/90">
             {session3.secondaryQuestion?.en ?? session3.centralQuestion.en}
           </p>
-          <a href="#/session/s3" className="btn mt-8 bg-paper text-ink hover:bg-paper-deep">
-            Open Session 3 <ArrowRight className="h-4 w-4" aria-hidden />
+          <a href="#/session/s3" className="btn-cta mt-8">
+            Open Session 3 <ArrowRight className="h-5 w-5" aria-hidden />
           </a>
         </div>
       </header>
+
+      {/* The chain — a major campaign statement, not a sidebar diagram */}
+      <section aria-labelledby="chain-h" className="wrap py-16 sm:py-20">
+        <h2 id="chain-h" className="sr-only">The AI-to-Irish chain</h2>
+        <IrishChain />
+      </section>
 
       {/* Low resource explained */}
       <section aria-labelledby="lr-h" className="wrap py-16">
@@ -181,7 +197,7 @@ export function IrishAIPage() {
         <FeedbackLink />
       </section>
 
-      <section className="border-y border-ink/15 bg-ink text-paper">
+      <section className="border-y border-ink/15 bg-atlantic text-paper">
         <div className="wrap py-16 text-center sm:py-20">
           <p className="font-display text-2xl leading-snug sm:text-4xl">The future is not predetermined.</p>
           <p className="mx-auto mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-paper/80">

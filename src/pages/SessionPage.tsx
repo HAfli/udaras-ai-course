@@ -17,6 +17,15 @@ import { SessionJourney } from '../components/story/SessionJourney'
 import { StudySession1 } from '../components/story/StudySession1'
 import { PrintableWorkshopSheets } from '../components/PrintableWorkshopSheets'
 
+// A rotating campaign colour per session, so each stage of the
+// programme reads as its own chapter rather than an identical template.
+const HEADER_COLOUR: Record<string, string> = {
+  prep: 'bg-ink', s1: 'bg-atlantic', s2: 'bg-coral-deep', s3: 'bg-emerald', s4: 'bg-gold',
+}
+const HEADER_TEXT: Record<string, string> = {
+  prep: 'text-paper', s1: 'text-paper', s2: 'text-paper', s3: 'text-paper', s4: 'text-ink',
+}
+
 function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
   const { t } = useLang()
   const reduce = useReducedMotion()
@@ -147,33 +156,35 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
         initial={reduce ? false : { opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="contour border-b border-ink/10"
+        className={`${HEADER_COLOUR[s.id] ?? 'bg-ink'} ${HEADER_TEXT[s.id] ?? 'text-paper'}`}
       >
-        <div className="wrap py-10 sm:py-14">
-          <a href="#/" className="btn-quiet -ml-3 mb-6 text-[.8rem]">
+        <div className="wrap py-14 sm:py-20">
+          <a href="#/" className="-ml-3 mb-6 inline-flex items-center gap-1.5 px-3 py-1.5 text-[.8rem] font-semibold text-current opacity-90 hover:opacity-100">
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden /> {t('backToProgramme')}
           </a>
 
           <ProgressIndicator currentId={s.id} />
 
-          <p className="eyebrow mt-8">{s.index}{stage ? ` · Stage ${stage.stage}` : ''}</p>
-          <h1 className="mt-3 max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] sm:text-5xl">
+          <p className="mt-8 text-[.72rem] font-semibold uppercase tracking-[.16em] opacity-90">
+            {s.index}{stage ? ` · Stage ${stage.stage}` : ''}
+          </p>
+          <h1 className="display-huge mt-4 max-w-4xl text-[2.4rem] sm:text-[3.6rem] lg:text-[4.4rem]">
             <Bi v={s.title} />
           </h1>
 
-          <p className="mt-4 font-display text-xl italic text-ink-soft sm:text-2xl">
+          <p className="mt-5 font-display text-xl italic opacity-90 sm:text-2xl">
             {s.strapline.ga ? <GaLine ga={s.strapline.ga} needsValidation={s.strapline.needsValidation} /> : s.strapline.en}
           </p>
-          {s.strapline.ga && <p className="mt-1 text-sm text-ink-mute">{s.strapline.en}</p>}
+          {s.strapline.ga && <p className="mt-1 text-sm opacity-90">{s.strapline.en}</p>}
 
-          <div className="mt-7 flex flex-wrap gap-2">
-            <span className="chip"><Clock className="h-3.5 w-3.5" aria-hidden /> {s.duration}</span>
-            <span className="chip"><CalendarDays className="h-3.5 w-3.5" aria-hidden /> {s.week}</span>
-            {s.location && <span className="chip"><MapPin className="h-3.5 w-3.5" aria-hidden /> {s.location}</span>}
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium uppercase tracking-wide opacity-90">
+            <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" aria-hidden /> {s.duration}</span>
+            <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" aria-hidden /> {s.week}</span>
+            {s.location && <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" aria-hidden /> {s.location}</span>}
           </div>
 
-          <div className="mt-8 max-w-3xl border-l-2 border-ink pl-6">
-            <p className="kicker">{t('centralQuestion')}</p>
+          <div className="mt-8 max-w-3xl border-l-2 border-current pl-6">
+            <p className="text-[.7rem] font-semibold uppercase tracking-[.16em] opacity-90">{t('centralQuestion')}</p>
             <p className="mt-2 font-display text-xl leading-snug sm:text-2xl">
               <Bi v={s.centralQuestion} />
             </p>

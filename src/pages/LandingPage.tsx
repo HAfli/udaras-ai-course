@@ -4,21 +4,61 @@ import { Journey } from '../components/Journey'
 import { MeetFacilitator } from '../components/MeetFacilitator'
 import { Reveal } from '../components/ui/Reveal'
 import { CONTRACT, TEN_QUESTIONS, FRAMEWORKS } from '../data/programme'
+import { FACILITATOR } from '../data/facilitator'
 import { Bi } from '../components/ui/Bi'
+
+const SEQUENCE = [
+  { en: 'UNDERSTAND', ga: 'TUIG' },
+  { en: 'QUESTION', ga: 'CEISTIGH' },
+  { en: 'USE', ga: 'ÚSÁID' },
+  { en: 'CHECK', ga: 'SEICEÁIL' },
+  { en: 'CREATE', ga: 'CRUTHAIGH' },
+]
+
+const FW_COLOUR = ['text-atlantic', 'text-emerald', 'text-coral', 'text-gold-text']
 
 export function LandingPage() {
   return (
     <>
       <Hero />
 
-      {/* At a glance — one editorial line, not a four-tile stat grid */}
-      <section aria-label="Programme at a glance" className="border-y border-ink/10 bg-paper-card">
-        <div className="wrap py-8">
-          <p className="max-w-3xl text-[1.05rem] leading-relaxed text-ink-soft">
-            <strong className="font-semibold text-ink">Four sessions, plus a planning day</strong> — 6–8 weeks,
-            August to October 2026 — <strong className="font-semibold text-ink">delivered through the medium of
-            Irish</strong> at Campas Íosagáin.
-          </p>
+      {/* The manifesto — what the hero didn't have room to say */}
+      <section aria-label="What this course is" className="border-b border-ink/15 bg-paper-card">
+        <div className="wrap grid gap-12 py-16 sm:py-20 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <p className="pull-quote">
+              AI literacy is not about becoming an AI expert. It is about becoming
+              <em className="not-italic text-atlantic"> confident enough to make good decisions about AI.</em>
+            </p>
+            <ol className="mt-10 flex flex-wrap items-start gap-x-6 gap-y-4">
+              {SEQUENCE.map((w, i) => (
+                <li key={w.en} className="flex items-center gap-3">
+                  <span>
+                    <span className="block text-[.95rem] font-bold uppercase tracking-[.1em] text-ink" lang="ga">
+                      {w.ga}
+                    </span>
+                    <span className="mt-0.5 block text-[.66rem] font-semibold uppercase tracking-[.1em] text-ink-faint">
+                      {w.en}
+                    </span>
+                  </span>
+                  {i < SEQUENCE.length - 1 && <span aria-hidden className="text-ink-faint">·</span>}
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="lg:col-span-6 lg:border-l lg:border-ink/15 lg:pl-12">
+            <p className="font-display text-2xl font-semibold text-ink sm:text-3xl" lang="ga">
+              AI don Ghaeilge — ní AI in ionad na Gaeilge.
+            </p>
+            <p className="mt-2 text-[.85em] text-ink-mute">AI for Irish — not AI instead of Irish.</p>
+            <p className="mt-8 text-sm text-ink-soft">
+              <span className="kicker">Facilitated by</span>{' '}
+              <a href="#meet" className="font-semibold text-atlantic hover:underline">
+                {FACILITATOR.name}
+              </a>{' '}
+              <span className="text-ink-mute">— {FACILITATOR.institution}</span>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -26,35 +66,33 @@ export function LandingPage() {
 
       <MeetFacilitator />
 
-      {/* Ten questions */}
+      {/* Ten questions — the pedagogical spine, told as ten huge statements */}
       <section aria-labelledby="ten-h" className="border-y border-ink/15 bg-ink text-paper">
-        <div className="wrap grid gap-12 py-20 lg:grid-cols-[minmax(0,22rem)_1fr] lg:py-24">
+        <div className="wrap py-20 sm:py-28">
           <Reveal>
             <p className="eyebrow text-paper/60">The pedagogical spine</p>
-            <h2 id="ten-h" className="mt-3 font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">
+            <h2 id="ten-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-5xl">
               This course is not trying to make anyone an AI engineer
             </h2>
-            <p className="mt-4 text-[1.02rem] leading-relaxed text-paper/75">
-              It is trying to make people literate enough to answer ten questions with confidence. Every session,
-              exercise and slide on this site earns its place by answering one of them.
+            <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-paper/75">
+              It is trying to make people literate enough to answer ten questions with confidence.
             </p>
           </Reveal>
-          <ol className="grid gap-x-8 gap-y-px sm:grid-cols-2">
+          <ol className="mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2">
             {TEN_QUESTIONS.map((q, i) => (
-              <li key={q} className="flex items-baseline gap-4 border-b border-paper/15 py-4">
-                <span aria-hidden className="font-mono text-[.72rem] font-bold text-paper/60">
+              <li key={q} className="border-t border-paper/20 pt-4">
+                <span aria-hidden className="fig-num block text-4xl text-gold sm:text-5xl">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="text-[1.05rem] font-medium leading-snug">{q}</span>
+                <span className="mt-2 block font-display text-xl font-semibold leading-snug sm:text-2xl">{q}</span>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* Frameworks teaser — a divided list, like the ten questions above,
-          not a fourth card grid on the same page */}
-      <section aria-labelledby="fw-h" className="wrap py-20 sm:py-24">
+      {/* Four frameworks — four branded principles, each with its own colour */}
+      <section aria-labelledby="fw-h" className="wrap py-20 sm:py-28">
         <Reveal>
           <p className="eyebrow">Four frameworks</p>
           <h2 id="fw-h" className="mt-3 max-w-2xl text-3xl font-semibold leading-[1.15] sm:text-4xl">
@@ -65,18 +103,16 @@ export function LandingPage() {
           </p>
         </Reveal>
 
-        <ol className="mt-10 divide-y divide-ink/10 border-y border-ink/10">
+        <ol className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
           {FRAMEWORKS.map((f, i) => (
-            <li key={f.id}>
-              <a href="#/frameworks" className="group flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:gap-8">
-                <span aria-hidden className="font-mono text-[.75rem] font-bold text-ink-faint sm:w-6">
+            <li key={f.id} className="border-t-4 border-ink pt-5">
+              <a href="#/frameworks" className="group block">
+                <span aria-hidden className={`fig-num block text-5xl ${FW_COLOUR[i]}`}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <div className="flex-1">
-                  <h3 className="font-display text-xl font-semibold"><Bi v={f.title} /></h3>
-                  <p className="mt-1 text-sm text-ink-soft">{f.question}</p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-atlantic sm:self-center">
+                <h3 className="mt-2 font-display text-2xl font-semibold group-hover:underline"><Bi v={f.title} /></h3>
+                <p className="mt-1.5 text-sm text-ink-soft">{f.question}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ink">
                   Open
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
                 </span>

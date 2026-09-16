@@ -67,7 +67,7 @@ export function PromptBuilder() {
           {prompt ? (
             <p className="whitespace-pre-wrap">{prompt}</p>
           ) : (
-            <p className="text-paper/40">Your prompt will build here as you type.</p>
+            <p className="text-paper/55">Your prompt will build here as you type.</p>
           )}
         </motion.div>
         <button

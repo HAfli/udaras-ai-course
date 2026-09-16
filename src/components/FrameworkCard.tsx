@@ -4,19 +4,25 @@ import { useState } from 'react'
 import type { Framework } from '../data/types'
 import { Bi } from './ui/Bi'
 
-// One functional accent for every framework's active step — the four
-// frameworks are differentiated by their number and content, not by
-// four different brand colours standing in for identity.
+// Four branded principles, four campaign colours — fixed by position so
+// the same framework always carries the same identity wherever it's
+// reused (the Frameworks page, and the Irish workflow inside AI + Irish).
+const COLOUR = [
+  { border: 'border-atlantic', num: 'text-atlantic', on: 'bg-atlantic text-paper border-atlantic' },
+  { border: 'border-emerald', num: 'text-emerald', on: 'bg-emerald text-paper border-emerald' },
+  { border: 'border-gold', num: 'text-gold-text', on: 'bg-gold text-ink border-gold' },
+  { border: 'border-coral', num: 'text-coral', on: 'bg-coral text-paper border-coral' },
+]
 const NODE = 'border-ink/20'
-const ON = 'bg-ink text-paper border-ink'
 
 export function FrameworkCard({ f, i }: { f: Framework; i: number }) {
   const [active, setActive] = useState<number | null>(null)
+  const c = COLOUR[i % COLOUR.length]
 
   return (
-    <section className="border-t-2 border-ink py-8 sm:py-10" aria-labelledby={`fw-${f.id}`}>
+    <section className={`border-t-4 py-8 sm:py-10 ${c.border}`} aria-labelledby={`fw-${f.id}`}>
       <div className="grid gap-3 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
-        <span aria-hidden className="fig-num text-3xl sm:text-4xl">{String(i + 1).padStart(2, '0')}</span>
+        <span aria-hidden className={`fig-num text-3xl sm:text-4xl ${c.num}`}>{String(i + 1).padStart(2, '0')}</span>
         <div>
           <h3 id={`fw-${f.id}`} className="font-display text-2xl font-semibold sm:text-3xl"><Bi v={f.title} /></h3>
           <p className="mt-1.5 text-[.95rem] text-ink-soft">{f.question}</p>
@@ -29,13 +35,13 @@ export function FrameworkCard({ f, i }: { f: Framework; i: number }) {
                   <button
                     onClick={() => setActive(on ? null : si)}
                     aria-expanded={on}
-                    className={`w-full border px-4 py-3.5 text-left transition-colors duration-300 ${on ? ON : `${NODE} hover:border-ink/50`}`}
+                    className={`w-full border px-4 py-3.5 text-left transition-colors duration-300 ${on ? c.on : `${NODE} hover:border-ink/50`}`}
                   >
                     <span className="flex items-start justify-between gap-2">
-                      <span className={on ? 'text-paper' : 'text-ink'}>
+                      <span className={on ? '' : 'text-ink'}>
                         <Bi v={s.label} className="text-[.95rem] font-bold uppercase tracking-wide" />
                       </span>
-                      <Plus className={`mt-0.5 h-3.5 w-3.5 shrink-0 transition-transform duration-300 ${on ? 'rotate-45 text-paper/90' : 'text-ink-faint'}`} aria-hidden />
+                      <Plus className={`mt-0.5 h-3.5 w-3.5 shrink-0 transition-transform duration-300 ${on ? 'rotate-45' : 'text-ink-faint'}`} aria-hidden />
                     </span>
                   </button>
                   {si < f.steps.length - 1 && <ArrowRight className="hidden h-4 w-4 shrink-0 text-ink-faint lg:block" aria-hidden />}

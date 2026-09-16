@@ -28,7 +28,7 @@ export function MeetFacilitator() {
         <div>
           <Reveal>
             <p className="eyebrow">Course facilitator</p>
-            <h2 id="meet-h" className="mt-3 text-3xl font-semibold leading-[1.1] sm:text-[2.75rem]">
+            <h2 id="meet-h" className="mt-3 text-4xl font-semibold leading-[1.05] sm:text-[3.4rem]">
               {FACILITATOR.name}
             </h2>
             <p className="mt-2 font-display text-lg italic text-ink-soft sm:text-xl">{FACILITATOR.role}</p>
