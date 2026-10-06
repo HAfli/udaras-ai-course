@@ -226,7 +226,7 @@ planted-problem labels never reach the public site. Package and full description
   `export_site.py`.
 - **Irish**: reused lines are copied from the native-reviewed decks; new Irish carries `needsValidation`.
 - **Hybrid**: one set of activities; the Teams chat is the shared wall; online groups use breakout rooms. The Session 3
-  Teams join link, meeting ID and passcode are shown on the Session 3 page only (`src/data/teams.ts`,
+  Teams join link (link only — no meeting ID or passcode) is shown on the Session 3 page only (`src/data/teams.ts`,
   `src/components/TeamsJoin.tsx`) and in the Session 3 Quick Guide.
 - **Session 2 approval wording**: the web page follows the delivered, reviewer-edited slides (‘ceadú / a cheadaíonn /
   ceadaithe’ instead of ‘formheas’); `scripts/session2/export_site.py` applies this at export. The Session 2 Participant
