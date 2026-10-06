@@ -56,7 +56,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'AI has already entered the room',
     question: 'How much AI have you already used before 9am?',
     beat: 'A short welcome, then Mary takes us through protecting ourselves online. Now we ask a different question: how do we invite AI in without giving up our judgement?',
-    slideIds: Array.from({ length: 12 }, (_, i) => `S1-${i + 1}`),
+    slideIds: Array.from({ length: 15 }, (_, i) => `S1-${i + 1}`),
   },
   {
     id: 'S1-A2',
@@ -64,7 +64,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'What are we actually dealing with?',
     question: 'Wait — what actually IS AI?',
     beat: 'From Aoife’s everyday experience of AI to the honest answer on Irish, the "why Irish matters" moment, and then the technology itself: traditional software, machine learning, generative AI, and how a language model actually generates a sentence.',
-    slideIds: Array.from({ length: 18 }, (_, i) => `S1-${i + 13}`),
+    slideIds: Array.from({ length: 18 }, (_, i) => `S1-${i + 16}`),
     multimediaIds: ['S1-V1', 'S1-V2'],
   },
   {
@@ -73,7 +73,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'AI as a workplace assistant',
     question: 'Could it help me?',
     beat: 'Aoife tries AI on five real tasks — each one: real problem → prompt → output → what might go wrong → what would you check → human decision — then a real case (not a demo): could AI get this wrong even when it looks fine?',
-    slideIds: Array.from({ length: 10 }, (_, i) => `S1-${i + 31}`),
+    slideIds: Array.from({ length: 10 }, (_, i) => `S1-${i + 34}`),
     exerciseIds: [],
   },
   {
@@ -82,7 +82,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'The moment AI fools us',
     question: 'Would you believe this?',
     beat: 'A real case (AI-generated GAA match-programme artwork, May 2024 — genuinely posted, shown as the original screenshot): culturally recognisable, not culturally appropriate. Fluent is not the same as factual — introduced early, this is where it lands this afternoon. The deeper fictional-paragraph exercise built on the same idea (Workshop 4) is not run in Session 1 — it moves to Session 2.',
-    slideIds: ['S1-27', 'S1-28', 'S1-39', 'S1-40'],
+    slideIds: ['S1-30', 'S1-31', 'S1-42', 'S1-43'],
     multimediaIds: ['S1-GAA1', 'S1-GAA2'],
   },
   {
@@ -91,7 +91,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'Now you are the reviewer',
     question: 'Should AI do this? Not just "can it."',
     beat: 'Two workshops, one mission each, with a reflection straight after: help Aoife decide where AI fits, then sharpen a weak prompt. The deeper AI-judges-AI exercise (Workshop 3) is not run in Session 1 — it moves to Session 2. STOP is introduced as a method to carry forward.',
-    slideIds: Array.from({ length: 7 }, (_, i) => `S1-${i + 41}`),
+    slideIds: Array.from({ length: 7 }, (_, i) => `S1-${i + 44}`),
     exerciseIds: ['e1', 'e1r', 'e2', 'e2r'],
   },
   {
@@ -100,7 +100,7 @@ export const STORY_ACTS: StoryAct[] = [
     title: 'Back to Monday morning',
     question: 'What would you do differently tomorrow morning?',
     beat: 'Aoife’s day is ending. We close the loop: what is YOUR first AI experiment?',
-    slideIds: Array.from({ length: 5 }, (_, i) => `S1-${i + 48}`),
+    slideIds: Array.from({ length: 5 }, (_, i) => `S1-${i + 51}`),
     exerciseIds: ['e5b'],
   },
 ]

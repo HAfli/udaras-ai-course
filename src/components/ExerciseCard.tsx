@@ -11,7 +11,6 @@ import { PromptLadder } from './exercises/PromptLadder'
 import { IrishReview } from './exercises/IrishReview'
 import { ExperimentLog } from './exercises/ExperimentLog'
 import { ScenarioCards } from './ScenarioCard'
-import { StopFramework } from './exercises/StopFramework'
 import { InteractiveWorkflow } from './InteractiveWorkflow'
 import { UseCaseTable } from './exercises/UseCaseTable'
 import { IrishFirstBusiness } from './exercises/IrishFirstBusiness'
@@ -22,6 +21,8 @@ import { Charter } from './exercises/Charter'
 import { RubricScore } from './exercises/RubricScore'
 import { ErrorSpot } from './exercises/ErrorSpot'
 import { Reflection } from './exercises/Reflection'
+import { FailureSort, StopTest, PrivacySort, AiToAi, ProposalReview, Promotion, SafeWorkflow, Session2Reflection } from './exercises/Session2Exercises'
+import { SamePromptCompare, IrishCheckProofread, TranslationChallenge, SettingsExplorer, ScenarioChallenge, MyToolkit, Session3Reflection, NotebookFolder, IrishDocuments, WhichWorkflow, WhichIrish } from './exercises/Session3Exercises'
 import { PrivacyNotice, AIToolsNotice, SelfStudySteps, FacilitatorNotes, SlideLink, PrintLink } from './exercises/WorkshopExtras'
 import {
   SEVEN_STEPS, WORKSHOP1_QUESTIONS,
@@ -32,11 +33,11 @@ import {
   WORKSHOP2_PRESERVED_INSTRUCTIONS, WORKSHOP2_OUTPUT_STRUCTURE, WORKSHOP2_SELF_STUDY, WORKSHOP2_FACILITATOR,
 } from '../data/exerciseContent'
 
-/** Slide-page numbers in the corrected Session 1 deck (v6.2) and the
- *  published participant PDF (same page numbers) for each activity —
+/** Slide-page numbers in the delivered Session 1 deck (v6.3, 55 slides) and
+ *  the published public/Session-1-Slides.pdf (same page numbers) for each activity —
  *  verified against the actual rendered PDF, never guessed. */
 const SLIDE_PAGE: Record<string, number> = {
-  e1: 42, e1r: 43, e2: 44, e2r: 46, e5b: 48,
+  e1: 45, e1r: 46, e2: 48, e2r: 49, e5b: 51,
 }
 
 function body(ex: Exercise): ReactNode {
@@ -102,7 +103,6 @@ function body(ex: Exercise): ReactNode {
     )
     case 'irish-review': return <IrishReview />
     case 'scenarios': return <ScenarioCards />
-    case 'stop': return <StopFramework />
     case 'workflow': return (
       <div>
         <div className="prose-note"><p>Seven steps, in order. Bring a real problem — a hypothetical one will not push back.</p></div>
@@ -157,6 +157,25 @@ function body(ex: Exercise): ReactNode {
     )
     case 'rubric': return <RubricScore />
     case 'error-spot': return <ErrorSpot />
+    case 's2-failures': return <FailureSort />
+    case 's2-stop': return <StopTest />
+    case 's2-privacy': return <PrivacySort />
+    case 's2-ai-to-ai': return <AiToAi />
+    case 's2-review': return <ProposalReview />
+    case 's2-promotion': return <Promotion />
+    case 's2-workflow': return <SafeWorkflow />
+    case 's2-reflection': return <Session2Reflection />
+    case 's3-compare': return <SamePromptCompare />
+    case 's3-irish': return <IrishCheckProofread />
+    case 's3-translate': return <TranslationChallenge />
+    case 's3-settings': return <SettingsExplorer />
+    case 's3-scenario': return <ScenarioChallenge />
+    case 's3-toolkit': return <MyToolkit />
+    case 's3-reflection': return <Session3Reflection />
+    case 's3-notebook': return <NotebookFolder />
+    case 's3-irishdocs': return <IrishDocuments />
+    case 's3-which': return <WhichWorkflow />
+    case 's3-dialect': return <WhichIrish />
     default: return null
   }
 }

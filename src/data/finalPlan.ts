@@ -19,7 +19,7 @@ export const PLAN_SECTIONS: PlanSection[] = [
   },
   {
     id: 'safety', title: 'My AI safety check', kind: 'text',
-    hint: 'What you ask yourself before anything goes in. STOP is a starting point: Sensitive? Trust? Ownership? Person responsible?',
+    hint: 'What you ask yourself before anything goes in. STOP is a starting point: Source? Trust? Ownership? Privacy?',
   },
   {
     id: 'verify', title: 'How I will verify AI outputs', kind: 'text',

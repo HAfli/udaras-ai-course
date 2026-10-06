@@ -433,18 +433,6 @@ export const AI_ACT_SCENARIOS: Scenario[] = [
   },
 ]
 
-/* ---------- Exercise 7 · STOP ---------- */
-export const STOP_FRAMEWORK = [
-  { letter: 'S', word: 'Sensitive?', question: 'Is there anything in here that belongs to somebody else — a customer, a colleague, another business?',
-    examples: ['A name, an address, a phone number', 'A colleague’s performance', 'Another company’s confidential document', 'Anything you would not read aloud in a full room'] },
-  { letter: 'T', word: 'Trust?', question: 'How much does it matter if this output is wrong, and would I notice?',
-    examples: ['A figure going into a funding application', 'A legal or regulatory claim', 'A statement about what a grant covers', 'Anything a customer will act on'] },
-  { letter: 'O', word: 'Ownership?', question: 'Who owns what goes in, and who owns what comes out?',
-    examples: ['Copyright in material you paste in', 'Whether the tool trains on your input', 'Client material you hold but do not own', 'What your own terms with customers allow'] },
-  { letter: 'P', word: 'Person responsible?', question: 'Who is the named human who signs off on this before it leaves the building?',
-    examples: ['Who reviews it', 'Who approves the Irish', 'Who answers if it is wrong', '“The AI wrote it” is not an answer'] },
-]
-
 /* ---------- Exercise 8 / 14 · Seven-step workflow ---------- */
 export const SEVEN_STEPS = [
   { step: 'Define',   body: 'Say the problem out loud in one sentence, without mentioning AI. If you cannot, that is the actual task.' },

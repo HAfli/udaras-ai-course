@@ -6,8 +6,8 @@ import { PRIVACY_GUIDANCE, AI_TOOLS_GUIDANCE } from '../../data/exerciseContent'
  *  exist here and in PrintableWorkshopSheets.tsx, so a rename never
  *  needs to be repeated at each call site. */
 export const WORKSHOP_PDF: Record<string, string> = {
-  e1: 'Session_1_Workshop_1_Can_AI_Help_Me.pdf',
-  e2: 'Session_1_Workshop_2_Prompt_Challenge.pdf',
+  e1: 'Session-1-Participant-Package.pdf#page=1',
+  e2: 'Session-1-Participant-Package.pdf#page=9',
 }
 
 /** "What never goes into a public AI tool" — shared between Workshop 1
@@ -97,7 +97,7 @@ export function FacilitatorNotes({ children }: { children: ReactNode }) {
  *  the slide range otherwise. Never invented — only used where a real
  *  slide number exists. */
 export function SlideLink({ page, range }: { page?: number; range?: string }) {
-  const href = page ? `${import.meta.env.BASE_URL}session1-slides.pdf#page=${page}` : undefined
+  const href = page ? `${import.meta.env.BASE_URL}Session-1-Slides.pdf#page=${page}` : undefined
   return (
     <p className="text-[.78rem] text-ink-faint">
       {href ? (
@@ -105,7 +105,7 @@ export function SlideLink({ page, range }: { page?: number; range?: string }) {
           See this in the slides → (slide {page})
         </a>
       ) : (
-        range && <>See this in the slides → PPTX {range}</>
+        range && <>See this in the slides → slides {range}</>
       )}
     </p>
   )
@@ -127,7 +127,7 @@ export function PrintLink({ exerciseId }: { exerciseId: keyof typeof WORKSHOP_PD
         rel="noopener noreferrer"
         className="font-semibold text-moss-700 hover:underline"
       >
-        Print the workshop sheet → (PDF)
+        Print the workshop sheet → (Participant Package PDF; Irish first, then English)
       </a>
     </p>
   )

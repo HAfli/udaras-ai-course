@@ -13,7 +13,7 @@ export function ProgressIndicator({ currentId }: { currentId: string }) {
   const idx = JOURNEY.findIndex(s => s.id === currentId)
 
   return (
-    <nav aria-label="Programme progress" className="scrollbar-thin overflow-x-auto text-current">
+    <nav aria-label="Programme progress" className="scrollbar-thin relative overflow-x-auto text-current">
       <ol className="flex min-w-max items-center text-[.72rem] font-semibold uppercase tracking-wide">
         {JOURNEY.map((s, i) => {
           const now = i === idx

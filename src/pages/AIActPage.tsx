@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { CheckCircle2, ExternalLink, Info, XCircle } from 'lucide-react'
 import { AI_ACT_INTRO, CURRENT_POSITION, RISK_TIERS, LITERACY, TIMELINE, OMNIBUS_NOTE, RESPONSIBILITIES, SOURCES } from '../data/aiact'
 import { ScenarioCards } from '../components/ScenarioCard'
-import { StopFramework } from '../components/exercises/StopFramework'
+import { StopTest } from '../components/exercises/Session2Exercises'
 import { Reveal } from '../components/ui/Reveal'
 import { Disclosure } from '../components/ui/Disclosure'
 
@@ -254,7 +254,7 @@ export function AIActPage() {
 
           <div>
             <h3 className="font-display text-2xl font-semibold">The STOP check</h3>
-            <div className="mt-5"><StopFramework /></div>
+            <div className="mt-5"><StopTest /></div>
           </div>
 
           <div>

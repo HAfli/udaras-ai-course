@@ -16,8 +16,8 @@ export function PrintableWorkshopSheets({ className = '' }: { className?: string
     <section aria-labelledby="printable-sheets-h" className={`border-y border-ink/12 py-6 sm:py-8 ${className}`}>
       <p id="printable-sheets-h" className="eyebrow">Printable workshop sheets</p>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
-        Each workshop is also a standalone, print-ready A4 handout — enough detail to run or complete it without
-        opening the slides. Print one per participant, or work from the page online instead.
+        Each workshop is a print-ready A4 handout, in Irish and in English, inside the Session 1 Participant Package
+        (PDF). Print it, or work from the page online instead.
       </p>
       <div className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
         {SHEETS.map(s => (
@@ -36,7 +36,7 @@ export function PrintableWorkshopSheets({ className = '' }: { className?: string
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 font-semibold text-ink hover:text-atlantic hover:underline"
               >
-                Printable PDF <FileDown className="h-3.5 w-3.5" aria-hidden />
+                Printable PDF (Participant Package) <FileDown className="h-3.5 w-3.5" aria-hidden />
               </a>
             </div>
           </div>

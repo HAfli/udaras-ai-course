@@ -6,6 +6,7 @@ import { Reveal } from '../components/ui/Reveal'
 import { CONTRACT, TEN_QUESTIONS, FRAMEWORKS } from '../data/programme'
 import { FACILITATOR } from '../data/facilitator'
 import { Bi } from '../components/ui/Bi'
+import { SessionDownloads } from '../components/SessionDownloads'
 
 const SEQUENCE = [
   { en: 'UNDERSTAND', ga: 'TUIG' },
@@ -16,6 +17,17 @@ const SEQUENCE = [
 ]
 
 const FW_COLOUR = ['text-atlantic', 'text-emerald', 'text-coral', 'text-gold-text']
+
+/* The three-session learning journey — aligned with what each session actually taught. */
+const PROGRESSION: { id: 's1' | 's2' | 's3'; label: string; title: string; qs: string[] }[] = [
+  { id: 's1', label: 'Session 1 · Fri 18 Sept', title: 'Understand and experiment',
+    qs: ['What is AI, and what can generative AI do?', 'How do I start using it — and write a better prompt?', 'Why should I not blindly trust it?'] },
+  { id: 's2', label: 'Session 2 · Mon 28 Sept', title: 'Use safely and critically',
+    qs: ['What can go wrong?', 'How do I protect information? (STOP)', 'How do I check outputs — and who approves?'] },
+  { id: 's3', label: 'Session 3 · Fri 9 Oct', title: 'Choose, ground, verify and adapt',
+    qs: ['Which AI tool or workflow should I use?', 'How can AI work with my own documents — and how do I trace the evidence?',
+         'How well does AI work with Irish — and is the Irish right for this audience and community?', 'Where must human judgement remain final?'] },
+]
 
 export function LandingPage() {
   return (
@@ -63,6 +75,24 @@ export function LandingPage() {
       </section>
 
       <Journey />
+
+      <section aria-labelledby="sofar-h" className="wrap py-16 sm:py-20">
+        <p className="eyebrow">The course so far</p>
+        <h2 id="sofar-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">Three sessions, one journey</h2>
+        <ol className="mt-8 grid gap-6 lg:grid-cols-3">
+          {PROGRESSION.map(p => (
+            <li key={p.id} className="flex flex-col border-t-2 border-ink pt-4">
+              <p className="kicker">{p.label}</p>
+              <h3 className="mt-2 font-display text-xl font-semibold leading-snug">
+                <a href={`#/session/${p.id}`} className="hover:underline">{p.title}</a>
+              </h3>
+              <ul className="mt-3 flex-1 space-y-1.5 text-sm text-ink-soft">{p.qs.map(q => <li key={q}>{q}</li>)}</ul>
+              <div className="mt-4"><SessionDownloads id={p.id} heading={false} /></div>
+              <a href={`#/session/${p.id}`} className="btn-quiet mt-3 -ml-3 self-start">Open {p.label} <ArrowRight className="h-3.5 w-3.5" aria-hidden /></a>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <MeetFacilitator />
 

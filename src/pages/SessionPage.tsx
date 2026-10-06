@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, CalendarDays, Clock, MapPin, FileDown } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CalendarDays, Clock, MapPin } from 'lucide-react'
 import { byId, SESSIONS } from '../data/sessions'
 import { JOURNEY } from '../data/programme'
 import { useLang } from '../i18n/LangContext'
@@ -16,6 +16,8 @@ import { StoryPanel } from '../components/story/StoryPanel'
 import { SessionJourney } from '../components/story/SessionJourney'
 import { StudySession1 } from '../components/story/StudySession1'
 import { PrintableWorkshopSheets } from '../components/PrintableWorkshopSheets'
+import { SessionDownloads } from '../components/SessionDownloads'
+import { TeamsJoin } from '../components/TeamsJoin'
 
 // A rotating campaign colour per session, so each stage of the
 // programme reads as its own chapter rather than an identical template.
@@ -119,16 +121,6 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
       label: t('slides'),
       content: (
         <>
-          {s.id === 's1' && (
-            <a
-              href={`${import.meta.env.BASE_URL}session1-slides.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary mb-6 inline-flex"
-            >
-              <FileDown className="h-4 w-4" aria-hidden /> Session 1 — Slides (PDF, 52 slides, no speaker notes)
-            </a>
-          )}
           <SlideDeck groups={s.slideGroups} />
         </>
       ),
@@ -183,6 +175,8 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
             {s.location && <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" aria-hidden /> {s.location}</span>}
           </div>
 
+          {s.id === 's3' && <TeamsJoin />}
+
           <div className="mt-8 max-w-3xl border-l-2 border-current pl-6">
             <p className="text-[.7rem] font-semibold uppercase tracking-[.16em] opacity-90">{t('centralQuestion')}</p>
             <p className="mt-2 font-display text-xl leading-snug sm:text-2xl">
@@ -196,6 +190,12 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
         <div className="wrap space-y-8 pt-10">
           <SessionJourney />
           <PrintableWorkshopSheets />
+        </div>
+      )}
+
+      {(s.id === 's1' || s.id === 's2' || s.id === 's3') && (
+        <div className="wrap pt-10">
+          <div className="border-t-2 border-ink pt-5"><SessionDownloads id={s.id} /></div>
         </div>
       )}
 

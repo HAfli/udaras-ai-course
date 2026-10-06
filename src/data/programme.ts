@@ -57,7 +57,7 @@ export const JOURNEY: Stage[] = [
   {
     id: 's1', stage: 1, kind: 'session', route: '#/session/s1',
     label: { en: 'Understand AI', ga: 'Tuig an AI', needsValidation: true },
-    sub: 'Session 1 · Full day', when: 'Week 2',
+    sub: 'Session 1 · Full day', when: 'Week 2 · Fri 18 Sept 2026',
     blurb: 'What AI is, what it can and cannot do, and why fluent output is not the same thing as fact.',
   },
   {
@@ -69,8 +69,8 @@ export const JOURNEY: Stage[] = [
   {
     id: 's2', stage: 3, kind: 'session', route: '#/session/s2',
     label: { en: 'Use AI Safely', ga: 'Úsáid AI go Sábháilte', needsValidation: true },
-    sub: 'Session 2 · Full day', when: 'Week 4',
-    blurb: 'Responsible use, the AI Act in plain language, and AI that earns its place in everyday business.',
+    sub: 'Session 2 · Half day', when: 'Week 4 · Mon 28 Sept 2026',
+    blurb: 'Don’t trust what you haven’t checked: what went wrong, a safe habit for what goes in, and a workflow where a person approves.',
   },
   {
     id: 'b2', stage: 4, kind: 'between', route: '#/between/b2',
@@ -81,8 +81,8 @@ export const JOURNEY: Stage[] = [
   {
     id: 's3', stage: 5, kind: 'session', route: '#/session/s3',
     label: { en: 'AI + Irish', ga: 'AI agus an Ghaeilge' },
-    sub: 'Session 3 · Half day', when: 'Week 6',
-    blurb: 'The signature session: how AI can strengthen rather than weaken Irish in the workplace.',
+    sub: 'Session 3 · Half day', when: 'Week 6 · Fri 9 Oct 2026',
+    blurb: 'Irish in the age of AI: choose the right tool, compare three on the same task, and protect the quality of your Irish.',
   },
   {
     id: 's4', stage: 6, kind: 'session', route: '#/session/s4',

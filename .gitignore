@@ -4,3 +4,11 @@ dist-single/
 *.local
 .DS_Store
 .vscode/
+
+# Local only. The repository is public: the Session 2/3 content builders contain facilitator answer keys,
+# so they stay on the course team's machines (participant files are built into public/ as PDFs).
+.claude/
+scripts/session2/
+scripts/session3/
+scripts/__pycache__/
+scripts/gen_workshop_docs_*.py
