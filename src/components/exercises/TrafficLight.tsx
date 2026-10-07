@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { RISK_ITEMS } from '../../data/exerciseContent'
 import { RiskIndicator } from '../RiskIndicator'
+import { tr } from '../../i18n/lang'
 
 const LEVELS = [
   { id: 'green', label: 'Low risk', symbol: '●' },
@@ -15,8 +16,7 @@ export function TrafficLight() {
   return (
     <div>
       <div className="prose-note"><p>
-        Before anything is typed into a tool: would you put this in? Shape and label carry the meaning as well as
-        colour, so the exercise works for everyone in the room.
+        {tr('Before anything is typed into a tool: would you put this in? Shape and label carry the meaning as well as colour, so the exercise works for everyone in the room.')}
       </p></div>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -25,7 +25,7 @@ export function TrafficLight() {
           const right = c === it.level
           return (
             <div key={it.id} className="card flex flex-col p-4">
-              <p className="text-sm font-semibold">{it.label}</p>
+              <p className="text-sm font-semibold">{tr(it.label)}</p>
               <div className="mt-3 flex gap-1.5">
                 {LEVELS.map(l => {
                   const on = c === l.id
@@ -34,7 +34,7 @@ export function TrafficLight() {
                       key={l.id}
                       onClick={() => setChoice(p => ({ ...p, [it.id]: l.id }))}
                       aria-pressed={on}
-                      aria-label={l.label}
+                      aria-label={tr(l.label)}
                       className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg border px-2 py-2 text-[.7rem] font-semibold transition-colors ${
                         on
                           ? l.id === 'green' ? 'border-risk-green bg-moss-50 text-risk-green'
@@ -44,7 +44,7 @@ export function TrafficLight() {
                       }`}
                     >
                       <span aria-hidden>{l.symbol}</span>
-                      <span className="hidden sm:inline">{l.label}</span>
+                      <span className="hidden sm:inline">{tr(l.label)}</span>
                     </button>
                   )
                 })}
@@ -57,7 +57,7 @@ export function TrafficLight() {
                   >
                     <div className="mt-3 border-t border-ink/8 pt-3">
                       <RiskIndicator level={it.level} note={right ? undefined : 'Different from your answer'} />
-                      <p className="mt-2 text-sm leading-relaxed text-ink-soft">{it.why}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-soft">{tr(it.why)}</p>
                     </div>
                   </motion.div>
                 )}

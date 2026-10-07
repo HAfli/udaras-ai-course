@@ -7,6 +7,7 @@ import { CONTRACT, TEN_QUESTIONS, FRAMEWORKS } from '../data/programme'
 import { FACILITATOR } from '../data/facilitator'
 import { Bi } from '../components/ui/Bi'
 import { SessionDownloads } from '../components/SessionDownloads'
+import { tr, pick } from '../i18n/lang'
 
 const SEQUENCE = [
   { en: 'UNDERSTAND', ga: 'TUIG' },
@@ -35,23 +36,18 @@ export function LandingPage() {
       <Hero />
 
       {/* The manifesto — what the hero didn't have room to say */}
-      <section aria-label="What this course is" className="border-b border-ink/15 bg-paper-card">
+      <section aria-label={tr('What this course is')} className="border-b border-ink/15 bg-paper-card">
         <div className="wrap grid gap-12 py-16 sm:py-20 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="pull-quote">
-              AI literacy is not about becoming an AI expert. It is about becoming
-              <em className="not-italic text-atlantic"> confident enough to make good decisions about AI.</em>
+              {tr('AI literacy is not about becoming an AI expert. It is about becoming')}
+              <em className="not-italic text-atlantic"> {tr('confident enough to make good decisions about AI.')}</em>
             </p>
             <ol className="mt-10 flex flex-wrap items-start gap-x-6 gap-y-4">
               {SEQUENCE.map((w, i) => (
                 <li key={w.en} className="flex items-center gap-3">
-                  <span>
-                    <span className="block text-[.95rem] font-bold uppercase tracking-[.1em] text-ink" lang="ga">
-                      {w.ga}
-                    </span>
-                    <span className="mt-0.5 block text-[.66rem] font-semibold uppercase tracking-[.1em] text-ink-faint">
-                      {w.en}
-                    </span>
+                  <span className="block text-[.95rem] font-bold uppercase tracking-[.1em] text-ink">
+                    {pick(w)}
                   </span>
                   {i < SEQUENCE.length - 1 && <span aria-hidden className="text-ink-faint">·</span>}
                 </li>
@@ -59,16 +55,15 @@ export function LandingPage() {
             </ol>
           </div>
           <div className="lg:col-span-6 lg:border-l lg:border-ink/15 lg:pl-12">
-            <p className="font-display text-2xl font-semibold text-ink sm:text-3xl" lang="ga">
-              AI don Ghaeilge — ní AI in ionad na Gaeilge.
+            <p className="font-display text-2xl font-semibold text-ink sm:text-3xl">
+              {pick({ ga: 'AI don Ghaeilge — ní AI in ionad na Gaeilge.', en: 'AI for Irish — not AI instead of Irish.' })}
             </p>
-            <p className="mt-2 text-[.85em] text-ink-mute">AI for Irish — not AI instead of Irish.</p>
             <p className="mt-8 text-sm text-ink-soft">
-              <span className="kicker">Facilitated by</span>{' '}
+              <span className="kicker">{tr('Facilitated by')}</span>{' '}
               <a href="#meet" className="font-semibold text-atlantic hover:underline">
                 {FACILITATOR.name}
               </a>{' '}
-              <span className="text-ink-mute">— {FACILITATOR.institution}</span>
+              <span className="text-ink-mute">— {tr(FACILITATOR.institution)}</span>
             </p>
           </div>
         </div>
@@ -77,18 +72,18 @@ export function LandingPage() {
       <Journey />
 
       <section aria-labelledby="sofar-h" className="wrap py-16 sm:py-20">
-        <p className="eyebrow">The course so far</p>
-        <h2 id="sofar-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">Three sessions, one journey</h2>
+        <p className="eyebrow">{tr('The course so far')}</p>
+        <h2 id="sofar-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">{tr('Three sessions, one journey')}</h2>
         <ol className="mt-8 grid gap-6 lg:grid-cols-3">
           {PROGRESSION.map(p => (
             <li key={p.id} className="flex flex-col border-t-2 border-ink pt-4">
-              <p className="kicker">{p.label}</p>
+              <p className="kicker">{tr(p.label)}</p>
               <h3 className="mt-2 font-display text-xl font-semibold leading-snug">
-                <a href={`#/session/${p.id}`} className="hover:underline">{p.title}</a>
+                <a href={`#/session/${p.id}`} className="hover:underline">{tr(p.title)}</a>
               </h3>
-              <ul className="mt-3 flex-1 space-y-1.5 text-sm text-ink-soft">{p.qs.map(q => <li key={q}>{q}</li>)}</ul>
+              <ul className="mt-3 flex-1 space-y-1.5 text-sm text-ink-soft">{p.qs.map(q => <li key={q}>{tr(q)}</li>)}</ul>
               <div className="mt-4"><SessionDownloads id={p.id} heading={false} /></div>
-              <a href={`#/session/${p.id}`} className="btn-quiet mt-3 -ml-3 self-start">Open {p.label} <ArrowRight className="h-3.5 w-3.5" aria-hidden /></a>
+              <a href={`#/session/${p.id}`} className="btn-quiet mt-3 -ml-3 self-start">{tr('Open {s}', { s: tr(p.label) })} <ArrowRight className="h-3.5 w-3.5" aria-hidden /></a>
             </li>
           ))}
         </ol>
@@ -100,12 +95,12 @@ export function LandingPage() {
       <section aria-labelledby="ten-h" className="border-y border-ink/15 bg-ink text-paper">
         <div className="wrap py-20 sm:py-28">
           <Reveal>
-            <p className="eyebrow text-paper/60">The pedagogical spine</p>
+            <p className="eyebrow text-paper/60">{tr('The pedagogical spine')}</p>
             <h2 id="ten-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-5xl">
-              This course is not trying to make anyone an AI engineer
+              {tr('This course is not trying to make anyone an AI engineer')}
             </h2>
             <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-paper/75">
-              It is trying to make people literate enough to answer ten questions with confidence.
+              {tr('It is trying to make people literate enough to answer ten questions with confidence.')}
             </p>
           </Reveal>
           <ol className="mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2">
@@ -114,7 +109,7 @@ export function LandingPage() {
                 <span aria-hidden className="fig-num block text-4xl text-gold sm:text-5xl">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="mt-2 block font-display text-xl font-semibold leading-snug sm:text-2xl">{q}</span>
+                <span className="mt-2 block font-display text-xl font-semibold leading-snug sm:text-2xl">{tr(q)}</span>
               </li>
             ))}
           </ol>
@@ -124,12 +119,12 @@ export function LandingPage() {
       {/* Four frameworks — four branded principles, each with its own colour */}
       <section aria-labelledby="fw-h" className="wrap py-20 sm:py-28">
         <Reveal>
-          <p className="eyebrow">Four frameworks</p>
+          <p className="eyebrow">{tr('Four frameworks')}</p>
           <h2 id="fw-h" className="mt-3 max-w-2xl text-3xl font-semibold leading-[1.15] sm:text-4xl">
-            The same four shapes, used all the way through
+            {tr('The same four shapes, used all the way through')}
           </h2>
           <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-ink-soft">
-            Participants should leave able to draw these from memory. They are what turns a good day into a habit.
+            {tr('Participants should leave able to draw these from memory. They are what turns a good day into a habit.')}
           </p>
         </Reveal>
 
@@ -141,9 +136,9 @@ export function LandingPage() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mt-2 font-display text-2xl font-semibold group-hover:underline"><Bi v={f.title} /></h3>
-                <p className="mt-1.5 text-sm text-ink-soft">{f.question}</p>
+                <p className="mt-1.5 text-sm text-ink-soft">{tr(f.question)}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ink">
-                  Open
+                  {tr('Open')}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
                 </span>
               </a>
@@ -156,22 +151,22 @@ export function LandingPage() {
       <section aria-labelledby="contract-h" className="wrap pb-24">
         <div className="doc">
           <div className="border-b border-ink/12 px-6 py-5 sm:px-8">
-            <p className="eyebrow">Source of truth</p>
+            <p className="eyebrow">{tr('Source of truth')}</p>
             <h2 id="contract-h" className="mt-1.5 font-display text-2xl font-semibold">
-              What is contractual, and what is proposed
+              {tr('What is contractual, and what is proposed')}
             </h2>
           </div>
           <div className="grid gap-8 px-6 py-7 sm:px-8 lg:grid-cols-2">
             <div>
-              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-mute">Contractual</p>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-mute">{tr('Contractual')}</p>
               <dl className="mt-4 space-y-3 text-sm">
                 {[
-                  ['Project title', CONTRACT.title],
-                  ['Provider / Client', `${CONTRACT.provider} for ${CONTRACT.client}`],
-                  ['Duration', `${CONTRACT.duration} — ${CONTRACT.dates}`],
-                  ['Delivery', `${CONTRACT.language}, at ${CONTRACT.venue}`],
-                  ['Structure', 'Preparatory planning session, then Sessions 1 (full day, Week 2), 2 (full day, Week 4), 3 (half day, Week 6), 4 (half-day wrap-up, Week 8)'],
-                  ['Roles', CONTRACT.clientRole],
+                  [tr('Project title'), pick({ en: CONTRACT.title, ga: CONTRACT.titleGa })],
+                  [tr('Provider / Client'), tr('{p} for {c}', { p: tr(CONTRACT.provider), c: CONTRACT.client })],
+                  [tr('Duration'), `${tr(CONTRACT.duration)} — ${tr(CONTRACT.dates)}`],
+                  [tr('Delivery'), tr('{l}, at {v}', { l: tr(CONTRACT.language), v: CONTRACT.venue })],
+                  [tr('Structure'), tr('Preparatory planning session, then Sessions 1 (full day, Week 2), 2 (full day, Week 4), 3 (half day, Week 6), 4 (half-day wrap-up, Week 8)')],
+                  [tr('Roles'), tr(CONTRACT.clientRole)],
                 ].map(([k, v]) => (
                   <div key={k} className="border-b border-ink/8 pb-3 last:border-0">
                     <dt className="kicker">{k}</dt>
@@ -181,18 +176,18 @@ export function LandingPage() {
               </dl>
             </div>
             <div>
-              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-mute">Notes</p>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-mute">{tr('Notes')}</p>
               <ul className="mt-4 space-y-3">
                 {CONTRACT.contractNotes.map(n => (
                   <li key={n} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
                     <span aria-hidden className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint" />
-                    {n}
+                    {tr(n)}
                   </li>
                 ))}
               </ul>
               <div className="mt-5 border-l-2 border-ink/20 pl-5">
-                <p className="kicker">The iterative principle</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{CONTRACT.iterativePrinciple}</p>
+                <p className="kicker">{tr('The iterative principle')}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{tr(CONTRACT.iterativePrinciple)}</p>
               </div>
             </div>
           </div>

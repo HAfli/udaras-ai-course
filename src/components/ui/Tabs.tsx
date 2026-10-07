@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useId, useState, type ReactNode } from 'react'
+import { tr } from '../../i18n/lang'
 
 export interface Tab { id: string; label: ReactNode; content: ReactNode }
 
@@ -10,7 +11,7 @@ export function Tabs({ tabs, initial }: { tabs: Tab[]; initial?: string }) {
 
   return (
     <div>
-      <div role="tablist" aria-label="Section" className="scrollbar-thin -mx-1 mb-6 flex gap-1 overflow-x-auto border-b border-ink/10 px-1">
+      <div role="tablist" aria-label={tr('Section')} className="scrollbar-thin -mx-1 mb-6 flex gap-1 overflow-x-auto border-b border-ink/10 px-1">
         {tabs.map(t => {
           const on = t.id === active
           return (

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useEffect, useId, useRef, type ReactNode } from 'react'
+import { tr } from '../../i18n/lang'
 
 export function Modal({
   open, onClose, title, children,
@@ -45,7 +46,7 @@ export function Modal({
           >
             <div className="sticky top-0 z-10 flex items-start gap-4 border-b border-ink/10 bg-paper-card/95 px-5 py-4 backdrop-blur sm:px-7">
               <div className="min-w-0 flex-1" id={titleId}>{title}</div>
-              <button type="button" onClick={onClose} className="btn-quiet -mr-1 shrink-0" aria-label="Close">
+              <button type="button" onClick={onClose} className="btn-quiet -mr-1 shrink-0" aria-label={tr('Close')}>
                 <X className="h-4 w-4" aria-hidden />
               </button>
             </div>

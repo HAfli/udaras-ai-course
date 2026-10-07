@@ -125,7 +125,7 @@ export const session3: SessionMeta = {
       title: bi({ ga: 'An tseiceáil IRISH agus léamh profaí', en: 'The IRISH check and proofreading' }),
       purpose: 'Five questions after every Irish text from AI, then find nine problems in an AI draft.',
       lesson: 'A grammar checker finds some problems. A person finds the rest.' },
-    { id: 's3-dialect', number: 'Part 6 · Cén Ghaeilge?', kind: 's3-dialect', minutes: 8,
+    { id: 's3-dialect', number: 'Part 6 · Which Irish?', kind: 's3-dialect', minutes: 8,
       title: bi({ ga: 'Cén Ghaeilge?', en: 'Which Irish?' }),
       purpose: 'The same English, two prompts — one plain, one for a Múscraí audience. Mark what you would change and why: grammar, vocabulary, register, local preference or English influence.',
       lesson: 'A more specific prompt can provide context, but a prompt cannot turn an AI model into a dialect expert.' },

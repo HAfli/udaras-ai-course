@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { RotateCcw } from 'lucide-react'
 import { useState } from 'react'
+import { tr } from '../i18n/lang'
 
 type Node =
   | { kind: 'q'; id: string; text: string; hint?: string; yes: string; no: string }
@@ -33,12 +34,12 @@ export function DecisionTree() {
     <div className="card p-6 sm:p-8">
       <div className="flex items-baseline justify-between gap-4">
         <div>
-          <p className="eyebrow">Decision tree</p>
-          <h3 className="mt-1.5 font-display text-2xl font-semibold">Should I use AI for this?</h3>
+          <p className="eyebrow">{tr('Decision tree')}</p>
+          <h3 className="mt-1.5 font-display text-2xl font-semibold">{tr('Should I use AI for this?')}</h3>
         </div>
         {path.length > 1 && (
           <button onClick={() => setPath(['value'])} className="btn-quiet shrink-0">
-            <RotateCcw className="h-3.5 w-3.5" aria-hidden /> Start over
+            <RotateCcw className="h-3.5 w-3.5" aria-hidden /> {tr('Start over')}
           </button>
         )}
       </div>
@@ -51,8 +52,8 @@ export function DecisionTree() {
           return (
             <li key={id} className="flex items-start gap-3 text-sm text-ink-mute">
               <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-moss-300" />
-              <span className="flex-1">{n.text}</span>
-              <span className="shrink-0 font-semibold text-moss-600">{nextId === n.yes ? 'Yes' : 'No'}</span>
+              <span className="flex-1">{tr(n.text)}</span>
+              <span className="shrink-0 font-semibold text-moss-600">{nextId === n.yes ? tr('Yes') : tr('No')}</span>
             </li>
           )
         })}
@@ -67,20 +68,20 @@ export function DecisionTree() {
         >
           {current.kind === 'q' ? (
             <div className="rounded-xl2 border border-moss-200 bg-moss-50/60 p-5">
-              <p className="font-display text-xl leading-snug">{current.text}</p>
-              {current.hint && <p className="mt-1.5 text-sm text-ink-mute">{current.hint}</p>}
+              <p className="font-display text-xl leading-snug">{tr(current.text)}</p>
+              {current.hint && <p className="mt-1.5 text-sm text-ink-mute">{tr(current.hint)}</p>}
               <div className="mt-4 flex gap-2">
-                <button onClick={() => setPath(p => [...p, current.yes])} className="btn-primary">Yes</button>
-                <button onClick={() => setPath(p => [...p, current.no])} className="btn-ghost">No</button>
+                <button onClick={() => setPath(p => [...p, current.yes])} className="btn-primary">{tr('Yes')}</button>
+                <button onClick={() => setPath(p => [...p, current.no])} className="btn-ghost">{tr('No')}</button>
               </div>
             </div>
           ) : (
             <div className="rounded-xl2 border border-ink/10 bg-paper-deep/50 p-5">
               <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[.7rem] font-bold uppercase tracking-wider ${VERDICT[current.verdict].cls}`}>
-                <span aria-hidden>{VERDICT[current.verdict].symbol}</span>{VERDICT[current.verdict].label}
+                <span aria-hidden>{VERDICT[current.verdict].symbol}</span>{tr(VERDICT[current.verdict].label)}
               </span>
-              <p className="mt-3 font-display text-2xl font-semibold">{current.text}</p>
-              <p className="mt-2 text-[.95rem] leading-relaxed text-ink-soft">{current.body}</p>
+              <p className="mt-3 font-display text-2xl font-semibold">{tr(current.text)}</p>
+              <p className="mt-2 text-[.95rem] leading-relaxed text-ink-soft">{tr(current.body)}</p>
             </div>
           )}
         </motion.div>

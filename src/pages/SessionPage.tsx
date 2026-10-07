@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, CalendarDays, Clock, MapPin } from 'lucide-react
 import { byId, SESSIONS } from '../data/sessions'
 import { JOURNEY } from '../data/programme'
 import { useLang } from '../i18n/LangContext'
-import { Bi, GaLine } from '../components/ui/Bi'
+import { Bi } from '../components/ui/Bi'
 import { Tabs } from '../components/ui/Tabs'
 import { Timetable } from '../components/Timetable'
 import { SlideDeck } from '../components/SlideDeck'
@@ -18,6 +18,7 @@ import { StudySession1 } from '../components/story/StudySession1'
 import { PrintableWorkshopSheets } from '../components/PrintableWorkshopSheets'
 import { SessionDownloads } from '../components/SessionDownloads'
 import { TeamsJoin } from '../components/TeamsJoin'
+import { tr } from '../i18n/lang'
 
 // A rotating campaign colour per session, so each stage of the
 // programme reads as its own chapter rather than an identical template.
@@ -38,7 +39,7 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
         {s.outcomes && (
           <section aria-labelledby="oc">
             <h2 id="oc" className="eyebrow">{t('outcomes')}</h2>
-            <p className="mt-2 text-sm text-ink-mute">By the end of this session, participants should be able to:</p>
+            <p className="mt-2 text-sm text-ink-mute">{tr('By the end of this session, participants should be able to:')}</p>
             <ul className="mt-4 space-y-2.5">
               {s.outcomes.map((o, i) => (
                 <motion.li
@@ -50,7 +51,7 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
                   className="flex gap-3.5 text-[.98rem] leading-relaxed text-ink-soft"
                 >
                   <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-ink-faint" />
-                  {o}
+                  {tr(o)}
                 </motion.li>
               ))}
             </ul>
@@ -62,7 +63,7 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
           <div className="mt-4 divide-y divide-ink/12 border-t border-ink/12">
             {s.keyMessages.map(m => (
               <p key={m} className="py-3.5 font-display text-lg leading-snug">
-                {m}
+                {tr(m)}
               </p>
             ))}
           </div>
@@ -72,7 +73,7 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
           <h2 id="out" className="eyebrow">{t('outputs')}</h2>
           <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
             {s.outputs.map(o => (
-              <li key={o} className="border-l-2 border-ink/20 pl-3 text-sm leading-relaxed text-ink-soft">{o}</li>
+              <li key={o} className="border-l-2 border-ink/20 pl-3 text-sm leading-relaxed text-ink-soft">{tr(o)}</li>
             ))}
           </ul>
         </section>
@@ -81,11 +82,11 @@ function Overview({ s }: { s: NonNullable<ReturnType<typeof byId>> }) {
       <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
         <div className="border-t-2 border-ink pt-4">
           <p className="kicker">{t('irishComponent')}</p>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.irishComponent}</p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">{tr(s.irishComponent)}</p>
         </div>
         <div className="border-t border-ink/25 pt-4">
           <p className="kicker">{t('safetyComponent')}</p>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.safetyComponent}</p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">{tr(s.safetyComponent)}</p>
         </div>
       </div>
     </div>
@@ -100,8 +101,8 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
   if (!s) {
     return (
       <div className="wrap py-24">
-        <p className="font-display text-2xl">That session doesn’t exist.</p>
-        <a href="#/" className="btn-primary mt-5">Back to the programme</a>
+        <p className="font-display text-2xl">{tr('That session doesn’t exist.')}</p>
+        <a href="#/" className="btn-primary mt-5">{tr('Back to the programme')}</a>
       </div>
     )
   }
@@ -113,7 +114,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
   const stage = JOURNEY.find(j => j.id === s.id)
 
   const tabs = [
-    ...(s.id === 's1' ? [{ id: 'story', label: 'The story', content: <StoryPanel /> }] : []),
+    ...(s.id === 's1' ? [{ id: 'story', label: tr('The story'), content: <StoryPanel /> }] : []),
     { id: 'overview', label: t('overview'), content: <Overview s={s} /> },
     { id: 'timetable', label: t('timetable'), content: <Timetable slots={s.timetable} /> },
     ...(s.slideGroups.length ? [{
@@ -128,10 +129,10 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
     ...(s.exercises.length
       ? [{
           id: 'exercises',
-          label: s.id === 's1' ? `Workshops & activities (${s.exercises.length})` : `${t('exercises')} (${s.exercises.length})`,
+          label: s.id === 's1' ? tr('Workshops & activities ({n})', { n: s.exercises.length }) : `${t('exercises')} (${s.exercises.length})`,
           content: (
             <>
-              <h2 className="sr-only">Exercises</h2>
+              <h2 className="sr-only">{t('exercises')}</h2>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {s.exercises.map(e => <ExerciseCard key={e.id} ex={e} autoOpen={e.id === openExercise} />)}
               </div>
@@ -139,7 +140,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
           ),
         }]
       : []),
-    ...(s.id === 's1' ? [{ id: 'study', label: 'Learn it yourself', content: <StudySession1 /> }] : []),
+    ...(s.id === 's1' ? [{ id: 'study', label: tr('Learn it yourself'), content: <StudySession1 /> }] : []),
   ]
 
   return (
@@ -158,21 +159,20 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
           <ProgressIndicator currentId={s.id} />
 
           <p className="mt-8 text-[.72rem] font-semibold uppercase tracking-[.16em] opacity-90">
-            {s.index}{stage ? ` · Stage ${stage.stage}` : ''}
+            {tr(s.index)}{stage ? ` · ${tr('Stage {n}', { n: stage.stage })}` : ''}
           </p>
           <h1 className="display-huge mt-4 max-w-4xl text-[2.4rem] sm:text-[3.6rem] lg:text-[4.4rem]">
             <Bi v={s.title} />
           </h1>
 
           <p className="mt-5 font-display text-xl italic opacity-90 sm:text-2xl">
-            {s.strapline.ga ? <GaLine ga={s.strapline.ga} needsValidation={s.strapline.needsValidation} /> : s.strapline.en}
+            <Bi v={s.strapline} />
           </p>
-          {s.strapline.ga && <p className="mt-1 text-sm opacity-90">{s.strapline.en}</p>}
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium uppercase tracking-wide opacity-90">
-            <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" aria-hidden /> {s.duration}</span>
-            <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" aria-hidden /> {s.week}</span>
-            {s.location && <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" aria-hidden /> {s.location}</span>}
+            <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" aria-hidden /> {tr(s.duration)}</span>
+            <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" aria-hidden /> {tr(s.week)}</span>
+            {s.location && <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" aria-hidden /> {tr(s.location)}</span>}
           </div>
 
           {s.id === 's3' && <TeamsJoin />}
@@ -218,15 +218,15 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
         </div>
       )}
 
-      <nav aria-label="Session navigation" className="wrap flex flex-wrap gap-3 pb-24 pt-8">
+      <nav aria-label={tr('Session navigation')} className="wrap flex flex-wrap gap-3 pb-24 pt-8">
         {prev && (
           <a href={`#/session/${prev.id}`} className="btn-ghost">
-            <ArrowLeft className="h-4 w-4" aria-hidden /> {prev.index}
+            <ArrowLeft className="h-4 w-4" aria-hidden /> {tr(prev.index)}
           </a>
         )}
         {next && (
           <a href={`#/session/${next.id}`} className="btn-primary ml-auto">
-            {next.index} <ArrowRight className="h-4 w-4" aria-hidden />
+            {tr(next.index)} <ArrowRight className="h-4 w-4" aria-hidden />
           </a>
         )}
       </nav>

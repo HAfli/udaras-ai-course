@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { AOIFE_DECISION } from '../../data/story1'
+import { tr } from '../../i18n/lang'
 
 /** The one branching, graded moment in the whole story — given its own
  *  weight through scale and a real choice, not a photograph: the prompt
@@ -12,8 +13,8 @@ export function AoifeDecisionCard() {
 
   return (
     <div className="max-w-2xl">
-      <p className="pull-quote text-ink">{AOIFE_DECISION.prompt}</p>
-      <p className="mt-3 text-sm leading-relaxed text-ink-mute">{AOIFE_DECISION.context}</p>
+      <p className="pull-quote text-ink">{tr(AOIFE_DECISION.prompt)}</p>
+      <p className="mt-3 text-sm leading-relaxed text-ink-mute">{tr(AOIFE_DECISION.context)}</p>
 
       <div className="mt-6 flex flex-wrap gap-2.5">
         {AOIFE_DECISION.options.map(o => {
@@ -27,7 +28,7 @@ export function AoifeDecisionCard() {
                 on ? 'border-ink text-ink' : 'border-transparent text-ink-mute hover:border-ink/25 hover:text-ink'
               }`}
             >
-              {o.label}
+              {tr(o.label)}
             </button>
           )
         })}
@@ -40,10 +41,10 @@ export function AoifeDecisionCard() {
             transition={{ duration: 0.3 }} className="overflow-hidden"
           >
             <div className="mt-5 border-l-2 border-ink/15 pl-5">
-              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">{chosen.outcome}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{chosen.reasoning}</p>
+              <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">{tr(chosen.outcome)}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{tr(chosen.reasoning)}</p>
             </div>
-            <p className="pull-quote mt-6 text-ink">{AOIFE_DECISION.lesson}</p>
+            <p className="pull-quote mt-6 text-ink">{tr(AOIFE_DECISION.lesson)}</p>
           </motion.div>
         )}
       </AnimatePresence>

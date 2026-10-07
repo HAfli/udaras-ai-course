@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Play, RotateCcw } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { tr, pick } from '../../i18n/lang'
 
 const STAGES = [
   { id: 1, label: 'Irish post', ga: 'Postáil Ghaeilge', body: 'Write it in Irish first. Not translated into Irish — written in Irish. This is the decision that changes everything downstream.', who: 'You, with AI help' },
@@ -25,15 +26,15 @@ export function BilingualLab() {
   return (
     <div>
       <div className="prose-note"><p>
-        The same piece of content, all the way through. Play it once, then run a real post through it in the room.
+        {tr('The same piece of content, all the way through. Play it once, then run a real post through it in the room.')}
       </p></div>
 
       <div className="mt-5 flex gap-2">
         <button onClick={() => { setStep(0); setPlaying(true) }} className="btn-primary">
-          <Play className="h-3.5 w-3.5" aria-hidden /> Play the workflow
+          <Play className="h-3.5 w-3.5" aria-hidden /> {tr('Play the workflow')}
         </button>
         <button onClick={() => { setPlaying(false); setStep(0) }} className="btn-ghost">
-          <RotateCcw className="h-3.5 w-3.5" aria-hidden /> Reset
+          <RotateCcw className="h-3.5 w-3.5" aria-hidden /> {tr('Reset')}
         </button>
       </div>
 
@@ -53,10 +54,9 @@ export function BilingualLab() {
                 }`}
               >
                 <span className={`block text-[.62rem] font-bold uppercase tracking-[.14em] ${on ? 'text-paper/85' : 'text-ink-faint'}`}>
-                  Step {i + 1}
+                  {tr('Step {n}', { n: i + 1 })}
                 </span>
-                <span className={`mt-0.5 block text-sm font-semibold ${on ? 'text-paper' : 'text-ink'}`}>{s.label}</span>
-                <span lang="ga" className={`gaeilge block text-[.72rem] ${on ? 'text-paper/90' : 'text-ink-mute'}`}>{s.ga}</span>
+                <span className={`mt-0.5 block text-sm font-semibold ${on ? 'text-paper' : 'text-ink'}`}>{pick({ en: s.label, ga: s.ga })}</span>
               </motion.button>
               {i < STAGES.length - 1 && <ArrowRight className="hidden h-4 w-4 shrink-0 text-ink-faint lg:block" aria-hidden />}
             </li>
@@ -72,10 +72,10 @@ export function BilingualLab() {
           className="card mt-4 p-5"
         >
           <div className="flex flex-wrap items-baseline gap-3">
-            <p className="kicker text-heather">{STAGES[step].label}</p>
-            <span className="chip">{STAGES[step].who}</span>
+            <p className="kicker text-heather">{pick({ en: STAGES[step].label, ga: STAGES[step].ga })}</p>
+            <span className="chip">{tr(STAGES[step].who)}</span>
           </div>
-          <p className="mt-2 text-[.95rem] leading-relaxed text-ink-soft">{STAGES[step].body}</p>
+          <p className="mt-2 text-[.95rem] leading-relaxed text-ink-soft">{tr(STAGES[step].body)}</p>
         </motion.div>
       </AnimatePresence>
     </div>

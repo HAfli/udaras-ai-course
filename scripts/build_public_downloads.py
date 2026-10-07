@@ -4,7 +4,9 @@
 PDF only. Nothing editable, facilitator-only or internal is copied to public/.
 
   Session-1-Participant-Package.pdf  Workshop 1 (GA, EN) + Workshop 2 (GA, EN) from "Session 1/*.docx" (final, 17 Sept)
-  Session-1-Slides.pdf               "Session 1/Udaras_AI_Course_Session_1_MTU_v6.3_DRAFT.pdf" (delivered deck, 55 slides)
+  Session-1-Slides.pdf               "Session 1/Udaras_AI_Course_Session_1_MTU_v6.3_DRAFT.pdf" (delivered deck, 55 slides),
+                                     with one spelling correction on the cover line: "De hAoine 18ú Méan Fómhair" ->
+                                     "Dé hAoine 18ú Meán Fómhair" (same font, size, colour and position; the delivered file is not modified).
   Session-2-Participant-Package.pdf  Quick Guide + Workbook + Fictional Proposal (participant variant, no Organiser's Reply)
   Session-2-Slides.pdf               rendered from "Session 2/Presentation/…pptx" (the delivered, reviewer-edited deck; slides only),
                                      with one Irish correction applied to a temporary copy: "Gan Ceadú" -> "Gan cheadú"
@@ -71,6 +73,27 @@ def s2_slides_fixed(src, tmp):
     return out
 
 
+S1_COVER_OLD = "Seisiún 1  ·  De hAoine 18ú Méan Fómhair"
+S1_COVER_NEW = "Seisiún 1  ·  Dé hAoine 18ú Meán Fómhair"
+CALIBRI_BOLD = "/Applications/Microsoft Word.app/Contents/Resources/DFonts/Calibrib.ttf"
+
+
+def s1_slides_fixed(src, out):
+    """Copy the delivered Session 1 PDF and correct the cover date line in place (page 1 only)."""
+    doc = pymupdf.open(src)
+    page = doc[0]
+    span = next(s for b in page.get_text("dict")["blocks"] for l in b.get("lines", []) for s in l["spans"] if s["text"] == S1_COVER_OLD)
+    page.add_redact_annot(pymupdf.Rect(span["bbox"]), fill=(1, 1, 1))
+    page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE)
+    c = span["color"]
+    page.insert_text(span["origin"], S1_COVER_NEW, fontsize=span["size"], fontname="CalibriB", fontfile=CALIBRI_BOLD,
+                     color=((c >> 16 & 255) / 255, (c >> 8 & 255) / 255, (c & 255) / 255))
+    doc.save(out, garbage=3, deflate=True)
+    norm = lambda t: " ".join(t.replace("\xa0", " ").replace("∙", "·").split())
+    text = norm(pymupdf.open(out)[0].get_text())
+    assert norm(S1_COVER_NEW) in text and norm(S1_COVER_OLD) not in text
+
+
 def merge(parts, out):
     doc = pymupdf.open()
     for p in parts:
@@ -86,7 +109,7 @@ def main():
     s1 = [to_pdf(os.path.join(S1, f), tmp) for f in ("Session_1_Workshop_1_Can_AI_Help_Me_GA.docx", "Session_1_Workshop_1_Can_AI_Help_Me_EN.docx",
                                                     "Session_1_Workshop_2_Prompt_Challenge_GA.docx", "Session_1_Workshop_2_Prompt_Challenge_EN.docx")]
     merge(s1, os.path.join(PUBLIC, "Session-1-Participant-Package.pdf"))
-    shutil.copyfile(os.path.join(S1, "Udaras_AI_Course_Session_1_MTU_v6.3_DRAFT.pdf"), os.path.join(PUBLIC, "Session-1-Slides.pdf"))
+    s1_slides_fixed(os.path.join(S1, "Udaras_AI_Course_Session_1_MTU_v6.3_DRAFT.pdf"), os.path.join(PUBLIC, "Session-1-Slides.pdf"))
     # Session 2
     pk2 = os.path.join(S2, "Session_2_Participant_Package")
     merge([os.path.join(pk2, f) for f in ("Session_2_Participant_Quick_Guide_GA_EN.pdf", "Session_2_Participant_Workbook_GA_EN.pdf",

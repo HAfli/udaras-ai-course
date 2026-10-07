@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import type { TimetableSlot } from '../data/types'
 import { Bi } from './ui/Bi'
+import { tr } from '../i18n/lang'
 
 const KIND = {
   teach:    { label: 'Teaching' },
@@ -48,7 +49,7 @@ export function Timetable({ slots }: { slots: TimetableSlot[] }) {
                   <Bi v={s.title} />
                 </span>
                 <span className="mt-0.5 block text-[.68rem] font-semibold uppercase tracking-wider text-ink-faint">
-                  {k.label}
+                  {tr(k.label)}
                 </span>
                 {on && s.detail && (
                   <motion.span
@@ -56,7 +57,7 @@ export function Timetable({ slots }: { slots: TimetableSlot[] }) {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-2 block text-sm leading-relaxed text-ink-soft"
                   >
-                    {s.detail}
+                    {tr(s.detail)}
                   </motion.span>
                 )}
               </span>

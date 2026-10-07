@@ -1,62 +1,42 @@
-import { useLang } from '../../i18n/LangContext'
+import { tr, pick, flagged, getLang, type Bilingual } from '../../i18n/lang'
 
-type Val = { ga?: string; en: string; needsValidation?: boolean }
-
-/** A quiet notation marking "this string is awaiting linguistic
- *  validation" — content-status metadata, not a decoration laid across
- *  the Irish text itself. The Irish heading it follows carries no
- *  styling change at all, so the language reads as fully confident. */
+/** A quiet mark on Irish that is still awaiting native-speaker validation (GA mode only). */
 function ValidationMark() {
+  const label = tr('Irish awaiting linguistic validation')
   return (
-    <span className="validation-mark" title="Irish awaiting linguistic validation">
+    <span className="validation-mark" title={label}>
       <span aria-hidden>†</span>
-      <span className="sr-only"> (Irish awaiting linguistic validation)</span>
+      <span className="sr-only"> ({label})</span>
     </span>
   )
 }
 
-/** Renders a bilingual content value. Irish leads, at full size in the
- *  display face; English follows as a supporting line sized relative to
- *  its parent (never below ~75%, never dimmed, never hidden behind the
- *  language toggle) — Irish is a primary language of this course, not a
- *  translation of the English site. When no Irish exists, only English
- *  is shown; nothing is ever invented to fill the gap.
- *
- *  `compact` opts a single call site out of the stacked treatment for
- *  pure wayfinding chrome (see ProgressIndicator) where the destination
- *  itself carries the full bilingual heading — it must not be used for
- *  anything a person reads as the actual message. */
-export function Bi({ v, className, compact }: { v: Val; className?: string; compact?: boolean }) {
-  const { tx } = useLang()
-
-  if (compact || !v.ga) {
-    const { text, flagged } = tx(v)
-    return (
-      <span className={className}>
-        {text}
-        {flagged && <ValidationMark />}
-      </span>
-    )
-  }
-
+/** Renders a { ga, en } content value in the SELECTED language only — GA shows Irish, EN shows
+ *  English. The other language is not rendered at all. (`compact` is kept for call-site
+ *  compatibility; both forms now render a single line.) */
+export function Bi({ v, className }: { v: Bilingual; className?: string; compact?: boolean }) {
   return (
     <span className={className}>
-      <span lang="ga" className="bi-ga block">
-        {v.ga}
-        {v.needsValidation && <ValidationMark />}
-      </span>
-      <span lang="en" className="bi-en">{v.en}</span>
+      {pick(v)}
+      {flagged(v) && <ValidationMark />}
     </span>
   )
 }
 
-/** Always shows the Irish, regardless of the active language — used where
- *  the Irish line is part of the message rather than a translation. */
-export function GaLine({ ga, needsValidation, className }: { ga: string; needsValidation?: boolean; className?: string }) {
+/** Irish-led line (e.g. a strapline or principle). GA: the Irish. EN: its English (`en`, or the
+ *  English given in the catalogue's reverse entry). */
+export function GaLine({ ga, en, needsValidation, className }: { ga: string; en?: string; needsValidation?: boolean; className?: string }) {
+  if (getLang() === 'en') return <span className={className}>{en ?? tr(ga)}</span>
   return (
-    <span className={`${className ?? ''} gaeilge`} lang="ga">
+    <span className={`${className ?? ''} gaeilge`}>
       {ga}
       {needsValidation && <ValidationMark />}
     </span>
   )
+}
+
+/** tr() with **bold** spans rendered as <strong>. */
+export function Tr({ k, vars }: { k: string; vars?: Record<string, string | number> }) {
+  const parts = tr(k, vars).split(/\*\*(.+?)\*\*/g)
+  return <>{parts.map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : p))}</>
 }

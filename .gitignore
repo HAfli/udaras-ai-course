@@ -12,3 +12,6 @@ scripts/session2/
 scripts/session3/
 scripts/__pycache__/
 scripts/gen_workshop_docs_*.py
+
+# language test reports
+tests/.language-*.json

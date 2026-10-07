@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Copy, Check, Eraser } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { tr, pick } from '../i18n/lang'
 
 const FIELDS = [
   { id: 'role', label: 'Role', ga: 'Ról', ph: 'You are writing for a small artisan food producer in the Gaeltacht.' },
@@ -24,24 +25,22 @@ export function PromptBuilder() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <div>
-        <p className="eyebrow">Build it</p>
+        <p className="eyebrow">{tr('Build it')}</p>
         <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-          Five parts. Fill what you can — the placeholder text is a worked example you can lift, or replace with
-          your own.
+          {tr('Five parts. Fill what you can — the placeholder text is a worked example you can lift, or replace with your own.')}
         </p>
         <div className="mt-5 space-y-3">
           {FIELDS.map((f, i) => (
             <label key={f.id} className="block">
               <span className="flex items-baseline gap-2">
-                <span className="kicker text-moss-600">{f.label}</span>
-                <span className="text-[.68rem] text-ink-faint" lang="ga">{f.ga}</span>
+                <span className="kicker text-moss-600">{pick({ en: f.label, ga: f.ga })}</span>
                 <span aria-hidden className="ml-auto text-[.62rem] font-bold text-ink-faint">{i + 1}/5</span>
               </span>
               <textarea
                 rows={2}
                 value={v[f.id] ?? ''}
                 onChange={e => { setV(p => ({ ...p, [f.id]: e.target.value })); setCopied(false) }}
-                placeholder={f.ph}
+                placeholder={tr(f.ph)}
                 className="mt-1.5 w-full rounded-xl border border-ink/15 bg-paper-card px-3.5 py-2.5 text-sm leading-relaxed placeholder:text-ink-faint/80 focus:border-moss-400"
               />
             </label>
@@ -51,14 +50,14 @@ export function PromptBuilder() {
           onClick={() => { setV({}); setCopied(false) }}
           className="btn-ghost mt-4"
         >
-          <Eraser className="h-3.5 w-3.5" aria-hidden /> Clear
+          <Eraser className="h-3.5 w-3.5" aria-hidden /> {tr('Clear')}
         </button>
       </div>
 
       <div className="lg:sticky lg:top-24 lg:self-start">
         <div className="flex items-baseline justify-between">
-          <p className="eyebrow">Your prompt</p>
-          <span className="text-[.7rem] font-semibold text-ink-mute">{filled}/5 parts</span>
+          <p className="eyebrow">{tr('Your prompt')}</p>
+          <span className="text-[.7rem] font-semibold text-ink-mute">{tr('{n}/5 parts', { n: filled })}</span>
         </div>
         <motion.div
           layout
@@ -67,7 +66,7 @@ export function PromptBuilder() {
           {prompt ? (
             <p className="whitespace-pre-wrap">{prompt}</p>
           ) : (
-            <p className="text-paper/55">Your prompt will build here as you type.</p>
+            <p className="text-paper/55">{tr('Your prompt will build here as you type.')}</p>
           )}
         </motion.div>
         <button
@@ -80,10 +79,10 @@ export function PromptBuilder() {
           }}
           className="btn-primary mt-3 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {copied ? <><Check className="h-4 w-4" aria-hidden /> Copied</> : <><Copy className="h-4 w-4" aria-hidden /> Copy prompt</>}
+          {copied ? <><Check className="h-4 w-4" aria-hidden /> {tr('Copied')}</> : <><Copy className="h-4 w-4" aria-hidden /> {tr('Copy prompt')}</>}
         </button>
         <p className="mt-3 text-xs leading-relaxed text-ink-mute">
-          Nothing you type here leaves your browser. This page stores nothing about anybody.
+          {tr('Nothing you type here leaves your browser. This page stores nothing about anybody.')}
         </p>
       </div>
     </div>

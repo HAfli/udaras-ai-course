@@ -1,5 +1,6 @@
 import { ArrowDown } from 'lucide-react'
 import signpost from '../../assets/gaeltacht-signpost.jpg'
+import { tr } from '../../i18n/lang'
 
 const STEPS = [
   { label: 'AI', colour: 'text-atlantic', note: 'Systems that learn patterns from data.' },
@@ -18,20 +19,20 @@ export function IrishChain() {
     <div className="grid gap-8 sm:grid-cols-[12rem_minmax(0,1fr)]">
       <img
         src={signpost}
-        alt="A Gaeltacht signpost reading Fáilte, Gaeltacht, An Ceantar, Ár dTeanga, Ár bPobal, above a coastal view."
+        alt={tr('A Gaeltacht signpost reading Fáilte, Gaeltacht, An Ceantar, Ár dTeanga, Ár bPobal, above a coastal view.')}
         className="h-full w-full object-cover"
         width={225}
         height={381}
       />
       <div>
-        <p className="eyebrow">Why this matters</p>
+        <p className="eyebrow">{tr('Why this matters')}</p>
         <ol className="mt-4">
           {STEPS.map((s, i) => (
             <li key={s.label}>
               <p className={`font-display text-3xl font-bold uppercase leading-none sm:text-4xl ${s.colour}`}>
-                {s.label}
+                {tr(s.label)}
               </p>
-              <p className="mt-1.5 max-w-md text-sm leading-relaxed text-ink-soft">{s.note}</p>
+              <p className="mt-1.5 max-w-md text-sm leading-relaxed text-ink-soft">{tr(s.note)}</p>
               {i < STEPS.length - 1 && (
                 <ArrowDown className="my-3 h-5 w-5 text-ink-faint" aria-hidden />
               )}

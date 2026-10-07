@@ -32,6 +32,7 @@ import {
   WORKSHOP1_REPORT_BACK, WORKSHOP1_SELF_STUDY, WORKSHOP1_FACILITATOR,
   WORKSHOP2_PRESERVED_INSTRUCTIONS, WORKSHOP2_OUTPUT_STRUCTURE, WORKSHOP2_SELF_STUDY, WORKSHOP2_FACILITATOR,
 } from '../data/exerciseContent'
+import { tr } from '../i18n/lang'
 
 /** Slide-page numbers in the delivered Session 1 deck (v6.3, 55 slides) and
  *  the published public/Session-1-Slides.pdf (same page numbers) for each activity —
@@ -43,7 +44,7 @@ const SLIDE_PAGE: Record<string, number> = {
 function body(ex: Exercise): ReactNode {
   if (ex.id === 'e5b') return (
     <div>
-      <div className="prose-note"><p>Fifteen minutes, written alone, no discussion. This is what connects today to Session 2.</p></div>
+      <div className="prose-note"><p>{tr('Fifteen minutes, written alone, no discussion. This is what connects today to Session 2.')}</p></div>
       <div className="mt-5"><ExperimentLog fields={MY_FIRST_EXPERIMENT_FIELDS} /></div>
       <div className="mt-5"><SlideLink page={SLIDE_PAGE.e5b} /></div>
     </div>
@@ -67,33 +68,33 @@ function body(ex: Exercise): ReactNode {
     case 'prompt-ladder': return (
       <div className="space-y-5">
         <div className="flex flex-wrap gap-3 text-sm text-ink-mute">
-          <span className="chip">25 minutes</span>
-          <span className="chip">5 groups of 3</span>
+          <span className="chip">{tr('25 minutes')}</span>
+          <span className="chip">{tr('5 groups of 3')}</span>
         </div>
         <PromptLadder />
         <div className="rounded-xl2 border border-ink/10 bg-paper-card p-4">
-          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">Keep to exactly</p>
+          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">{tr('Keep to exactly')}</p>
           <ul className="mt-2 space-y-1.5 text-sm font-medium text-ink">
-            {WORKSHOP2_PRESERVED_INSTRUCTIONS.map(s => <li key={s}>“{s}”</li>)}
+            {WORKSHOP2_PRESERVED_INSTRUCTIONS.map(s => <li key={s}>“{tr(s)}”</li>)}
           </ul>
         </div>
         <AIToolsNotice />
         <div>
-          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">Group output</p>
+          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">{tr('Group output')}</p>
           <ol className="mt-2 space-y-1 text-sm text-ink-soft">
-            {WORKSHOP2_OUTPUT_STRUCTURE.map((s, i) => <li key={s}>{i + 1}. {s}</li>)}
+            {WORKSHOP2_OUTPUT_STRUCTURE.map((s, i) => <li key={s}>{i + 1}. {tr(s)}</li>)}
           </ol>
         </div>
         <p className="border-y border-ink/15 py-3 text-sm font-semibold italic text-ink">
-          Did the better prompt make the answer more useful? Not: did it make the answer true.
+          {tr('Did the better prompt make the answer more useful? Not: did it make the answer true.')}
         </p>
         <SelfStudySteps steps={WORKSHOP2_SELF_STUDY} />
         <FacilitatorNotes>
-          <p><strong>Timing:</strong> {WORKSHOP2_FACILITATOR.timing} · <strong>Grouping:</strong> {WORKSHOP2_FACILITATOR.grouping}</p>
+          <p><strong>{tr('Timing:')}</strong> {tr(WORKSHOP2_FACILITATOR.timing)} · <strong>{tr('Grouping:')}</strong> {tr(WORKSHOP2_FACILITATOR.grouping)}</p>
           <ul className="list-disc space-y-1 pl-5">
-            {WORKSHOP2_FACILITATOR.steps.map(s => <li key={s}>{s}</li>)}
+            {WORKSHOP2_FACILITATOR.steps.map(s => <li key={s}>{tr(s)}</li>)}
           </ul>
-          <p>{WORKSHOP2_FACILITATOR.keyPoint}</p>
+          <p>{tr(WORKSHOP2_FACILITATOR.keyPoint)}</p>
         </FacilitatorNotes>
         <div className="flex flex-wrap gap-x-5 gap-y-1">
           <SlideLink page={SLIDE_PAGE.e2} />
@@ -105,7 +106,7 @@ function body(ex: Exercise): ReactNode {
     case 'scenarios': return <ScenarioCards />
     case 'workflow': return (
       <div>
-        <div className="prose-note"><p>Seven steps, in order. Bring a real problem — a hypothetical one will not push back.</p></div>
+        <div className="prose-note"><p>{tr('Seven steps, in order. Bring a real problem — a hypothetical one will not push back.')}</p></div>
         <div className="mt-5"><InteractiveWorkflow steps={SEVEN_STEPS} /></div>
       </div>
     )
@@ -118,36 +119,36 @@ function body(ex: Exercise): ReactNode {
     case 'workshop1': return (
       <div className="space-y-5">
         <div className="flex flex-wrap gap-3 text-sm text-ink-mute">
-          <span className="chip">25 minutes</span>
-          <span className="chip">5 groups of 3</span>
+          <span className="chip">{tr('25 minutes')}</span>
+          <span className="chip">{tr('5 groups of 3')}</span>
         </div>
         <div>
-          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">Roles (can rotate)</p>
+          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">{tr('Roles (can rotate)')}</p>
           <ol className="mt-2 space-y-1 text-sm text-ink-soft">
-            <li>1. Task owner</li>
-            <li>2. AI operator / prompt writer</li>
-            <li>3. Checker / sceptic</li>
+            <li>1. {tr('Task owner')}</li>
+            <li>2. {tr('AI operator / prompt writer')}</li>
+            <li>3. {tr('Checker / sceptic')}</li>
           </ol>
         </div>
-        <div className="prose-note"><p>Work through the seven questions on one real task. The last two are the ones that matter, and the ones groups skip if nobody pushes.</p></div>
+        <div className="prose-note"><p>{tr('Work through the seven questions on one real task. The last two are the ones that matter, and the ones groups skip if nobody pushes.')}</p></div>
         <InteractiveWorkflow steps={WORKSHOP1_QUESTIONS} />
         <div>
-          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">60-second report back</p>
+          <p className="text-[.72rem] font-bold uppercase tracking-wide text-ink-faint">{tr('60-second report back')}</p>
           <ol className="mt-2 space-y-1 text-sm text-ink-soft">
-            {WORKSHOP1_REPORT_BACK.map((s, i) => <li key={s}>{i + 1}. {s}</li>)}
+            {WORKSHOP1_REPORT_BACK.map((s, i) => <li key={s}>{i + 1}. {tr(s)}</li>)}
           </ol>
         </div>
         <PrivacyNotice />
         <SelfStudySteps steps={WORKSHOP1_SELF_STUDY} />
         <FacilitatorNotes>
-          <p><strong>Timing:</strong> {WORKSHOP1_FACILITATOR.timing} · <strong>Grouping:</strong> {WORKSHOP1_FACILITATOR.grouping}</p>
-          <p><strong>Key question:</strong> {WORKSHOP1_FACILITATOR.keyQuestion}</p>
-          <p><strong>Second question:</strong> {WORKSHOP1_FACILITATOR.secondQuestion}</p>
+          <p><strong>{tr('Timing:')}</strong> {tr(WORKSHOP1_FACILITATOR.timing)} · <strong>{tr('Grouping:')}</strong> {tr(WORKSHOP1_FACILITATOR.grouping)}</p>
+          <p><strong>{tr('Key question:')}</strong> {tr(WORKSHOP1_FACILITATOR.keyQuestion)}</p>
+          <p><strong>{tr('Second question:')}</strong> {tr(WORKSHOP1_FACILITATOR.secondQuestion)}</p>
           <ul className="list-disc space-y-1 pl-5">
-            {WORKSHOP1_FACILITATOR.watchFor.map(s => <li key={s}>{s}</li>)}
+            {WORKSHOP1_FACILITATOR.watchFor.map(s => <li key={s}>{tr(s)}</li>)}
           </ul>
-          <p><strong>Mary's role:</strong> {WORKSHOP1_FACILITATOR.marysRole}</p>
-          <p><strong>If a group is stuck for a task:</strong> {WORKSHOP1_FACILITATOR.exampleTasks.join(', ')}. Examples only — use a fictional or anonymised version.</p>
+          <p><strong>{tr('Mary’s role:')}</strong> {tr(WORKSHOP1_FACILITATOR.marysRole)}</p>
+          <p><strong>{tr('If a group is stuck for a task:')}</strong> {WORKSHOP1_FACILITATOR.exampleTasks.map(x => tr(x)).join(', ')}. {tr('Examples only — use a fictional or anonymised version.')}</p>
         </FacilitatorNotes>
         <div className="flex flex-wrap gap-x-5 gap-y-1">
           <SlideLink page={SLIDE_PAGE.e1} />
@@ -193,23 +194,24 @@ export function ExerciseCard({ ex, autoOpen }: { ex: Exercise; autoOpen?: boolea
     <>
       <button
         onClick={() => setOpen(true)}
+        data-exercise-open
         className="group flex h-full flex-col border-t-2 border-ink py-5 text-left"
       >
         <div className="flex items-center gap-3">
-          <span className="kicker">{ex.number}</span>
+          <span className="kicker">{tr(ex.number)}</span>
           {ex.minutes && (
             <span className="ml-auto inline-flex items-center gap-1 text-[.7rem] font-medium text-ink-faint">
-              <Clock className="h-3 w-3" aria-hidden /> {ex.minutes} min
+              <Clock className="h-3 w-3" aria-hidden /> {tr('{n} min', { n: ex.minutes })}
             </span>
           )}
         </div>
         <h3 className="mt-2.5 font-display text-lg font-semibold leading-snug group-hover:underline">
           <Bi v={ex.title} />
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{ex.purpose}</p>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{tr(ex.purpose)}</p>
         {ex.lesson && (
           <p className="mt-3 border-l-2 border-ink/20 pl-3 text-sm italic leading-relaxed text-ink-mute">
-            {ex.lesson}
+            {tr(ex.lesson)}
           </p>
         )}
       </button>
@@ -219,7 +221,7 @@ export function ExerciseCard({ ex, autoOpen }: { ex: Exercise; autoOpen?: boolea
         onClose={() => setOpen(false)}
         title={
           <>
-            <p className="kicker">{ex.number}</p>
+            <p className="kicker">{tr(ex.number)}</p>
             <h3 className="mt-1 font-display text-xl font-semibold leading-snug sm:text-2xl">
               <Bi v={ex.title} />
             </h3>

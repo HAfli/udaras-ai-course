@@ -183,7 +183,7 @@ export const session1: SessionMeta = {
         { n: 52, title: { en: 'Before Session 2: try AI three times' }, note: 'Also note how long the task took, how long checking took, and whether it was worth using. Bring a failure.' },
         { n: 53, title: { en: 'What we said today' }, note: 'You do not need to become an AI expert. AI is an assistant, not an authority.' },
         { n: 54, title: { en: 'Session 2 preview' }, note: 'Responsible AI and AI for everyday business — including the deeper AI-judges-AI and trust/verify exercises we made room for today.' },
-        { n: 55, title: { en: 'Go raibh maith agaibh', needsValidation: true }, note: 'AI is an assistant, not an authority. AI for Irish — not AI instead of Irish.' },
+        { n: 55, title: { en: 'Thank you', ga: 'Go raibh maith agaibh' }, note: 'AI is an assistant, not an authority. AI for Irish — not AI instead of Irish.' },
       ],
     },
   ],

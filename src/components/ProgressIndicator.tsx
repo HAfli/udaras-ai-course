@@ -1,5 +1,6 @@
 import { JOURNEY } from '../data/programme'
 import { Bi } from './ui/Bi'
+import { tr } from '../i18n/lang'
 
 /** Compact rail showing where the current stage sits in the whole
  *  journey — plain text separated by a rule, not a row of coloured
@@ -13,7 +14,7 @@ export function ProgressIndicator({ currentId }: { currentId: string }) {
   const idx = JOURNEY.findIndex(s => s.id === currentId)
 
   return (
-    <nav aria-label="Programme progress" className="scrollbar-thin relative overflow-x-auto text-current">
+    <nav aria-label={tr('Programme progress')} className="scrollbar-thin relative overflow-x-auto text-current">
       <ol className="flex min-w-max items-center text-[.72rem] font-semibold uppercase tracking-wide">
         {JOURNEY.map((s, i) => {
           const now = i === idx

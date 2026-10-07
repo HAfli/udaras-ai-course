@@ -1,3 +1,5 @@
+import { tr } from '../i18n/lang'
+
 const MAP = {
   green: { label: 'Low risk', symbol: '●', cls: 'border-risk-green/40 bg-moss-50 text-risk-green' },
   amber: { label: 'Check first', symbol: '◐', cls: 'border-risk-amber/40 bg-lichen-soft/50 text-risk-amber' },
@@ -10,8 +12,8 @@ export function RiskIndicator({ level, note }: { level: keyof typeof MAP; note?:
   return (
     <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[.72rem] font-bold uppercase tracking-wider ${m.cls}`}>
       <span aria-hidden>{m.symbol}</span>
-      {m.label}
-      {note && <span className="font-medium normal-case tracking-normal opacity-75">· {note}</span>}
+      {tr(m.label)}
+      {note && <span className="font-medium normal-case tracking-normal opacity-75">· {tr(note)}</span>}
     </span>
   )
 }

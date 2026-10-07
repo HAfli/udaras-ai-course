@@ -11,6 +11,7 @@ import { AIActPage } from './pages/AIActPage'
 import { IrishAIPage } from './pages/IrishAIPage'
 import { ResearchPage } from './pages/ResearchPage'
 import { PlanPage } from './pages/PlanPage'
+import { tr } from './i18n/lang'
 
 function Router() {
   const { route, param, parts } = useHashRoute()
@@ -48,6 +49,10 @@ function Router() {
   )
 }
 
+function SkipLabel() {
+  return <>{tr('Skip to content')}</>
+}
+
 export default function App() {
   return (
     <LangProvider>
@@ -55,7 +60,7 @@ export default function App() {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-paper"
       >
-        Skip to content
+        <SkipLabel />
       </a>
       <Nav />
       <Router />

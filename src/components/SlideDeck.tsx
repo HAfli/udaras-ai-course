@@ -3,6 +3,7 @@ import { Presentation } from 'lucide-react'
 import type { SlideGroup } from '../data/types'
 import { Disclosure } from './ui/Disclosure'
 import { Bi } from './ui/Bi'
+import { tr } from '../i18n/lang'
 
 function Slide({ n, title, note, i }: { n: number; title: { ga?: string; en: string; needsValidation?: boolean }; note?: string; i: number }) {
   const reduce = useReducedMotion()
@@ -21,7 +22,7 @@ function Slide({ n, title, note, i }: { n: number; title: { ga?: string; en: str
       </span>
       <span className="min-w-0 self-center">
         <span className="block text-sm font-medium leading-snug"><Bi v={title} /></span>
-        {note && <span className="mt-1 block text-[.8rem] leading-relaxed text-ink-mute">{note}</span>}
+        {note && <span className="mt-1 block text-[.8rem] leading-relaxed text-ink-mute">{tr(note)}</span>}
       </span>
     </motion.li>
   )
@@ -31,7 +32,7 @@ export function SlideDeck({ groups }: { groups: SlideGroup[] }) {
   if (!groups.length) {
     return (
       <p className="card p-6 text-sm leading-relaxed text-ink-soft">
-        No slide plan for this stage — it is a working session, not a taught one.
+        {tr('No slide plan for this stage — it is a working session, not a taught one.')}
       </p>
     )
   }
@@ -41,8 +42,8 @@ export function SlideDeck({ groups }: { groups: SlideGroup[] }) {
   return (
     <div>
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <span className="chip"><Presentation className="h-3.5 w-3.5" aria-hidden /> {total} slides proposed</span>
-        <span className="text-xs text-ink-mute">Proposed pedagogical detail — not part of the contracted structure.</span>
+        <span className="chip"><Presentation className="h-3.5 w-3.5" aria-hidden /> {tr('{n} slides proposed', { n: total })}</span>
+        <span className="text-xs text-ink-mute">{tr('Proposed pedagogical detail — not part of the contracted structure.')}</span>
       </div>
 
       <div className="space-y-2.5">
@@ -64,8 +65,8 @@ export function SlideDeck({ groups }: { groups: SlideGroup[] }) {
             </ol>
             {g.callout && (
               <div className="mt-4 rounded-xl2 border border-moss-200 bg-moss-50/70 px-5 py-4">
-                <p className="kicker text-moss-600">{g.callout.label}</p>
-                <p className="mt-1.5 font-display text-lg leading-snug text-moss-800">{g.callout.body}</p>
+                <p className="kicker text-moss-600">{tr(g.callout.label)}</p>
+                <p className="mt-1.5 font-display text-lg leading-snug text-moss-800">{tr(g.callout.body)}</p>
               </div>
             )}
           </Disclosure>

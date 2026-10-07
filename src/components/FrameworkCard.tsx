@@ -3,6 +3,7 @@ import { ArrowRight, Plus } from 'lucide-react'
 import { useState } from 'react'
 import type { Framework } from '../data/types'
 import { Bi } from './ui/Bi'
+import { tr } from '../i18n/lang'
 
 // Four branded principles, four campaign colours — fixed by position so
 // the same framework always carries the same identity wherever it's
@@ -25,7 +26,7 @@ export function FrameworkCard({ f, i }: { f: Framework; i: number }) {
         <span aria-hidden className={`fig-num text-3xl sm:text-4xl ${c.num}`}>{String(i + 1).padStart(2, '0')}</span>
         <div>
           <h3 id={`fw-${f.id}`} className="font-display text-2xl font-semibold sm:text-3xl"><Bi v={f.title} /></h3>
-          <p className="mt-1.5 text-[.95rem] text-ink-soft">{f.question}</p>
+          <p className="mt-1.5 text-[.95rem] text-ink-soft">{tr(f.question)}</p>
 
           <ol className="mt-6 flex flex-col gap-2 lg:flex-row lg:items-stretch">
             {f.steps.map((s, si) => {
@@ -61,7 +62,7 @@ export function FrameworkCard({ f, i }: { f: Framework; i: number }) {
                 className="overflow-hidden"
               >
                 <p className="mt-5 border-l-2 border-ink/20 pl-5 text-[1.02rem] leading-relaxed text-ink-soft">
-                  {f.steps[active].body}
+                  {tr(f.steps[active].body)}
                 </p>
               </motion.div>
             )}

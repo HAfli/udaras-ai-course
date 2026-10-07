@@ -1,5 +1,6 @@
 import { session1 } from '../../data/session1'
 import type { TimetableSlot } from '../../data/types'
+import { tr, pick } from '../../i18n/lang'
 
 /** The one place the timetable is turned into "today's journey" —
  *  reads straight from session1.timetable (the same data the Timetable
@@ -19,7 +20,7 @@ function findActivity(slot: TimetableSlot) {
 }
 
 function ActivityLine({ time, title, kind, id }: { time: string; title: string; kind: 'workshop' | 'reflection' | 'final'; id: string }) {
-  const label = { workshop: 'Workshop', reflection: 'Reflection', final: 'Final activity' }[kind]
+  const label = tr({ workshop: 'Workshop', reflection: 'Reflection', final: 'Final activity' }[kind])
   const weight = kind === 'workshop' ? 'border-l-[3px] border-ink pl-4' : 'border-l border-ink/40 pl-4'
   return (
     <a href={`#/session/s1/exercises/${id}`} className={`group block py-2 ${weight}`}>
@@ -46,9 +47,9 @@ function Flow({ slots }: { slots: TimetableSlot[] }) {
       {slots.map((slot, i) => {
         const activity = findActivity(slot)
         return activity ? (
-          <ActivityLine key={i} time={slot.time} title={slot.title.en} kind={activity.kind} id={activity.id} />
+          <ActivityLine key={i} time={slot.time} title={pick(slot.title)} kind={activity.kind} id={activity.id} />
         ) : (
-          <StepLine key={i} time={slot.time} title={slot.title.en} isBreak={slot.kind === 'break'} />
+          <StepLine key={i} time={slot.time} title={pick(slot.title)} isBreak={slot.kind === 'break'} />
         )
       })}
     </div>
@@ -62,18 +63,17 @@ export function SessionJourney() {
 
   return (
     <section aria-labelledby="journey-h" className="border-y border-ink/15 py-8">
-      <h2 id="journey-h" className="eyebrow">Today's journey</h2>
+      <h2 id="journey-h" className="eyebrow">{tr('Today’s journey')}</h2>
       <p className="mt-2 max-w-2xl text-sm text-ink-mute">
-        Understand in the morning, try it in the afternoon. Workshop 1 and Workshop 2 are the two hands-on
-        activities — open either one directly from here.
+        {tr('Understand in the morning, try it in the afternoon. Workshop 1 and Workshop 2 are the two hands-on activities — open either one directly from here.')}
       </p>
       <div className="mt-6 grid gap-x-10 gap-y-8 lg:grid-cols-2">
         <div>
-          <p className="kicker">Morning · understand</p>
+          <p className="kicker">{tr('Morning · understand')}</p>
           <div className="mt-3"><Flow slots={morning} /></div>
         </div>
         <div>
-          <p className="kicker">Afternoon · try</p>
+          <p className="kicker">{tr('Afternoon · try')}</p>
           <div className="mt-3"><Flow slots={afternoon} /></div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { PLAN_SECTIONS } from '../../data/finalPlan'
+import { tr } from '../../i18n/lang'
 
 /** "My Responsible AI Plan" — Session 4's take-away document.
  *  Everything typed here stays in memory in this browser. Nothing is stored,
@@ -17,11 +18,10 @@ export function Charter() {
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div className="prose-note max-w-xl">
           <p>
-            The one document that leaves the building with each participant. Written in their words, not the
-            facilitator’s — and deliberately short enough to be finished in the room.
+            {tr('The one document that leaves the building with each participant. Written in their words, not the facilitator’s — and deliberately short enough to be finished in the room.')}
           </p>
         </div>
-        <span className="chip">{filled}/{totalFields} completed</span>
+        <span className="chip">{tr('{done}/{total} completed', { done: filled, total: totalFields })}</span>
       </div>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
@@ -36,8 +36,8 @@ export function Charter() {
               s.kind === 'lines' ? '' : 'lg:col-span-1'
             }`}
           >
-            <h3 className="font-display text-lg font-semibold leading-snug">{s.title}</h3>
-            <p className="mt-1 text-xs leading-relaxed text-ink-mute">{s.hint}</p>
+            <h3 className="font-display text-lg font-semibold leading-snug">{tr(s.title)}</h3>
+            <p className="mt-1 text-xs leading-relaxed text-ink-mute">{tr(s.hint)}</p>
 
             {s.kind === 'lines' ? (
               <ol className="mt-3 space-y-2">
@@ -51,7 +51,7 @@ export function Charter() {
                       <input
                         value={v[key] ?? ''}
                         onChange={e => setV(p => ({ ...p, [key]: e.target.value }))}
-                        aria-label={`${s.title} — ${i + 1}`}
+                        aria-label={`${tr(s.title)} — ${i + 1}`}
                         className="w-full border-0 border-b border-ink/15 bg-transparent px-0 py-1.5 text-sm focus:border-moss-500 focus:outline-none focus:ring-0"
                       />
                     </li>
@@ -63,7 +63,7 @@ export function Charter() {
                 rows={3}
                 value={v[s.id] ?? ''}
                 onChange={e => setV(p => ({ ...p, [s.id]: e.target.value }))}
-                aria-label={s.title}
+                aria-label={tr(s.title)}
                 className="mt-3 w-full resize-none rounded-xl border border-ink/12 bg-paper-deep/40 px-3.5 py-2.5 text-sm leading-relaxed focus:border-moss-400 focus:bg-paper-card"
               />
             )}
@@ -72,7 +72,7 @@ export function Charter() {
       </div>
 
       <p className="mt-5 text-center text-sm text-ink-mute">
-        Nothing typed here is stored, sent or remembered. Write it down or photograph it before you close the page.
+        {tr('Nothing typed here is stored, sent or remembered. Write it down or photograph it before you close the page.')}
       </p>
     </div>
   )

@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
+import { tr } from '../../i18n/lang'
 
 const CONTEXTS = [
   {
@@ -31,17 +32,17 @@ export function PromptModelOutput() {
 
   return (
     <div className="card p-5 sm:p-6">
-      <p className="kicker text-moss-600">Prompt → Model → Output</p>
+      <p className="kicker text-moss-600">{tr('Prompt → Model → Output')}</p>
       <div className="mt-3 flex flex-wrap items-center gap-2 text-sm font-semibold">
-        <span className="rounded-xl2 border border-ink/12 bg-paper-deep/60 px-3 py-2">Prompt</span>
+        <span className="rounded-xl2 border border-ink/12 bg-paper-deep/60 px-3 py-2">{tr('Prompt')}</span>
         <ArrowRight className="h-4 w-4 text-ink-faint" aria-hidden />
-        <span className="rounded-xl2 border border-ink/12 bg-paper-deep/60 px-3 py-2">Model</span>
+        <span className="rounded-xl2 border border-ink/12 bg-paper-deep/60 px-3 py-2">{tr('Model')}</span>
         <ArrowRight className="h-4 w-4 text-ink-faint" aria-hidden />
-        <span className="rounded-xl2 border border-moss-300 bg-moss-50 px-3 py-2 text-moss-800">Output</span>
+        <span className="rounded-xl2 border border-moss-300 bg-moss-50 px-3 py-2 text-moss-800">{tr('Output')}</span>
       </div>
 
       <p className="mt-5 text-sm text-ink-soft">
-        Same question, put to three audiences. The model does not change — only the context does. Watch what happens to the output.
+        {tr('Same question, put to three audiences. The model does not change — only the context does. Watch what happens to the output.')}
       </p>
 
       <div className="mt-3 flex flex-wrap gap-2">
@@ -54,18 +55,18 @@ export function PromptModelOutput() {
               active === c.id ? 'border-moss-600 bg-moss-700 text-paper' : 'border-ink/12 text-ink-mute hover:border-moss-300 hover:text-ink'
             }`}
           >
-            {c.label}
+            {tr(c.label)}
           </button>
         ))}
       </div>
 
       <div className="mt-4 rounded-xl2 border border-ink/10 bg-paper-deep/40 p-4">
-        <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">Prompt</p>
-        <p className="mt-1 font-mono text-[.82rem] text-ink">{current.prompt}</p>
-        <p className="mt-3 text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">Output</p>
-        <p className="mt-1 text-sm leading-relaxed text-ink-soft">{current.output}</p>
+        <p className="text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">{tr('Prompt')}</p>
+        <p className="mt-1 font-mono text-[.82rem] text-ink">{tr(current.prompt)}</p>
+        <p className="mt-3 text-[.72rem] font-bold uppercase tracking-wider text-ink-faint">{tr('Output')}</p>
+        <p className="mt-1 text-sm leading-relaxed text-ink-soft">{tr(current.output)}</p>
       </div>
-      <p className="mt-3 text-sm font-semibold text-moss-700">Context changes output. That is almost everything you can control.</p>
+      <p className="mt-3 text-sm font-semibold text-moss-700">{tr('Context changes output. That is almost everything you can control.')}</p>
     </div>
   )
 }

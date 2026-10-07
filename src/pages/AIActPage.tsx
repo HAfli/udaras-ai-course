@@ -5,6 +5,7 @@ import { ScenarioCards } from '../components/ScenarioCard'
 import { StopTest } from '../components/exercises/Session2Exercises'
 import { Reveal } from '../components/ui/Reveal'
 import { Disclosure } from '../components/ui/Disclosure'
+import { tr } from '../i18n/lang'
 
 const TIER_CLS: Record<string, string> = {
   red: 'border-risk-red/35 bg-red-50',
@@ -23,24 +24,24 @@ export function AIActPage() {
         <div className="wrap py-12 sm:py-16">
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-moss-700 px-3.5 py-1.5 text-[.72rem] font-bold uppercase tracking-[.12em] text-paper">
-              {CURRENT_POSITION.banner}
+              {tr(CURRENT_POSITION.banner)}
             </span>
             <span className="chip border-lichen/40 bg-lichen-soft/40 text-lichen-deep">
-              <Info className="h-3.5 w-3.5" aria-hidden /> {CURRENT_POSITION.disclaimer}
+              <Info className="h-3.5 w-3.5" aria-hidden /> {tr(CURRENT_POSITION.disclaimer)}
             </span>
           </div>
           <h1 className="mt-5 max-w-3xl text-[2.1rem] font-semibold leading-[1.1] sm:text-5xl">
-            The AI Act, in plain language
+            {tr('The AI Act, in plain language')}
           </h1>
-          <p className="mt-5 max-w-3xl text-[1.1rem] leading-relaxed text-ink-soft">{AI_ACT_INTRO.standfirst}</p>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-ink-mute">{CURRENT_POSITION.note}</p>
+          <p className="mt-5 max-w-3xl text-[1.1rem] leading-relaxed text-ink-soft">{tr(AI_ACT_INTRO.standfirst)}</p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-ink-mute">{tr(CURRENT_POSITION.note)}</p>
         </div>
       </header>
 
       {/* Why */}
       <section aria-labelledby="why-h" className="wrap py-14">
         <Reveal>
-          <h2 id="why-h" className="text-3xl font-semibold sm:text-4xl">Why regulate AI at all?</h2>
+          <h2 id="why-h" className="text-3xl font-semibold sm:text-4xl">{tr('Why regulate AI at all?')}</h2>
         </Reveal>
         <ul className="mt-7 grid gap-3 sm:grid-cols-2">
           {AI_ACT_INTRO.whyRegulate.map((w, i) => (
@@ -52,7 +53,7 @@ export function AIActPage() {
               transition={{ duration: 0.4, delay: i * 0.07 }}
               className="card p-5 text-[.98rem] leading-relaxed text-ink-soft"
             >
-              {w}
+              {tr(w)}
             </motion.li>
           ))}
         </ul>
@@ -62,10 +63,10 @@ export function AIActPage() {
       <section aria-labelledby="tier-h" className="border-y border-ink/10 bg-paper-card">
         <div className="wrap py-16">
           <Reveal>
-            <p className="eyebrow">Risk-based regulation</p>
-            <h2 id="tier-h" className="mt-3 text-3xl font-semibold sm:text-4xl">Four tiers, not one rulebook</h2>
+            <p className="eyebrow">{tr('Risk-based regulation')}</p>
+            <h2 id="tier-h" className="mt-3 text-3xl font-semibold sm:text-4xl">{tr('Four tiers, not one rulebook')}</h2>
             <p className="mt-4 max-w-2xl text-[1.02rem] leading-relaxed text-ink-soft">
-              The obligations scale with what could go wrong. Most small-business AI use sits in the bottom two tiers.
+              {tr('The obligations scale with what could go wrong. Most small-business AI use sits in the bottom two tiers.')}
             </p>
           </Reveal>
 
@@ -81,12 +82,12 @@ export function AIActPage() {
               >
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
                   <span aria-hidden className="font-mono text-lg">{TIER_SYM[tier.tone]}</span>
-                  <h3 className="font-display text-2xl font-semibold">{tier.label}</h3>
-                  <span className="text-sm font-medium text-ink-mute">{tier.summary}</span>
+                  <h3 className="font-display text-2xl font-semibold">{tr(tier.label)}</h3>
+                  <span className="text-sm font-medium text-ink-mute">{tr(tier.summary)}</span>
                 </div>
-                <p className="mt-3 max-w-3xl text-[.98rem] leading-relaxed text-ink-soft">{tier.detail}</p>
+                <p className="mt-3 max-w-3xl text-[.98rem] leading-relaxed text-ink-soft">{tr(tier.detail)}</p>
                 <p className="mt-4 border-l-2 border-ink/20 pl-4 text-[.98rem] font-medium leading-relaxed">
-                  <span className="kicker mr-2">For you</span>{tier.forYou}
+                  <span className="kicker mr-2">{tr('For you')}</span>{tr(tier.forYou)}
                 </p>
               </motion.div>
             ))}
@@ -99,17 +100,17 @@ export function AIActPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_minmax(0,24rem)]">
           <div>
             <Reveal>
-              <p className="eyebrow">{LITERACY.article}</p>
+              <p className="eyebrow">{tr(LITERACY.article)}</p>
               <h2 id="lit-h" className="mt-3 text-3xl font-semibold sm:text-4xl">
-                The part of the law that this course exists because of
+                {tr('The part of the law that this course exists because of')}
               </h2>
               <p className="mt-6 max-w-3xl border-l-2 border-moss-400 pl-6 font-display text-xl leading-relaxed sm:text-2xl">
-                {LITERACY.framing}
+                {tr(LITERACY.framing)}
               </p>
-              <p className="mt-2 pl-6 text-sm text-ink-mute">{LITERACY.applied}</p>
+              <p className="mt-2 pl-6 text-sm text-ink-mute">{tr(LITERACY.applied)}</p>
               <blockquote className="mt-7 rounded-xl2 border border-ink/10 bg-paper-deep/40 p-5">
-                <p className="text-[1.02rem] leading-relaxed text-ink-soft">“{LITERACY.quote}”</p>
-                <footer className="mt-3 text-sm text-ink-mute">{LITERACY.quoteNote}</footer>
+                <p className="text-[1.02rem] leading-relaxed text-ink-soft">“{tr(LITERACY.quote)}”</p>
+                <footer className="mt-3 text-sm text-ink-mute">{tr(LITERACY.quoteNote)}</footer>
               </blockquote>
             </Reveal>
 
@@ -117,35 +118,35 @@ export function AIActPage() {
               {LITERACY.plain.map(p => (
                 <li key={p} className="flex gap-3.5 text-[1.02rem] leading-relaxed text-ink-soft">
                   <span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-moss-400" />
-                  {p}
+                  {tr(p)}
                 </li>
               ))}
             </ul>
 
             <div className="mt-8 rounded-xl2 border border-moss-200 bg-moss-50/70 p-6">
-              <p className="kicker text-moss-600">What it means for a small business</p>
+              <p className="kicker text-moss-600">{tr('What it means for a small business')}</p>
               <ul className="mt-3 space-y-2">
                 {LITERACY.meansForSmallBusiness.map(m => (
                   <li key={m} className="flex gap-3 text-[.98rem] leading-relaxed text-moss-800">
                     <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-moss-500" />
-                    {m}
+                    {tr(m)}
                   </li>
                 ))}
               </ul>
               <div className="mt-5 border-t border-moss-200 pt-5">
-                <p className="font-display text-lg leading-snug text-moss-800">{LITERACY.courseClaim}</p>
-                <p className="mt-2 text-sm leading-relaxed text-moss-700">{LITERACY.courseCaveat}</p>
+                <p className="font-display text-lg leading-snug text-moss-800">{tr(LITERACY.courseClaim)}</p>
+                <p className="mt-2 text-sm leading-relaxed text-moss-700">{tr(LITERACY.courseCaveat)}</p>
               </div>
             </div>
           </div>
 
-          <aside aria-label="AI Act roles" className="lg:sticky lg:top-24 lg:self-start">
-            <p className="eyebrow">Who is who</p>
+          <aside aria-label={tr('AI Act roles')} className="lg:sticky lg:top-24 lg:self-start">
+            <p className="eyebrow">{tr('Who is who')}</p>
             <div className="mt-3 space-y-2.5">
               {RESPONSIBILITIES.map(r => (
                 <div key={r.role} className="card p-4">
-                  <p className="text-sm font-bold">{r.role}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">{r.body}</p>
+                  <p className="text-sm font-bold">{tr(r.role)}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">{tr(r.body)}</p>
                 </div>
               ))}
             </div>
@@ -157,8 +158,8 @@ export function AIActPage() {
       <section aria-labelledby="mis-h" className="border-t border-ink/10 bg-paper-card">
         <div className="wrap py-14">
           <Reveal>
-            <p className="eyebrow">Four things people get wrong</p>
-            <h2 id="mis-h" className="mt-3 text-3xl font-semibold sm:text-4xl">Clearing the air</h2>
+            <p className="eyebrow">{tr('Four things people get wrong')}</p>
+            <h2 id="mis-h" className="mt-3 text-3xl font-semibold sm:text-4xl">{tr('Clearing the air')}</h2>
           </Reveal>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {LITERACY.misconceptions.map((m, i) => (
@@ -172,11 +173,11 @@ export function AIActPage() {
               >
                 <p className="flex gap-2.5 text-[.95rem] font-semibold text-ink-mute line-through decoration-risk-red/60">
                   <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-risk-red no-underline" aria-hidden />
-                  <span>{m.wrong}</span>
+                  <span>{tr(m.wrong)}</span>
                 </p>
                 <p className="mt-3 flex gap-2.5 text-[.98rem] leading-relaxed text-ink-soft">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-risk-green" aria-hidden />
-                  <span>{m.right}</span>
+                  <span>{tr(m.right)}</span>
                 </p>
               </motion.li>
             ))}
@@ -188,8 +189,8 @@ export function AIActPage() {
       <section aria-labelledby="tl-h" className="border-y border-ink/10 bg-moss-800 text-paper">
         <div className="wrap py-16">
           <Reveal>
-            <p className="eyebrow text-moss-200">Application timeline</p>
-            <h2 id="tl-h" className="mt-3 text-3xl font-semibold sm:text-4xl">What applies, and when</h2>
+            <p className="eyebrow text-moss-200">{tr('Application timeline')}</p>
+            <h2 id="tl-h" className="mt-3 text-3xl font-semibold sm:text-4xl">{tr('What applies, and when')}</h2>
           </Reveal>
           <ol className="mt-10 space-y-px">
             {TIMELINE.map((e, i) => (
@@ -201,10 +202,10 @@ export function AIActPage() {
                 transition={{ duration: 0.4, delay: Math.min(i * 0.06, 0.5) }}
                 className={`flex flex-col gap-1 border-b border-paper/10 py-4 sm:flex-row sm:gap-6 ${e.accent ? 'bg-paper/5 px-4' : ''}`}
               >
-                <span className="w-40 shrink-0 font-mono text-sm font-bold text-moss-200">{e.date}</span>
+                <span className="w-40 shrink-0 font-mono text-sm font-bold text-moss-200">{tr(e.date)}</span>
                 <span>
-                  <span className="block text-[1.05rem] font-semibold">{e.label}</span>
-                  <span className="mt-0.5 block text-sm leading-relaxed text-moss-100/75">{e.note}</span>
+                  <span className="block text-[1.05rem] font-semibold">{tr(e.label)}</span>
+                  <span className="mt-0.5 block text-sm leading-relaxed text-moss-100/75">{tr(e.note)}</span>
                 </span>
               </motion.li>
             ))}
@@ -215,32 +216,32 @@ export function AIActPage() {
       {/* Omnibus */}
       <section aria-labelledby="om-h" className="wrap py-16">
         <Reveal>
-          <h2 id="om-h" className="text-3xl font-semibold sm:text-4xl">{OMNIBUS_NOTE.title}</h2>
+          <h2 id="om-h" className="text-3xl font-semibold sm:text-4xl">{tr(OMNIBUS_NOTE.title)}</h2>
         </Reveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-2">
           <div className="card p-6">
-            <p className="kicker text-lichen-deep">Changed in July 2026</p>
+            <p className="kicker text-lichen-deep">{tr('Changed in July 2026')}</p>
             <ul className="mt-3 space-y-2.5">
               {OMNIBUS_NOTE.changed.map(c => (
                 <li key={c} className="flex gap-3 text-[.98rem] leading-relaxed text-ink-soft">
-                  <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-lichen" />{c}
+                  <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-lichen" />{tr(c)}
                 </li>
               ))}
             </ul>
           </div>
           <div className="card border-moss-200 bg-moss-50/60 p-6">
-            <p className="kicker text-moss-600">Unchanged</p>
+            <p className="kicker text-moss-600">{tr('Unchanged')}</p>
             <ul className="mt-3 space-y-2.5">
               {OMNIBUS_NOTE.unchanged.map(c => (
                 <li key={c} className="flex gap-3 text-[.98rem] leading-relaxed text-moss-800">
-                  <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-moss-500" />{c}
+                  <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-moss-500" />{tr(c)}
                 </li>
               ))}
             </ul>
           </div>
         </div>
         <p className="mt-5 rounded-xl2 border border-dashed border-lichen/50 bg-lichen-soft/25 p-5 text-[.98rem] leading-relaxed text-ink-soft">
-          <span className="kicker mr-2 text-lichen-deep">Caution</span>{OMNIBUS_NOTE.caution}
+          <span className="kicker mr-2 text-lichen-deep">{tr('Caution')}</span>{tr(OMNIBUS_NOTE.caution)}
         </p>
       </section>
 
@@ -248,17 +249,17 @@ export function AIActPage() {
       <section aria-labelledby="pr-h" className="border-t border-ink/10 bg-paper-card">
         <div className="wrap space-y-12 py-16">
           <Reveal>
-            <p className="eyebrow">In practice</p>
-            <h2 id="pr-h" className="mt-3 text-3xl font-semibold sm:text-4xl">Two things to take into the room</h2>
+            <p className="eyebrow">{tr('In practice')}</p>
+            <h2 id="pr-h" className="mt-3 text-3xl font-semibold sm:text-4xl">{tr('Two things to take into the room')}</h2>
           </Reveal>
 
           <div>
-            <h3 className="font-display text-2xl font-semibold">The STOP check</h3>
+            <h3 className="font-display text-2xl font-semibold">{tr('The STOP check')}</h3>
             <div className="mt-5"><StopTest /></div>
           </div>
 
           <div>
-            <h3 className="font-display text-2xl font-semibold">Five business scenarios</h3>
+            <h3 className="font-display text-2xl font-semibold">{tr('Five business scenarios')}</h3>
             <div className="mt-5"><ScenarioCards /></div>
           </div>
         </div>
@@ -266,28 +267,24 @@ export function AIActPage() {
 
       {/* Sources */}
       <section aria-labelledby="src-h" className="wrap py-14">
-        <h2 id="src-h" className="eyebrow">Sources</h2>
+        <h2 id="src-h" className="eyebrow">{tr('Sources')}</h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
-          Content on this page was checked against these in August 2026. Verify before repeating dates in front of a
-          room — and show participants how you checked.
+          {tr('Content on this page was checked against these in August 2026. Verify before repeating dates in front of a room — and show participants how you checked.')}
         </p>
         <ul className="mt-4 space-y-1.5">
           {SOURCES.map(s => (
             <li key={s.url}>
               <a href={s.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-moss-700 hover:underline">
-                {s.label}
+                {tr(s.label)}
                 <ExternalLink className="h-3 w-3" aria-hidden />
               </a>
             </li>
           ))}
         </ul>
         <div className="mt-8">
-          <Disclosure summary={<span className="text-sm font-semibold">A note on how this page should be used</span>}>
+          <Disclosure summary={<span className="text-sm font-semibold">{tr('A note on how this page should be used')}</span>}>
             <p className="text-sm leading-relaxed text-ink-soft">
-              This is educational material for an AI literacy course, not legal advice, and it does not create or
-              describe obligations for any particular organisation. Where a participant’s situation looks like it
-              touches high-risk use — recruitment and staff management being the realistic case — the right answer in
-              the room is “take advice”, not an interpretation from the front of the class.
+              {tr('This is educational material for an AI literacy course, not legal advice, and it does not create or describe obligations for any particular organisation. Where a participant’s situation looks like it touches high-risk use — recruitment and staff management being the realistic case — the right answer in the room is “take advice”, not an interpretation from the front of the class.')}
             </p>
           </Disclosure>
         </div>

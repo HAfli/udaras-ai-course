@@ -224,7 +224,8 @@ planted-problem labels never reach the public site. Package and full description
 - **Product facts** (ChatGPT, Claude, Microsoft Copilot, Gemini Notebook, Copilot Notebooks) were checked against official pages on 5 October 2026 and
   are labelled *verified* or *observation*. They change often — re-check before each delivery and re-run
   `export_site.py`.
-- **Irish**: reused lines are copied from the native-reviewed decks; new Irish carries `needsValidation`.
+- **Irish**: GA mode is Irish only, EN mode English only (see “Language” below). Reused lines are copied from the
+  native-reviewed decks; Irish still awaiting native review keeps `needsValidation`.
 - **Hybrid**: one set of activities; the Teams chat is the shared wall; online groups use breakout rooms. The Session 3
   Teams join link (link only — no meeting ID or passcode) is shown on the Session 3 page only (`src/data/teams.ts`,
   `src/components/TeamsJoin.tsx`) and in the Session 3 Quick Guide.
@@ -270,17 +271,44 @@ Edit `FACILITATOR.bio` in `src/data/facilitator.ts`.
 
 ---
 
-## Irish-language validation
+## Language: GA = Gaeilge amháin, EN = English only
 
-There is a working `GA | EN` toggle in the header. Irish is used for navigation, section
-headings, session titles, straplines, central questions and the course's key messages;
-detailed planning content stays in English.
+**GA mode displays participant-facing content in Irish only. EN mode displays participant-facing content in
+English only.** Proper names, product names, URLs and unavoidable technical terms (ChatGPT, Claude, Copilot,
+Gemini Notebook, Microsoft Teams, AI, MTU, Údarás na Gaeltachta, place names…) may remain unchanged. Nothing is
+shown "Irish first with English beneath it" any more, and the inactive language is never rendered — it is not
+hidden with CSS, so screen readers never meet it either. The site opens in Irish; the choice is remembered in the
+browser.
 
-**Irish strings carry `needsValidation: true` until a native speaker has actually cleared
-them.** Those strings render with a dotted gold underline and a screen-reader note. The
-flags have deliberately not been removed to make the interface look finished. To clear one,
-delete `needsValidation: true` from that entry in the data file. UI chrome strings live in
-`src/i18n/strings.ts`.
+How it works (`src/i18n/`):
+
+- `lang.ts` — `tr(english)` returns the Irish for a source string from the catalogue in GA mode (the English
+  itself in EN mode); `pick({ ga, en })` returns one side of a content pair; `<Tr>` renders `**bold**` spans.
+  A GA lookup with no Irish is recorded in `window.__i18nMissing`; there is no silent fallback in a release,
+  because the language test fails on any miss.
+- `ga.ts` + `ga/*.json` — the Irish catalogue, keyed by the English source text (`memory.json`: wording carried
+  over from the Session 2/3 course content; `ui.json`, `pages.json`, `data.json`: the rest).
+- `LangContext.tsx` — the GA/EN toggle; re-keys the page on a switch so everything re-renders in one language,
+  and sets `<html lang>` and the page title.
+- Exercise material that *is* in one language — the Irish draft participants proofread, the Irish notice they
+  translate, an English source text, citation titles — is marked `data-i18n-exempt` and shown as it is in both
+  modes.
+
+Adding or changing text: write the English in the component or data file and add its Irish to the matching
+`ga/*.json` file. Then run the language test (below); it lists any string still missing Irish.
+
+Irish that is still awaiting native-speaker review keeps its `needsValidation` flag (shown in GA mode with a † and a
+screen-reader note). The internal Irish QA inventory (status of every catalogue entry: native-reviewed / verified /
+new and checked / needs native review) is kept with the course team, outside this public repository.
+
+### Tests
+
+```bash
+npm run build && npx vite preview --port 4179 &
+node tests/language.mjs   # every route, tab, exercise and modal, in GA and EN, desktop and 375 px:
+                          # fails on a missing Irish string, English prose in GA, Irish prose in EN, overflow, errors
+node tests/site.mjs       # both languages: dates, PDFs, Teams link (no codes), approval wording, axe, mobile
+```
 
 Exercise 5 ("Is this good Irish?") ships **empty**, with a facilitator note to generate the
 Irish live on the day from the tool participants are actually using. A pre-written sample
@@ -368,7 +396,7 @@ opens in a new tab and nothing is passed to it from this site.
 - No application console errors on any route.
 - All 13 routes render; dialogs, tabs, accordions, the prompt builder, the decision tree,
   the pipeline, the quizzes and the plan form all work in the production build.
-- The GA/EN toggle works throughout.
+- GA shows Irish only and EN English only on every route (`tests/language.mjs`).
 - External links (academic website, Google Form) resolve and carry
   `target="_blank" rel="noopener noreferrer"`.
 - axe-core clean on every route tested.

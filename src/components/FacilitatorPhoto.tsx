@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FACILITATOR } from '../data/facilitator'
 import portrait from '../assets/haithem-afli.jpg'
+import { tr } from '../i18n/lang'
 
 /** Bundled portrait first — so it works offline, in the single-file build and
  *  at any base path. Falls back to the copy on Dr Afli's own official academic
@@ -16,13 +17,13 @@ export function FacilitatorPhoto({ className = '' }: { className?: string }) {
       <div
         className={`grid place-items-center border border-dashed border-ink/30 bg-paper-deep p-6 text-center ${className}`}
         role="img"
-        aria-label={FACILITATOR.photoPlaceholder}
+        aria-label={tr(FACILITATOR.photoPlaceholder)}
       >
         <p className="text-sm font-semibold leading-relaxed text-ink-mute">
-          {FACILITATOR.photoPlaceholder}
+          {tr(FACILITATOR.photoPlaceholder)}
         </p>
         <p className="mt-2 max-w-[22ch] text-xs leading-relaxed text-ink-mute">
-          Replace <code className="font-mono">src/assets/haithem-afli.jpg</code> and rebuild — see the README.
+          {tr('Replace the portrait file and rebuild — see the README.')} <code className="font-mono">src/assets/haithem-afli.jpg</code>
         </p>
       </div>
     )
@@ -31,7 +32,7 @@ export function FacilitatorPhoto({ className = '' }: { className?: string }) {
   return (
     <img
       src={SOURCES[step]}
-      alt={`${FACILITATOR.name}, ${FACILITATOR.role}`}
+      alt={`${FACILITATOR.name}, ${tr(FACILITATOR.role)}`}
       width={880}
       height={1100}
       loading="lazy"

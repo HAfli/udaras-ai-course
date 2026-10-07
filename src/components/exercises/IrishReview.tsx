@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { IRISH_REVIEW_CRITERIA } from '../../data/exerciseContent'
-import { GaLine } from '../ui/Bi'
+import { Bi } from '../ui/Bi'
+import { tr, pick } from '../../i18n/lang'
 
 const SCALE = ['Poor', 'Acceptable', 'Good'] as const
 
@@ -12,22 +13,19 @@ export function IrishReview() {
   return (
     <div>
       <div className="rounded-xl2 border border-dashed border-lichen/50 bg-lichen-soft/25 p-4">
-        <p className="kicker text-lichen-deep">Facilitator note</p>
+        <p className="kicker text-lichen-deep">{tr('Facilitator note')}</p>
         <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-          No sample Irish is pre-loaded here. Generate it live, on the day, from a tool the participants are
-          actually using — the exercise only works on real output, and pre-written examples would be an invention
-          rather than evidence.
+          {tr('No sample Irish is pre-loaded here. Generate it live, on the day, from a tool the participants are actually using — the exercise only works on real output, and pre-written examples would be an invention rather than evidence.')}
         </p>
       </div>
 
       <label className="mt-5 block">
-        <span className="kicker">Paste the AI-generated Irish here</span>
+        <span className="kicker">{tr('Paste the AI-generated Irish here')}</span>
         <textarea
           value={text}
           onChange={e => setText(e.target.value)}
           rows={5}
-          lang="ga"
-          placeholder="Greamaigh an téacs anseo…"
+          placeholder={pick({ ga: 'Greamaigh an téacs anseo…', en: 'Paste the text here…' })}
           className="mt-2 w-full rounded-xl2 border border-ink/15 bg-paper-card px-4 py-3 text-sm leading-relaxed focus:border-moss-400"
         />
       </label>
@@ -38,9 +36,9 @@ export function IrishReview() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0">
                 <p className="text-sm font-semibold">
-                  {c.label} <span className="font-normal text-ink-mute">· <GaLine ga={c.ga} needsValidation /></span>
+                  <Bi v={{ en: c.label, ga: c.ga, needsValidation: true }} />
                 </p>
-                <p className="mt-1 text-sm text-ink-soft">{c.ask}</p>
+                <p className="mt-1 text-sm text-ink-soft">{tr(c.ask)}</p>
               </div>
               <div className="flex shrink-0 gap-1.5">
                 {(c.id === 'c5' ? (['No', 'Not yet', 'Yes'] as const) : SCALE).map(s => {
@@ -54,7 +52,7 @@ export function IrishReview() {
                         on ? 'border-moss-600 bg-moss-700 text-paper' : 'border-ink/12 text-ink-mute hover:border-moss-300 hover:text-ink'
                       }`}
                     >
-                      {s}
+                      {tr(s)}
                     </button>
                   )
                 })}
@@ -66,7 +64,7 @@ export function IrishReview() {
 
       {publish && (
         <p className="mt-5 rounded-xl2 bg-moss-700 px-5 py-4 text-center font-display text-lg font-semibold text-paper">
-          AI-generated Irish needs human linguistic and cultural validation. Every time.
+          {tr('AI-generated Irish needs human linguistic and cultural validation. Every time.')}
         </p>
       )}
     </div>

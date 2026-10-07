@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { BUSINESS_TYPES } from '../../data/exerciseContent'
-import { GaLine } from '../ui/Bi'
+import { Bi } from '../ui/Bi'
+import { tr } from '../../i18n/lang'
 
 export function IrishFirstBusiness() {
   const [active, setActive] = useState(BUSINESS_TYPES[0].id)
@@ -12,8 +13,7 @@ export function IrishFirstBusiness() {
   return (
     <div>
       <div className="prose-note"><p>
-        Each group takes a business type and develops five ideas. The starters below are there to get the group
-        moving, not to be the answer.
+        {tr('Each group takes a business type and develops five ideas. The starters below are there to get the group moving, not to be the answer.')}
       </p></div>
 
       <div className="mt-5 flex flex-wrap gap-2">
@@ -28,7 +28,7 @@ export function IrishFirstBusiness() {
                 on ? 'border-heather bg-heather text-paper' : 'border-ink/12 text-ink-mute hover:border-heather/50 hover:text-ink'
               }`}
             >
-              {x.label}
+              {tr(x.label)}
             </button>
           )
         })}
@@ -42,29 +42,29 @@ export function IrishFirstBusiness() {
           className="mt-4 grid gap-4 lg:grid-cols-2"
         >
           <div className="card p-5">
-            <p className="eyebrow">Starters</p>
+            <p className="eyebrow">{tr('Starters')}</p>
             <p className="mt-1 font-display text-xl">
-              {b.label} <span className="text-ink-mute">· <GaLine ga={b.ga} needsValidation /></span>
+              <Bi v={{ en: b.label, ga: b.ga, needsValidation: true }} />
             </p>
             <ul className="mt-4 space-y-2.5">
               {b.prompts.map(p => (
                 <li key={p} className="flex gap-2.5 text-sm leading-relaxed text-ink-soft">
                   <span aria-hidden className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-heather" />
-                  {p}
+                  {tr(p)}
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="card p-5">
-            <p className="eyebrow">Your five ideas</p>
+            <p className="eyebrow">{tr('Your five ideas')}</p>
             <ol className="mt-4 space-y-2">
               {mine.map((val, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <span aria-hidden className="w-4 text-right text-[.7rem] font-bold text-ink-faint">{i + 1}</span>
                   <input
                     value={val}
-                    aria-label={`Idea ${i + 1} for ${b.label}`}
+                    aria-label={tr('Idea {n} for {b}', { n: i + 1, b: tr(b.label) })}
                     onChange={e => {
                       const next = [...mine]
                       next[i] = e.target.value

@@ -2,6 +2,7 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useLang } from '../i18n/LangContext'
 import { useHashRoute } from '../hooks/useHashRoute'
+import { tr } from '../i18n/lang'
 
 const LINKS = [
   { to: '#/', key: 'programme' as const },
@@ -36,14 +37,14 @@ export function Nav() {
       <div className="wrap flex h-16 items-center gap-6">
         <a href="#/" className="min-w-0">
           <span className="block truncate font-display text-[1.05rem] font-semibold leading-tight">
-            Building AI Confidence
+            {tr('Building AI Confidence')}
           </span>
           <span className="block truncate text-[.66rem] uppercase tracking-[.16em] text-ink-mute">
             MTU · Údarás na Gaeltachta
           </span>
         </a>
 
-        <nav aria-label="Main" className="ml-auto hidden items-center gap-7 lg:flex">
+        <nav aria-label={tr('Main')} className="ml-auto hidden items-center gap-7 lg:flex">
           {LINKS.map(l => {
             const on = hash === l.to || (l.to !== '#/' && hash.startsWith(l.to))
             return (
@@ -62,13 +63,15 @@ export function Nav() {
         </nav>
 
         <div className="ml-auto flex items-center gap-4 lg:ml-0">
-          <div role="group" aria-label="Language" className="flex items-center gap-0.5 text-[.72rem] font-semibold">
+          <div role="group" data-i18n-exempt="language names" aria-label={tr('Language')} className="flex items-center gap-0.5 text-[.72rem] font-semibold">
             {(['ga', 'en'] as const).map((l, i) => (
               <span key={l} className="flex items-center gap-0.5">
                 {i > 0 && <span aria-hidden className="text-ink-faint">/</span>}
                 <button
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
+                  aria-label={l === 'ga' ? 'Gaeilge' : 'English'}
+                  lang={l}
                   className={`px-1 py-1.5 uppercase tracking-wider transition-colors ${
                     lang === l ? 'text-ink underline decoration-2 underline-offset-4' : 'text-ink-faint hover:text-ink-mute'
                   }`}
@@ -85,7 +88,7 @@ export function Nav() {
             className="btn-quiet lg:hidden"
             onClick={() => setOpen(o => !o)}
             aria-expanded={open}
-            aria-label="Menu"
+            aria-label={tr('Menu')}
           >
             {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
           </button>
@@ -93,7 +96,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <nav aria-label="Main" className="border-t border-ink/15 bg-paper-card lg:hidden">
+        <nav aria-label={tr('Main')} className="border-t border-ink/15 bg-paper-card lg:hidden">
           <div className="wrap flex flex-col py-2">
             {LINKS.map(l => (
               <a key={l.to} href={l.to} className="border-b border-ink/10 py-3 text-sm font-medium text-ink-soft last:border-0">

@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
+import { tr } from '../i18n/lang'
 
 export interface Step { step: string; body?: string }
 
@@ -34,7 +35,7 @@ export function InteractiveWorkflow({
                 <span className={`block text-[.62rem] font-bold uppercase tracking-[.16em] ${on ? 'text-paper/85' : 'text-ink-faint'}`}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className={`mt-0.5 block text-sm font-semibold ${on ? 'text-paper' : 'text-ink'}`}>{s.step}</span>
+                <span className={`mt-0.5 block text-sm font-semibold ${on ? 'text-paper' : 'text-ink'}`}>{tr(s.step)}</span>
               </motion.button>
               {i < steps.length - 1 && (
                 <ArrowRight className="hidden h-4 w-4 shrink-0 text-ink-faint lg:block" aria-hidden />
@@ -52,8 +53,8 @@ export function InteractiveWorkflow({
           transition={{ duration: 0.28 }}
           className="card mt-4 p-5"
         >
-          <p className="kicker text-moss-600">{steps[active].step}</p>
-          <p className="mt-2 text-[.95rem] leading-relaxed text-ink-soft">{steps[active].body}</p>
+          <p className="kicker text-moss-600">{tr(steps[active].step)}</p>
+          <p className="mt-2 text-[.95rem] leading-relaxed text-ink-soft">{tr(steps[active].body)}</p>
         </motion.div>
       )}
     </div>

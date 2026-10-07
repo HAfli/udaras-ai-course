@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { tr } from '../../i18n/lang'
 
 const COLS = [
   { id: 'task', label: 'Task', ph: 'Weekly newsletter' },
@@ -16,8 +17,7 @@ export function UseCaseTable() {
   return (
     <div>
       <div className="prose-note"><p>
-        Five tasks from your own week. If you cannot fill the last column, it is not a use case yet — that is the
-        test the exercise is really applying.
+        {tr('Five tasks from your own week. If you cannot fill the last column, it is not a use case yet — that is the test the exercise is really applying.')}
       </p></div>
 
       <div className="scrollbar-thin mt-5 overflow-x-auto">
@@ -26,7 +26,7 @@ export function UseCaseTable() {
             <tr>
               {COLS.map(c => (
                 <th key={c.id} scope="col" className="border-b border-ink/15 pb-2 text-left text-[.7rem] font-bold uppercase tracking-wider text-ink-mute">
-                  {c.label}
+                  {tr(c.label)}
                 </th>
               ))}
             </tr>
@@ -39,8 +39,8 @@ export function UseCaseTable() {
                     <input
                       value={r[c.id] ?? ''}
                       onChange={e => set(i, c.id, e.target.value)}
-                      placeholder={i === 0 ? c.ph : ''}
-                      aria-label={`${c.label}, row ${i + 1}`}
+                      placeholder={i === 0 ? tr(c.ph) : ''}
+                      aria-label={tr('{c}, row {n}', { c: tr(c.label), n: i + 1 })}
                       className="w-full rounded-md border-0 bg-transparent px-2 py-2 placeholder:text-ink-faint/70 focus:bg-moss-50 focus:outline-none focus:ring-1 focus:ring-moss-400"
                     />
                   </td>

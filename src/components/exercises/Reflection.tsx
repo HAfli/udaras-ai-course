@@ -1,4 +1,5 @@
 import { ReflectionCard, type ReflectionPrompt } from '../ReflectionCard'
+import { tr } from '../../i18n/lang'
 
 interface ReflectionProps {
   questions: string[]
@@ -13,14 +14,14 @@ interface ReflectionProps {
  *  sent anywhere) and adds the same connection callout shown on the
  *  matching slide. */
 export function Reflection({ questions, connection, closingKey = 'closing' }: ReflectionProps) {
-  const prompts: ReflectionPrompt[] = questions.map((q, i) => ({ id: `q${i}`, prompt: `${i + 1}. ${q}` }))
+  const prompts: ReflectionPrompt[] = questions.map((q, i) => ({ id: `q${i}`, prompt: `${i + 1}. ${q}`, ga: `${i + 1}. ${tr(q)}` }))
   const entries = Object.entries(connection).filter(([k]) => k !== closingKey)
   const closing = connection[closingKey]
 
   return (
     <div>
       <div className="prose-note"><p>
-        Not another lecture — the facilitator asks, the room answers, a handful of observations go on the board.
+        {tr('Not another lecture — the facilitator asks, the room answers, a handful of observations go on the board.')}
       </p></div>
       <div className="mt-5">
         <ReflectionCard prompts={prompts} columns={2} />
@@ -29,15 +30,15 @@ export function Reflection({ questions, connection, closingKey = 'closing' }: Re
         {entries.map(([label, text]) => (
           <div key={label}>
             <p className="text-[.68rem] font-bold uppercase tracking-wide text-ink-mute">
-              {label.replace(/([a-z])([A-Z])/g, '$1 $2')}
+              {tr(label.replace(/([a-z])([A-Z])/g, '$1 $2'))}
             </p>
-            <p className="mt-1 text-sm text-ink-soft">{text}</p>
+            <p className="mt-1 text-sm text-ink-soft">{tr(text)}</p>
           </div>
         ))}
       </div>
       {closing && (
         <p className="pull-quote mt-6 border-t border-ink/12 pt-5 text-ink">
-          {closing}
+          {tr(closing)}
         </p>
       )}
     </div>

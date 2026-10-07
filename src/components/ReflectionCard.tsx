@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { Bi } from './ui/Bi'
+import { tr } from '../i18n/lang'
 
 export interface ReflectionPrompt { id: string; prompt: string; ga?: string; needsValidation?: boolean }
 
@@ -36,7 +37,7 @@ export function ReflectionCard({ prompts, columns = 1 }: { prompts: ReflectionPr
         ))}
       </div>
       <p className="mt-4 text-center text-sm text-ink-mute">
-        {done} of {prompts.length} answered · nothing here is saved or sent anywhere
+        {tr('{done} of {total} answered · nothing here is saved or sent anywhere', { done, total: prompts.length })}
       </p>
     </div>
   )

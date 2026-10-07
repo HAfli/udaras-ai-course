@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { RUBRIC_CRITERIA, RUBRIC_CLOSING, RUBRIC_CHOICE_PROMPT } from '../../data/exerciseContent'
+import { tr } from '../../i18n/lang'
 
 const OUTPUTS = ['Output A', 'Output B', 'Output C'] as const
 const SCALE = [1, 2, 3, 4, 5] as const
@@ -11,15 +12,14 @@ export function RubricScore() {
   return (
     <div>
       <div className="prose-note"><p>
-        One task — a 150-word promotional message for a fictional Gaeltacht business of your choice. Three AI
-        outputs. Score all three against the rubric before any model is asked for an opinion.
+        {tr('One task — a 150-word promotional message for a fictional Gaeltacht business of your choice. Three AI outputs. Score all three against the rubric before any model is asked for an opinion.')}
       </p></div>
 
       <div className="mt-5 space-y-3">
         {RUBRIC_CRITERIA.map(c => (
           <div key={c.id} className="card p-4">
-            <p className="text-sm font-semibold">{c.label}</p>
-            <p className="mt-1 text-sm text-ink-soft">{c.ask}</p>
+            <p className="text-sm font-semibold">{tr(c.label)}</p>
+            <p className="mt-1 text-sm text-ink-soft">{tr(c.ask)}</p>
             <div className="mt-3 grid gap-2 sm:grid-cols-3">
               {OUTPUTS.map(o => {
                 const key = `${c.id}:${o}`
@@ -35,7 +35,7 @@ export function RubricScore() {
                             key={n}
                             onClick={() => setScores(p => ({ ...p, [key]: n }))}
                             aria-pressed={on}
-                            aria-label={`${o}, ${c.label}, score ${n} of 5`}
+                            aria-label={tr('{o}, {c}, score {n} of 5', { o: tr(o), c: tr(c.label), n })}
                             className={`h-6 w-6 rounded-full border text-[.68rem] font-semibold transition-colors ${
                               on ? 'border-moss-600 bg-moss-700 text-paper' : 'border-ink/12 text-ink-mute hover:border-moss-300 hover:text-ink'
                             }`}
@@ -54,7 +54,7 @@ export function RubricScore() {
       </div>
 
       <div className="card mt-5 p-5">
-        <p className="text-sm font-semibold">{RUBRIC_CHOICE_PROMPT}</p>
+        <p className="text-sm font-semibold">{tr(RUBRIC_CHOICE_PROMPT)}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           {OUTPUTS.map(o => {
             const on = choice === o
@@ -67,7 +67,7 @@ export function RubricScore() {
                   on ? 'border-moss-600 bg-moss-700 text-paper' : 'border-ink/12 text-ink-mute hover:border-moss-300 hover:text-ink'
                 }`}
               >
-                {o}
+                {tr(o)}
               </button>
             )
           })}
@@ -76,7 +76,7 @@ export function RubricScore() {
 
       {choice && (
         <p className="mt-5 rounded-xl2 bg-moss-700 px-5 py-4 text-center font-display text-lg font-semibold text-paper">
-          {RUBRIC_CLOSING}
+          {tr(RUBRIC_CLOSING)}
         </p>
       )}
     </div>

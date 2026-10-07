@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2, Plus, Stethoscope } from 'lucide-react'
 import { useState } from 'react'
+import { tr } from '../../i18n/lang'
 
 interface Q { id: string; text: string; resolved: boolean }
 
@@ -22,10 +23,9 @@ export function Clinic() {
     <div>
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div className="prose-note max-w-xl"><p>
-          Questions come in ahead of the day and on the day. Each is opened, worked, and closed in front of the
-          room. The board below is seeded with the questions that come up most often.
+          {tr('Questions come in ahead of the day and on the day. Each is opened, worked, and closed in front of the room. The board below is seeded with the questions that come up most often.')}
         </p></div>
-        <span className="chip">{open} open · {qs.length - open} resolved</span>
+        <span className="chip">{tr('{open} open · {done} resolved', { open, done: qs.length - open })}</span>
       </div>
 
       <form
@@ -40,11 +40,11 @@ export function Clinic() {
         <input
           value={draft}
           onChange={e => setDraft(e.target.value)}
-          placeholder="Add a question to the clinic board…"
-          aria-label="Add a question"
+          placeholder={tr('Add a question to the clinic board…')}
+          aria-label={tr('Add a question')}
           className="w-full rounded-full border border-ink/15 bg-paper-card px-4 py-2.5 text-sm focus:border-moss-400"
         />
-        <button type="submit" className="btn-primary shrink-0"><Plus className="h-4 w-4" aria-hidden /> Add</button>
+        <button type="submit" className="btn-primary shrink-0"><Plus className="h-4 w-4" aria-hidden /> {tr('Add')}</button>
       </form>
 
       <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
@@ -63,13 +63,13 @@ export function Clinic() {
                 {q.resolved ? <CheckCircle2 className="h-4 w-4" /> : <Stethoscope className="h-4 w-4" />}
               </span>
               <p className={`flex-1 text-sm leading-relaxed ${q.resolved ? 'text-ink-mute line-through decoration-moss-300' : 'text-ink'}`}>
-                {q.text}
+                {q.id.startsWith('c') ? tr(q.text) : q.text}
               </p>
               <button
                 onClick={() => setQs(p => p.map(x => (x.id === q.id ? { ...x, resolved: !x.resolved } : x)))}
                 className="btn-quiet shrink-0 text-[.72rem]"
               >
-                {q.resolved ? 'Reopen' : 'Resolve'}
+                {q.resolved ? tr('Reopen') : tr('Resolve')}
               </button>
             </motion.li>
           ))}

@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { CONTRACT } from '../data/programme'
 import { Bi } from './ui/Bi'
+import { tr, pick } from '../i18n/lang'
 
 const FACTS = [
   { n: '04', label: 'Structured sessions' },
@@ -24,7 +25,7 @@ export function Hero() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-[.72rem] font-semibold uppercase tracking-[.16em] text-paper/70">
-            Munster Technological University / Údarás na Gaeltachta
+            {pick({ en: 'Munster Technological University', ga: 'Ollscoil Teicneolaíochta na Mumhan' })} / Údarás na Gaeltachta
           </p>
 
           <h1 className="display-huge mt-6 max-w-[20ch]">
@@ -34,15 +35,14 @@ export function Hero() {
           </h1>
 
           <p className="mt-8 max-w-md text-lg leading-snug text-paper/85">
-            AI literacy for real Gaeltacht workplaces — understand it, question it, use it safely.
+            {tr('AI literacy for real Gaeltacht workplaces — understand it, question it, use it safely.')}
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a href="#/session/s1" className="btn-cta">
-              Tosaigh leis an Seisiún 1
+              {pick({ ga: 'Tosaigh leis an Seisiún 1', en: 'Start Session 1' })}
               <ArrowRight className="h-5 w-5" aria-hidden />
             </a>
-            <span className="text-sm text-paper/90">Start Session 1</span>
           </div>
         </motion.div>
 
@@ -55,7 +55,7 @@ export function Hero() {
           {FACTS.map(f => (
             <div key={f.label}>
               <p className="fig-num text-5xl text-gold sm:text-6xl">{f.n}</p>
-              <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-paper/90">{f.label}</p>
+              <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-paper/90">{tr(f.label)}</p>
             </div>
           ))}
         </motion.div>

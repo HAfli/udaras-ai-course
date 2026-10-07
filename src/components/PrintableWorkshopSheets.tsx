@@ -1,5 +1,6 @@
 import { FileDown, ArrowUpRight } from 'lucide-react'
 import { WORKSHOP_PDF } from './exercises/WorkshopExtras'
+import { tr } from '../i18n/lang'
 
 /** The one "PRINTABLE WORKSHOP SHEETS" block, reused wherever the task
  *  asks it to appear (Session 1 overview, Workshops & activities, Learn
@@ -14,21 +15,20 @@ const SHEETS: { id: keyof typeof WORKSHOP_PDF; title: string }[] = [
 export function PrintableWorkshopSheets({ className = '' }: { className?: string }) {
   return (
     <section aria-labelledby="printable-sheets-h" className={`border-y border-ink/12 py-6 sm:py-8 ${className}`}>
-      <p id="printable-sheets-h" className="eyebrow">Printable workshop sheets</p>
+      <p id="printable-sheets-h" className="eyebrow">{tr('Printable workshop sheets')}</p>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
-        Each workshop is a print-ready A4 handout, in Irish and in English, inside the Session 1 Participant Package
-        (PDF). Print it, or work from the page online instead.
+        {tr('Each workshop is a print-ready A4 handout, in Irish and in English, inside the Session 1 Participant Package (PDF). Print it, or work from the page online instead.')}
       </p>
       <div className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
         {SHEETS.map(s => (
           <div key={s.id}>
-            <p className="font-display text-base font-semibold leading-snug">{s.title}</p>
+            <p className="font-display text-base font-semibold leading-snug">{tr(s.title)}</p>
             <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
               <a
                 href={`#/session/s1/exercises/${s.id}`}
                 className="inline-flex items-center gap-1 font-semibold text-ink hover:text-atlantic hover:underline"
               >
-                Open online <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                {tr('Open online')} <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
               </a>
               <a
                 href={`${import.meta.env.BASE_URL}${WORKSHOP_PDF[s.id]}`}
@@ -36,7 +36,7 @@ export function PrintableWorkshopSheets({ className = '' }: { className?: string
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 font-semibold text-ink hover:text-atlantic hover:underline"
               >
-                Printable PDF (Participant Package) <FileDown className="h-3.5 w-3.5" aria-hidden />
+                {tr('Printable PDF (Participant Package)')} <FileDown className="h-3.5 w-3.5" aria-hidden />
               </a>
             </div>
           </div>

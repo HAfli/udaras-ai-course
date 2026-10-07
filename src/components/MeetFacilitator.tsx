@@ -3,6 +3,7 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react'
 import { FACILITATOR } from '../data/facilitator'
 import { FacilitatorPhoto } from './FacilitatorPhoto'
 import { Reveal } from './ui/Reveal'
+import { tr } from '../i18n/lang'
 
 /** An academic-publication profile: a full portrait running the height
  *  of the block, uncontained, with the biography set as running text
@@ -27,17 +28,17 @@ export function MeetFacilitator() {
 
         <div>
           <Reveal>
-            <p className="eyebrow">Course facilitator</p>
+            <p className="eyebrow">{tr('Course facilitator')}</p>
             <h2 id="meet-h" className="mt-3 text-4xl font-semibold leading-[1.05] sm:text-[3.4rem]">
               {FACILITATOR.name}
             </h2>
-            <p className="mt-2 font-display text-lg italic text-ink-soft sm:text-xl">{FACILITATOR.role}</p>
+            <p className="mt-2 font-display text-lg italic text-ink-soft sm:text-xl">{tr(FACILITATOR.role)}</p>
           </Reveal>
 
           <div className="col-read mt-8 ml-0 max-w-2xl space-y-4 border-t border-ink/15 pt-6">
             {FACILITATOR.bio.map((para, i) => (
               <p key={i} className="text-[1.02rem] leading-relaxed text-ink-soft">
-                {para}
+                {tr(para)}
               </p>
             ))}
           </div>
@@ -49,12 +50,12 @@ export function MeetFacilitator() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-atlantic hover:underline"
             >
-              {FACILITATOR.websiteLabel}
+              {tr(FACILITATOR.websiteLabel)}
               <ArrowUpRight className="h-4 w-4" aria-hidden />
-              <span className="sr-only"> (opens in a new tab)</span>
+              <span className="sr-only"> ({tr('opens in a new tab')})</span>
             </a>
             <a href="#/research" className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink hover:text-atlantic">
-              His research in this course
+              {tr('His research in this course')}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
           </div>

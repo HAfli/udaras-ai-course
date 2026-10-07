@@ -4,6 +4,7 @@ import { useState } from 'react'
 import type { BetweenWork } from '../data/types'
 import { Bi } from './ui/Bi'
 import { ExperimentLog } from './exercises/ExperimentLog'
+import { tr } from '../i18n/lang'
 
 export function BetweenCard({ w }: { w: BetweenWork }) {
   const [done, setDone] = useState(0)
@@ -13,16 +14,16 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
   return (
     <div className="card overflow-hidden">
       <div className="border-b border-ink/8 bg-lichen-soft/25 p-6 sm:p-8">
-        <p className="eyebrow text-lichen-deep">Between sessions</p>
+        <p className="eyebrow text-lichen-deep">{tr('Between sessions')}</p>
         <h2 className="mt-2 font-display text-2xl font-semibold sm:text-3xl"><Bi v={w.title} /></h2>
-        <p className="mt-3 max-w-2xl text-[1.02rem] leading-relaxed text-ink-soft">{w.brief}</p>
+        <p className="mt-3 max-w-2xl text-[1.02rem] leading-relaxed text-ink-soft">{tr(w.brief)}</p>
       </div>
 
       <div className="p-6 sm:p-8">
         {target > 0 && (
           <div className="mb-7">
             <div className="flex items-center justify-between">
-              <p className="kicker">Progress</p>
+              <p className="kicker">{tr('Progress')}</p>
               <p className="font-mono text-sm font-bold text-moss-700">{done} / {target}</p>
             </div>
             <div className="mt-3 flex gap-2">
@@ -33,7 +34,7 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
                     key={i}
                     onClick={() => setDone(d => (i < d ? i : i + 1))}
                     aria-pressed={on}
-                    aria-label={`Experiment ${i + 1}`}
+                    aria-label={tr('Experiment {n}', { n: i + 1 })}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl border py-3 text-sm font-semibold transition-colors ${
                       on ? 'border-moss-600 bg-moss-700 text-paper' : 'border-ink/12 text-ink-mute hover:border-moss-300'
                     }`}
@@ -57,7 +58,7 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
 
         {w.steps.length > 0 && (
           <>
-            <p className="kicker">Record for each</p>
+            <p className="kicker">{tr('Record for each')}</p>
             <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
               {w.steps.map((s, i) => (
                 <motion.li
@@ -68,7 +69,7 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
                   transition={{ duration: 0.35, delay: i * 0.06 }}
                   className="flex items-center gap-2"
                 >
-                  <span className="chip">{s}</span>
+                  <span className="chip">{tr(s)}</span>
                   {i < w.steps.length - 1 && <ArrowRight className="h-3 w-3 text-ink-faint" aria-hidden />}
                 </motion.li>
               ))}
@@ -79,7 +80,7 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
 
         {w.flow && (
           <>
-            <p className="kicker">Worked example — a weekly newsletter</p>
+            <p className="kicker">{tr('Worked example — a weekly newsletter')}</p>
             <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
               {w.flow.map((s, i) => (
                 <motion.li
@@ -95,14 +96,14 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
                       ? 'border-moss-400 bg-moss-50 text-moss-800'
                       : 'border-ink/12 bg-paper-card text-ink-soft'
                   }`}>
-                    {s}
+                    {tr(s)}
                   </span>
                   {i < w.flow!.length - 1 && <ArrowRight className="h-3.5 w-3.5 text-ink-faint" aria-hidden />}
                 </motion.li>
               ))}
             </ol>
             <p className="mt-3 text-sm text-ink-mute">
-              The two green steps are the ones that keep it yours. Everything else is machinery.
+              {tr('The two green steps are the ones that keep it yours. Everything else is machinery.')}
             </p>
           </>
         )}
@@ -111,7 +112,7 @@ export function BetweenCard({ w }: { w: BetweenWork }) {
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {w.fields.map(f => (
               <label key={f} className="card block p-4">
-                <span className="kicker text-moss-600">{f}</span>
+                <span className="kicker text-moss-600">{tr(f)}</span>
                 <input className="mt-1.5 w-full border-0 border-b border-ink/12 bg-transparent px-0 py-1.5 text-sm focus:border-moss-500 focus:outline-none focus:ring-0" />
               </label>
             ))}
