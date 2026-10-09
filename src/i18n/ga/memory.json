@@ -67,5 +67,15 @@
  "Recognise that Irish varies by region and context, and critically evaluate whether AI-generated Irish is appropriate for the intended linguistic community and audience.": "A aithint go n-athraíonn an Ghaeilge ó réigiún go réigiún agus ó chomhthéacs go comhthéacs, agus measúnú criticiúil a dhéanamh an bhfuil Gaeilge ó AI oiriúnach don phobal teanga agus don lucht féachana atá i gceist.",
  "Use your toolkit on one real task. Bring to Session 4: the AI version, your corrected version, and what you changed.": "Úsáid d’fhoireann uirlisí ar thasc fíor amháin. Tabhair leat go Seisiún 4: an leagan a ghin AI, do leagan ceartaithe, agus cad a d’athraigh tú.",
  "The between-session task. Which AI tools can you open today?": "An tasc idir seisiúin. Cé na huirlisí AI atá agat inniu?",
- "A live demo, and what is available on your own account.": "Taispeántas beo, agus cad atá ar fáil ar do chuntas féin."
+ "A live demo, and what is available on your own account.": "Taispeántas beo, agus cad atá ar fáil ar do chuntas féin.",
+ "Four questions before you put anything in.": "Ceithre cheist sula gcuireann tú rud ar bith isteach.",
+ "Three kinds of information, the rules in five minutes, and a card sort.": "Trí chineál faisnéise, na rialacha i gcúig nóiméad, agus cártaí a rangú.",
+ "Three challenges: AI → AI · Proposal → Review · Proposal → Promotion": "Trí dhúshlán: AI → AI · Togra → Athbhreithniú · Togra → Cur chun cinn",
+ "Task → Source → Prompt → Generate → Verify → Improve → Approve": "Tasc → Foinse → Prompt → Gin → Fíoraigh → Feabhsaigh → Ceadú",
+ "Try. Compare. Discuss.": "Bain triail as. Cuir i gcomparáid. Pléigh.",
+ "Gemini Notebook (NotebookLM) · eight sources · evidence": "Gemini Notebook (NotebookLM) · ocht bhfoinse · fianaise",
+ "Data, representation and the opportunity — no maths.": "Sonraí, léiriú agus an deis — gan matamaitic.",
+ "The IRISH check · proofreading · Which Irish? · Irish-language documents": "An tseiceáil IRISH · léamh profaí · Cén Ghaeilge? · doiciméid Ghaeilge",
+ "Five tasks, four workflows.": "Cúig thasc, ceithre shruth oibre.",
+ "What changed? Then one output, approved.": "Cad a d’athraigh? Ansin aschur amháin, ceadaithe."
 }

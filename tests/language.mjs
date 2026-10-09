@@ -82,13 +82,24 @@ async function expandAll(page) {
 
 // Click every ordinary control once (options, reveals, steps) so feedback text renders too.
 async function clickAll(page, scopeSel) {
-  const sel = `${scopeSel} button:visible:not([role=tab]):not([data-no-sweep])`
+  const sel = `${scopeSel} button:visible:not([role=tab]):not([data-no-sweep]):not([data-exercise-open])`
   for (let i = 0; i < 120; i++) {
     const b = page.locator(sel).nth(i)
     if (!(await b.count())) break
     const label = (await b.getAttribute('aria-label')) || ''
     if (/^(Close|Dún|Menu|Roghchlár)$/.test(label)) continue
     try { await b.click({ timeout: 600 }) } catch { /* detached or covered */ }
+  }
+}
+
+// Single-open groups (timetable slots, framework steps): open each item in turn and collect after every click.
+async function clickEachExpander(page, add, route) {
+  const sel = 'main button[aria-expanded]:not([data-exercise-open]), [role=dialog] button[aria-expanded]'
+  const n = await page.locator(sel).count()
+  for (let i = 0; i < n && i < 80; i++) {
+    const b = page.locator(sel).nth(i)
+    if ((await b.getAttribute('aria-label') || '').match(/^(Menu|Roghchlár)$/)) continue
+    try { await b.click({ timeout: 600 }); await page.waitForTimeout(80); await add(route + ' expander' + i, await collect(page)) } catch { /* hidden or detached */ }
   }
 }
 
@@ -107,15 +118,20 @@ async function sweep(lang, viewport) {
   for (const r of ROUTES) {
     await page.goto(base + r); await page.reload(); await page.waitForTimeout(700)
     await expandAll(page); await add(r, await collect(page))
-    if (!r.startsWith('#/session')) { await clickAll(page, 'main'); await expandAll(page); await add(r + ' (all clicked)', await collect(page)) }
+    if (!r.startsWith('#/session')) { await clickEachExpander(page, add, r); await clickAll(page, 'main'); await expandAll(page); await add(r + ' (all clicked)', await collect(page)) }
     const tabs = page.locator('[role=tab]'); const nt = await tabs.count()
     for (let i = 0; i < nt; i++) {
-      await tabs.nth(i).click(); await page.waitForTimeout(250); await expandAll(page); await add(r + ' tab' + i, await collect(page))
+      await tabs.nth(i).click(); await page.waitForTimeout(250); await clickEachExpander(page, add, r + ' tab' + i); await expandAll(page); await add(r + ' tab' + i, await collect(page))
+      for (let k = 0; k < 6; k++) { await clickAll(page, 'main [role=tabpanel]'); } await add(r + ' tab' + i + ' (all clicked)', await collect(page))
+      await page.keyboard.press('Escape'); await page.waitForTimeout(150)
       const cards = page.locator('[data-exercise-open]'); const nc = await cards.count()
       for (let c = 0; c < nc; c++) {
-        await cards.nth(c).click(); await page.waitForTimeout(350)
+        try { await cards.nth(c).click({ timeout: 3000 }) } catch { await page.keyboard.press('Escape'); await page.waitForTimeout(200); await cards.nth(c).click() }
+        await page.waitForTimeout(350)
         await expandAll(page); await add(r + ' exercise' + c, await collect(page))
-        await clickAll(page, '[role=dialog]'); await expandAll(page); await add(r + ' exercise' + c + ' (all clicked)', await collect(page))
+        await clickEachExpander(page, add, r + ' exercise' + c)
+        for (let k = 0; k < 4; k++) await clickAll(page, '[role=dialog]')
+        await expandAll(page); await add(r + ' exercise' + c + ' (all clicked)', await collect(page))
         await page.keyboard.press('Escape'); await page.waitForTimeout(150)
       }
     }
