@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react'
-import { AlertTriangle, Check, Copy, ExternalLink } from 'lucide-react'
+import { AlertTriangle, Check, Copy, ExternalLink, FileDown } from 'lucide-react'
 import { S3 } from '../../data/session3Content'
 import { Bi } from '../ui/Bi'
 import { tr, pick, getLang } from '../../i18n/lang'
@@ -356,6 +356,36 @@ function SourcePackLinks() {
   )
 }
 
+/* The eight sources as separate Word files (public/session-3-sources/), for uploading one by one to Gemini
+ * Notebook. Same documents as the combined Supporting Source Pack PDF; file names and contents as supplied. */
+function SourceFiles() {
+  const base = import.meta.env.BASE_URL
+  return (
+    <section aria-labelledby="s3-source-files" className="border border-ink/15 p-4">
+      <h4 id="s3-source-files" className="text-sm font-bold">{tr('Download the eight source files')}</h4>
+      <p className="mt-1 text-sm text-ink-soft">{tr('Download the eight files below and add them as sources in Gemini Notebook for the document-analysis exercise. Use the files to compare information across documents, identify contradictions and uncertainty, and trace conclusions back to the evidence.')}</p>
+      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+        {S3.SOURCES.map(src => {
+          const file = `Source_${src.n}.docx`
+          const title = tr(src.title.en) // what the document is, in the selected language
+          return (
+            <li key={src.n}>
+              <a href={`${base}session-3-sources/${file}`} download={file} className="btn-ghost inline-flex w-full items-start justify-start text-left"
+                 aria-label={tr('Download {f} (Word document): {t}', { f: file, t: title })}>
+                <FileDown className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+                <span className="min-w-0">
+                  <span className="block font-semibold" data-i18n-exempt="file name">{file}</span>
+                  <span className="block text-xs font-normal text-ink-mute">{title}</span>
+                </span>
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </section>
+  )
+}
+
 function SourceList() {
   return (
     <ol className="grid gap-2 sm:grid-cols-2">
@@ -415,6 +445,7 @@ export function NotebookFolder() {
         <Label>{tr('The folder — eight fictional sources')}</Label>
         <div className="mt-2"><SourceList /></div>
         <div className="mt-3"><SourcePackLinks /></div>
+        <div className="mt-3"><SourceFiles /></div>
         <p className="mt-2 text-xs text-ink-mute"><Bi v={V(S3.PACK_NOTE)} compact /></p>
       </div>
       <div>

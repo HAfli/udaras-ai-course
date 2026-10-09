@@ -73,6 +73,18 @@ for (const lang of ['ga', 'en']) {
   }
   await go('#/session/s2/exercises/e9c'); t = await body()
   ok(L.approval.every(x => t.includes(x)), `${lang} Session 2 approval wording`)
+  // Gemini Notebook exercise: eight individual source files, each the exact file in public/session-3-sources/
+  await go('#/session/s3/exercises/s3-notebook')
+  const files = await p.locator('[role=dialog] a[href*="session-3-sources/"]').evaluateAll(as => as.map(a => [a.getAttribute('href'), a.textContent, a.getAttribute('aria-label')]))
+  ok(files.length === 8, `${lang} eight source-file links (found ${files.length})`)
+  ok((await p.locator('#s3-source-files').innerText()).length > 0 && (await p.locator('#s3-source-files').innerText()).includes(lang === 'ga' ? 'Íoslódáil na hocht gcomhad foinse' : 'Download the eight source files'), `${lang} source-file heading`)
+  for (const [i, [h]] of files.entries()) {
+    const name = `Source_${i + 1}.docx`
+    ok(h.endsWith('session-3-sources/' + name), `${lang} link ${i + 1} -> ${h}`)
+    const r = await p.request.get(new URL(h, p.url()).href)
+    const local = fs.readFileSync(new URL('../public/session-3-sources/' + name, import.meta.url))
+    ok(r.status() === 200 && Buffer.compare(Buffer.from(await r.body()), local) === 0, `${lang} ${name} served intact (${r.status()})`)
+  }
   for (const ex of S3_EX) { await go('#/session/s3/exercises/' + ex); ok((await p.locator('[role=dialog]').count()) === 1, `${lang} dialog ${ex}`); await audit(ex) }
   await p.setViewportSize({ width: 375, height: 800 })
   for (const r of ['#/', '#/session/s1', '#/session/s2', '#/session/s3']) {

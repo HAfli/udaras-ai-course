@@ -396,5 +396,16 @@
  "Print the workshop sheet → (Participant Package PDF; Irish first, then English)": "Priontáil bileog na ceardlainne → (PDF Phacáiste an Rannpháirtí; Gaeilge ar dtús, ansin Béarla)",
  "Workshop": "Ceardlann",
  "Final activity": "Gníomhaíocht dheireanach",
- "Today’s journey": "Turas an lae inniu"
+ "Today’s journey": "Turas an lae inniu",
+ "Download the eight source files": "Íoslódáil na hocht gcomhad foinse",
+ "Download the eight files below and add them as sources in Gemini Notebook for the document-analysis exercise. Use the files to compare information across documents, identify contradictions and uncertainty, and trace conclusions back to the evidence.": "Íoslódáil na hocht gcomhad thíos agus cuir isteach iad mar fhoinsí in Gemini Notebook don chleachtadh anailíse cáipéisí. Úsáid na comhaid chun eolas ó cháipéisí éagsúla a chur i gcomparáid, chun neamhréitigh agus éiginnteacht a aithint, agus chun conclúidí a rianú siar go dtí an fhianaise.",
+ "Download {f} (Word document): {t}": "Íoslódáil {f} (cáipéis Word): {t}",
+ "Fact sheet 2026 (Irish)": "Bileog eolais 2026 (Gaeilge)",
+ "Fact sheet 2026 (English)": "Bileog eolais 2026 (Béarla)",
+ "Feedback from last year (Irish and English, anonymous)": "Aiseolas na bliana seo caite (Gaeilge agus Béarla, gan ainm)",
+ "Organiser notes (English, informal)": "Nótaí an eagraí (Béarla, neamhfhoirmiúil)",
+ "Last year’s plan (English)": "Plean na bliana seo caite (Béarla)",
+ "This year’s plan (Irish)": "Plean na bliana seo (Gaeilge)",
+ "Questions from the community (Irish and English)": "Ceisteanna ón bpobal (Gaeilge agus Béarla)",
+ "Email from a youth club (fictional), Múscraí Gaeltacht": "Ríomhphost ó chlub óige (ficseanúil), Gaeltacht Mhúscraí"
 }
