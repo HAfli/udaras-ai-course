@@ -10,6 +10,7 @@ dist-single/
 .claude/
 scripts/session2/
 scripts/session3/
+scripts/session4/
 scripts/__pycache__/
 scripts/gen_workshop_docs_*.py
 

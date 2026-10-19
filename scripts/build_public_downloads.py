@@ -14,12 +14,18 @@ PDF only. Nothing editable, facilitator-only or internal is copied to public/.
   Session-3-Participant-Package.pdf  Quick Guide + Workbook + Fictional Scenario
   Session-3-Slides.pdf               "Session 3/Udaras_AI_Course_Session_3_MTU_v1.0_DRAFT.pdf" (40 slides)
   Session-3-Source-Pack.pdf          the eight fictional sources in one PDF (source 4's personal data removed)
+  Session-4-Participant-Package.pdf  Workbook + Scenario Cards + Responsible AI Checklist (final session)
+  Session-4-Slides.pdf               "Session 4/Udaras_AI_Course_Session_4_MTU_v1.0_DRAFT.pdf" (40 slides)
+  Session-4-Responsible-AI-Checklist.pdf  the checklist on its own (2 pages)
 
-Usage: python scripts/build_public_downloads.py   (needs LibreOffice `soffice`, PyMuPDF and python-pptx)
+Usage: python scripts/build_public_downloads.py [--only s4]   (--only s4 rebuilds just the Session 4 files)
+
+Needs LibreOffice `soffice`, PyMuPDF and python-pptx.
 """
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 import pymupdf
 
@@ -27,11 +33,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.normpath(os.path.join(HERE, ".."))
 ROOT = os.path.normpath(os.path.join(SITE, ".."))
 PUBLIC = os.path.join(SITE, "public")
-S1, S2, S3 = (os.path.join(ROOT, f"Session {n}") for n in (1, 2, 3))
+S1, S2, S3, S4 = (os.path.join(ROOT, f"Session {n}") for n in (1, 2, 3, 4))
 
 # Public filenames that are produced here; anything else course-related in public/ is removed.
 OUTPUTS = ["Session-1-Participant-Package.pdf", "Session-1-Slides.pdf", "Session-2-Participant-Package.pdf", "Session-2-Slides.pdf",
-           "Session-3-Participant-Package.pdf", "Session-3-Slides.pdf", "Session-3-Source-Pack.pdf"]
+           "Session-3-Participant-Package.pdf", "Session-3-Slides.pdf", "Session-3-Source-Pack.pdf",
+           "Session-4-Participant-Package.pdf", "Session-4-Slides.pdf", "Session-4-Responsible-AI-Checklist.pdf"]
 OBSOLETE = ["session1-slides.pdf", "Session_1_Workshop_1_Can_AI_Help_Me.pdf", "Session_1_Workshop_2_Prompt_Challenge.pdf",
             "Session_1_Workshop_1_Can_AI_Help_Me_EN.docx", "Session_1_Workshop_1_Can_AI_Help_Me_GA.docx",
             "Session_1_Workshop_2_Prompt_Challenge_EN.docx", "Session_1_Workshop_2_Prompt_Challenge_GA.docx",
@@ -103,7 +110,20 @@ def merge(parts, out):
     return out
 
 
+def session4():
+    pk4 = os.path.join(S4, "Session_4_Participant_Package")
+    merge([os.path.join(pk4, f) for f in ("Session_4_Participant_Workbook_GA_EN.pdf", "Session_4_Scenario_Cards_GA_EN.pdf",
+                                          "Session_4_Responsible_AI_Checklist_GA_EN.pdf")], os.path.join(PUBLIC, "Session-4-Participant-Package.pdf"))
+    shutil.copyfile(os.path.join(S4, "Udaras_AI_Course_Session_4_MTU_v1.0_DRAFT.pdf"), os.path.join(PUBLIC, "Session-4-Slides.pdf"))
+    merge([os.path.join(pk4, "Session_4_Responsible_AI_Checklist_GA_EN.pdf")], os.path.join(PUBLIC, "Session-4-Responsible-AI-Checklist.pdf"))
+
+
 def main():
+    if "--only" in sys.argv and sys.argv[sys.argv.index("--only") + 1] == "s4":
+        session4()
+        for f in OUTPUTS[-3:]:
+            print(f, len(pymupdf.open(os.path.join(PUBLIC, f))), "pages")
+        return
     tmp = tempfile.mkdtemp()
     # Session 1
     s1 = [to_pdf(os.path.join(S1, f), tmp) for f in ("Session_1_Workshop_1_Can_AI_Help_Me_GA.docx", "Session_1_Workshop_1_Can_AI_Help_Me_EN.docx",
@@ -122,6 +142,8 @@ def main():
                                           "Session_3_Fictional_Scenario_GA_EN.pdf")], os.path.join(PUBLIC, "Session-3-Participant-Package.pdf"))
     shutil.copyfile(os.path.join(S3, "Udaras_AI_Course_Session_3_MTU_v1.0_DRAFT.pdf"), os.path.join(PUBLIC, "Session-3-Slides.pdf"))
     shutil.copyfile(os.path.join(S3, "Session_3_Source_Pack", "Session_3_Source_Pack_All_in_One.pdf"), os.path.join(PUBLIC, "Session-3-Source-Pack.pdf"))
+    # Session 4
+    session4()
     for f in OBSOLETE:
         p = os.path.join(PUBLIC, f)
         if os.path.exists(p):

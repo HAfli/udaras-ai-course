@@ -28,6 +28,8 @@ const NAMES = [
   // quoted sign text, fictional organisations and people, a quoted proverb, an Irish place name
   'Fáilte', 'An Ceantar', 'Ár dTeanga', 'Ár bPobal', 'Lios na Scéalta', 'Peadar Ó Sé', 'Ní neart go cur le chéile', 'Tír Eoghain',
   'CIR COGHAIN', 'Halla an Phobail',
+  // Session 4: a fictional business, an official Irish body name, and the English title of the Irish 2026 Act
+  'Potaireacht na Trá', 'Oifig IS na hÉireann', 'Regulation of Artificial Intelligence Act 2026',
   // book titles, and the AI products' own English menu labels (Irish is not one of their interface languages)
   'The Irish of West Muskerry, Co. Cork: a phonetic study', 'The Irish of West Muskerry', 'Personalization and memory', 'Improve the model for everyone',
   'Help improve Claude', 'Training on conversation activity', 'Training on voice conversations', 'Instructions for Claude', 'Custom instructions', 'Data controls',

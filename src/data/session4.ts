@@ -1,92 +1,54 @@
-import type { SessionMeta } from './types'
+import type { ExerciseKind, SessionMeta, SlideGroup, TimetableSlot } from './types'
+import { S4 } from './session4Content'
+
+/* Session 4 — the final session: a full day, 10:00–15:00 (organiser's request; the contract's Appendix A describes a
+ * "Half-Day Wrap-Up (Week 8)" — to be confirmed in writing, see CONTRACT.contractNotes). Date not yet confirmed.
+ * Timetable, exercises and Irish wording come from the same source as the slides and Word documents
+ * (scripts/session4). Reused Irish is copied exactly; all new Irish is grammar-checked but awaiting native
+ * review (needsValidation). */
+
+const bi = (b: { readonly ga: string; readonly en: string }) => ({ ga: b.ga, en: b.en, needsValidation: true })
+
+const timetable: TimetableSlot[] = S4.TIMETABLE.map(t => ({
+  time: t.time,
+  kind: t.kind,
+  title: bi(t.title),
+  ...(t.detail ? { detail: t.detail.en } : {}),
+}))
+
+const slideGroups: SlideGroup[] = S4.SLIDE_GROUPS.map(g => ({
+  id: g.id,
+  range: g.range,
+  title: bi(g.title),
+  slides: g.slides.map(s => ({ n: s.n, title: { ga: s.ga, en: s.en, needsValidation: true } })),
+}))
+
+const PART: Record<number, string> = { 0: 'Reference', 2: 'Part 2', 3: 'Part 3', 4: 'Part 4', 5: 'Part 5', 6: 'Part 6', 7: 'Part 7', 8: 'Part 8', 9: 'Part 9' }
 
 export const session4: SessionMeta = {
   id: 's4',
   index: 'Session 4',
-  title: { en: 'AI Confidence Clinic and Personal AI Plan', ga: 'Clinic Muiníne AI agus Plean Pearsanta AI', needsValidation: true },
-  strapline: { en: 'Use AI deliberately, safely, and in a way that creates value.', ga: 'Bain úsáid as AI go comhfhiosach, go sábháilte, ar bhealach a chruthaíonn luach.', needsValidation: true },
-  duration: 'Half day · 09:30–13:00',
+  title: bi(S4.META.title),
+  strapline: bi(S4.META.strapline),
+  duration: S4.META.durationLabel.en,
   week: 'Week 8',
-  location: 'Campas Íosagáin',
-  centralQuestion: {
-    en: 'How do I continue using AI responsibly after the course?',
-    ga: 'Conas a leanfaidh mé orm ag úsáid AI go freagrach tar éis an chúrsa?',
-    needsValidation: true,
-  },
-  narrative: { en: 'AI is an assistant, not an authority.', ga: 'Is cúntóir í an AI, ní údarás.', needsValidation: true },
-  outcomes: [
-    'Diagnose why a particular AI output went wrong and fix it without help.',
-    'Describe their own repeatable AI workflow, start to finish.',
-    'State in writing what they will and will not use AI for.',
-    'Name what they will always verify and what stays a human decision.',
-    'Commit to specific Irish-language AI practice in their own organisation.',
-    'Leave with a thirty-day plan they wrote themselves.',
-  ],
-  timetable: [
-    { time: '09:30–09:50', kind: 'reflect',  title: { en: 'Course reflection', ga: 'Machnamh ar an gcúrsa', needsValidation: true }, detail: 'Session 1 answers to “what do you think about AI?” are brought back out and compared.' },
-    { time: '09:50–10:30', kind: 'lab',      title: { en: 'AI clinic', ga: 'Clinic AI' }, detail: 'Participants’ real, outstanding questions — worked through in the room.' },
-    { time: '10:30–11:00', kind: 'lab',      title: { en: 'Troubleshooting' } },
-    { time: '11:00–11:15', kind: 'break',    title: { en: 'Break', ga: 'Sos' } },
-    { time: '11:15–12:00', kind: 'activity', title: { en: 'Personal AI workflow' } },
-    { time: '12:00–12:30', kind: 'activity', title: { en: 'Responsible AI plan' } },
-    { time: '12:30–13:00', kind: 'reflect',  title: { en: 'Future commitments and evaluation' } },
-  ],
-  slideGroups: [
-    {
-      id: 's4g1', range: '1–20', title: { en: 'Clinic and consolidation' },
-      slides: [
-        { n: 1,  title: { en: 'What have you learned?' } },
-        { n: 2,  title: { en: 'What changed in your attitude towards AI?' } },
-        { n: 3,  title: { en: 'What can AI do?' } },
-        { n: 4,  title: { en: 'What should AI never decide for you?' } },
-        { n: 5,  title: { en: 'AI Clinic', ga: 'Clinic AI' } },
-        { n: 6,  title: { en: 'Common problems' } },
-        { n: 7,  title: { en: 'Troubleshooting AI outputs' } },
-        { n: 8,  title: { en: 'My AI workflow' } },
-        { n: 9,  title: { en: 'My responsible AI plan' } },
-        { n: 10, title: { en: 'My Irish-language AI plan' } },
-        { n: 11, title: { en: 'What will I change?' } },
-        { n: 12, title: { en: 'One thing I will start' } },
-        { n: 13, title: { en: 'One thing I will stop' } },
-        { n: 14, title: { en: 'One thing I will experiment with' } },
-        { n: 15, title: { en: 'The next 30 days' } },
-        { n: 16, title: { en: 'AI is an assistant, not an authority' } },
-        { n: 17, title: { en: 'AI for Irish — not AI instead of Irish' } },
-        { n: 18, title: { en: 'Final reflection', ga: 'Machnamh deiridh', needsValidation: true } },
-        { n: 19, title: { en: 'Course feedback' } },
-        { n: 20, title: { en: 'Closing message' } },
-      ],
-      callout: { label: 'Format', body: 'This session is run as a clinic, not a lecture. The slide list is a backdrop; the agenda is whatever participants bring.' },
-    },
-  ],
-  exercises: [
-    { id: 'e13', number: 'Exercise 13', kind: 'clinic', minutes: 40,
-      title: { en: 'The AI clinic', ga: 'An Clinic AI' },
-      purpose: 'Participants submit their real outstanding questions in advance and on the day. Each is opened, worked and closed in front of the room.',
-      lesson: 'Most “AI problems” are prompt problems, context problems or expectation problems — and are fixable in minutes.' },
-    { id: 'e14', number: 'Exercise 14', kind: 'workflow', minutes: 45,
-      title: { en: 'Build my AI workflow' },
-      purpose: 'Current process → time spent → AI opportunity → information involved → risk → human check → final workflow.',
-      lesson: 'A workflow you have written down is a workflow you can delegate, improve and defend.' },
-    { id: 'e15', number: 'Exercise 15', kind: 'charter', minutes: 30,
-      title: { en: 'My Responsible AI Plan', ga: 'Mo Phlean AI Freagrach', needsValidation: true },
-      purpose: 'Seven short sections: three tasks where AI will be used, two where it will not, a safety check, a verification method, an Irish-language use case, a named approver and a 30-day experiment.',
-      lesson: 'This is the deliverable participants actually keep.' },
-  ],
-  keyMessages: [
-    'AI is an assistant, not an authority.',
-    'AI for Irish — not AI instead of Irish.',
-    'AI literacy is not about becoming an AI expert. It is about becoming confident enough to make good decisions about AI.',
-    'Confidence is not the absence of scepticism. It is scepticism with a method attached.',
-  ],
-  irishComponent:
-    'Every participant writes an Irish-language section of their plan: what Irish-language work they will support with AI, and what stays entirely human.',
-  safetyComponent:
-    'The Responsible AI Plan formalises the whole programme’s safety teaching into personal commitments: what never goes in, what is always verified, and what stays a human decision.',
-  outputs: [
-    'A resolved question list from the clinic.',
-    'One documented personal AI workflow per participant.',
-    'A completed Responsible AI Plan per participant.',
-    'Course evaluation and final reflections for Údarás na Gaeltachta and MTU.',
-  ],
+  location: S4.META.venue,
+  centralQuestion: bi(S4.META.question),
+  narrative: bi(S4.STRAPLINE_REUSED),
+  outcomes: S4.OUTCOMES.map(o => o.en),
+  timetable,
+  slideGroups,
+  exercises: S4.SITE.exercises.map(e => ({
+    id: e.id,
+    number: PART[e.part],
+    kind: e.id as ExerciseKind,
+    ...(e.minutes ? { minutes: e.minutes } : {}),
+    title: bi(e.title),
+    purpose: e.purpose.en,
+    lesson: e.lesson.en,
+  })),
+  keyMessages: S4.SITE.keyMessages.map(m => m.en),
+  irishComponent: S4.SITE.irishComponent.en,
+  safetyComponent: S4.SITE.safetyComponent.en,
+  outputs: S4.SITE.outputs.map(o => o.en),
 }

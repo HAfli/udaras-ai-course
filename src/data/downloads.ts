@@ -5,7 +5,7 @@
 
 export interface Download { file: string; ga: string; en: string; gaDetail: string; enDetail: string; pages: number }
 
-export const DOWNLOADS: Record<'s1' | 's2' | 's3', Download[]> = {
+export const DOWNLOADS: Record<'s1' | 's2' | 's3' | 's4', Download[]> = {
   s1: [
     { file: 'Session-1-Participant-Package.pdf', ga: 'Pacáiste an Rannpháirtí', en: 'Participant Package', pages: 16,
       gaDetail: 'Pacáiste an Rannpháirtí — Ceardlanna 1 agus 2, i nGaeilge agus i mBéarla', enDetail: 'Participant Package — Workshops 1 and 2, Irish and English' },
@@ -22,5 +22,12 @@ export const DOWNLOADS: Record<'s1' | 's2' | 's3', Download[]> = {
     { file: 'Session-3-Slides.pdf', ga: 'Sleamhnáin', en: 'Slides', pages: 40, gaDetail: 'Sleamhnáin', enDetail: 'Slides' },
     { file: 'Session-3-Source-Pack.pdf', ga: 'An Pacáiste Foinsí', en: 'Supporting Source Pack', pages: 8,
       gaDetail: 'An Pacáiste Foinsí — ocht bhfoinse fhicseanúla don ghníomhaíocht “Tabhair fillteán do AI”', enDetail: 'Supporting Source Pack — eight fictional sources for “Give AI a folder”' },
+  ],
+  s4: [
+    { file: 'Session-4-Participant-Package.pdf', ga: 'Pacáiste an Rannpháirtí', en: 'Participant Package', pages: 34,
+      gaDetail: 'Pacáiste an Rannpháirtí — Leabhar Oibre agus Cártaí Cáis', enDetail: 'Participant Package — Workbook and Scenario Cards' },
+    { file: 'Session-4-Slides.pdf', ga: 'Sleamhnáin', en: 'Slides', pages: 40, gaDetail: 'Sleamhnáin', enDetail: 'Slides' },
+    { file: 'Session-4-Responsible-AI-Checklist.pdf', ga: 'Seicliosta AI Freagrach', en: 'Responsible AI Checklist', pages: 2,
+      gaDetail: 'Seicliosta AI Freagrach — le húsáid arís ag an obair', enDetail: 'Responsible AI Checklist — reusable at work' },
   ],
 }

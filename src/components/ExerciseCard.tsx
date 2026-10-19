@@ -23,6 +23,7 @@ import { ErrorSpot } from './exercises/ErrorSpot'
 import { Reflection } from './exercises/Reflection'
 import { FailureSort, StopTest, PrivacySort, AiToAi, ProposalReview, Promotion, SafeWorkflow, Session2Reflection } from './exercises/Session2Exercises'
 import { SamePromptCompare, IrishCheckProofread, TranslationChallenge, SettingsExplorer, ScenarioChallenge, MyToolkit, Session3Reflection, NotebookFolder, IrishDocuments, WhichWorkflow, WhichIrish } from './exercises/Session3Exercises'
+import { RecapHabits, AIActEssentials, ScenarioClassify, PrivacyGoIn, PublicGuidance, BusinessHandsOn, SafeWorkflowSheet, ActionPlan30, ResponsibleChecklist } from './exercises/Session4Exercises'
 import { PrivacyNotice, AIToolsNotice, SelfStudySteps, FacilitatorNotes, SlideLink, PrintLink } from './exercises/WorkshopExtras'
 import {
   SEVEN_STEPS, WORKSHOP1_QUESTIONS,
@@ -177,6 +178,15 @@ function body(ex: Exercise): ReactNode {
     case 's3-irishdocs': return <IrishDocuments />
     case 's3-which': return <WhichWorkflow />
     case 's3-dialect': return <WhichIrish />
+    case 's4-recap': return <RecapHabits />
+    case 's4-act': return <AIActEssentials />
+    case 's4-scenarios': return <ScenarioClassify />
+    case 's4-privacy': return <PrivacyGoIn />
+    case 's4-public': return <PublicGuidance />
+    case 's4-business': return <BusinessHandsOn />
+    case 's4-workflow': return <SafeWorkflowSheet />
+    case 's4-plan': return <ActionPlan30 />
+    case 's4-checklist': return <ResponsibleChecklist />
     default: return null
   }
 }

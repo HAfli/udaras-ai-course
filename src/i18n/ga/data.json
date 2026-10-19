@@ -22,10 +22,7 @@
  "Affected person": "Duine a ndéantar difear dó",
  "Someone on the receiving end of an AI-assisted decision. Your customers, your applicants, your community.": "Duine a bhfuil cinneadh le cúnamh AI á dhéanamh ina thaobh. Do chustaiméirí, d’iarratasóirí, do phobal.",
  "European Commission — Regulatory framework for AI": "An Coimisiún Eorpach — Creat rialála do AI",
- "AI Act, Article 4 — AI literacy (full text)": "An tAcht AI, Airteagal 4 — Litearthacht AI (téacs iomlán)",
  "European Commission — AI talent, skills and literacy": "An Coimisiún Eorpach — Tallann, scileanna agus litearthacht AI",
- "White & Case — EU AI Omnibus enters into force": "White & Case — Tagann Omnibus AI an AE i bhfeidhm",
- "Gibson Dunn — Omnibus agreement and postponed deadlines": "Gibson Dunn — Comhaontú an Omnibus agus spriocdhátaí curtha siar",
  "Prompt 1": "Prompt 1",
  "Write a newsletter about our business.": "Scríobh nuachtlitir faoinár ngnó.",
  "The vague request. No audience, no purpose, no tone, no length, no language. The model will invent all of it, and you will not like its choices.": "An t-iarratas doiléir. Gan lucht féachana, gan chuspóir, gan ton, gan fad, gan teanga. Cumfaidh an tsamhail iad sin ar fad, agus ní thaitneoidh a cuid roghanna leat.",
@@ -931,5 +928,9 @@
  "Not a lecture: the facilitator asks, the room answers, 3–5 observations go on the board.": "Ní léacht é: cuireann an t-éascaitheoir ceisteanna, freagraíonn an seomra, cuirtear 3–5 thuairim ar an gclár.",
  "Everyone starts from the same weak prompt. Four rungs, run the first and the last live.": "Tosaíonn gach duine ón bprompt lag céanna. Ceithre chéim; rith an chéad cheann agus an ceann deiridh beo.",
  "Fifteen minutes, written alone. This is what connects today to Session 2.": "Cúig nóiméad déag, scríofa leat féin. Is é seo a cheanglaíonn an lá inniu le Seisiún 2.",
- "The concerns wall gets an answer, or an honest \"not yet\". Session 2 bridge.": "Faigheann balla na himní freagra, nó “ní fós” macánta. Droichead go Seisiún 2."
+ "The concerns wall gets an answer, or an honest \"not yet\". Session 2 bridge.": "Faigheann balla na himní freagra, nó “ní fós” macánta. Droichead go Seisiún 2.",
+ "Regulation (EU) 2024/1689 — the AI Act (EUR-Lex)": "Rialachán (AE) 2024/1689 — an tAcht AI (EUR-Lex)",
+ "Regulation (EU) 2026/1744 — Digital Omnibus on AI (EUR-Lex)": "Rialachán (AE) 2026/1744 — an tOmnibus Digiteach ar AI (EUR-Lex)",
+ "European Commission — AI literacy: questions and answers": "An Coimisiún Eorpach — Litearthacht AI: ceisteanna agus freagraí",
+ "AI Office of Ireland (Oifig IS na hÉireann)": "Oifig IS na hÉireann"
 }

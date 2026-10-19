@@ -1,5 +1,6 @@
 /* EU AI Act — educational content, verified against EU and legal sources in
-   August 2026. See SOURCES at the foot of this file. Not legal advice. */
+   August 2026 and re-checked against official EU and Irish sources on 19 October 2026
+   (Session 4). See SOURCES at the foot of this file. Not legal advice. */
 
 export const AI_ACT_INTRO = {
   disclaimer: 'Educational guidance — not legal advice.',
@@ -36,7 +37,7 @@ export const RISK_TIERS = [
     detail:
       'Where someone could be misled about what they are dealing with, disclosure is required: that you are interacting with an AI system; that content is artificially generated or manipulated; and that you are subject to emotion recognition or biometric categorisation. AI-generated content must also be marked in a machine-readable form.',
     forYou:
-      'This is the tier that most often applies to a small business — chatbots on your website, and AI-generated images or text you publish.',
+      'The tier a small business is most likely to meet. A chatbot on your website must make clear it is an AI (the design duty sits with the provider — check the product does it), and realistic AI images, audio or video of real people or events must be disclosed. Text that a person has reviewed and takes editorial responsibility for needs no AI label under the Act; your own policy may still ask for one.',
   },
   {
     id: 'minimal', tone: 'grey', label: 'Minimal risk',
@@ -49,10 +50,10 @@ export const RISK_TIERS = [
 ] as const
 
 export const CURRENT_POSITION = {
-  banner: 'EU AI Act — current position: August 2026',
+  banner: 'EU AI Act — current position: October 2026',
   disclaimer: 'Educational guidance — not legal advice.',
   note:
-    'Checked against EU and legal sources in August 2026 and updated for Regulation (EU) 2026/1744. Verify before repeating any date in front of a room.',
+    'Checked against official EU and Irish sources on 19 October 2026, including Regulation (EU) 2026/1744 and the Irish Regulation of Artificial Intelligence Act 2026. Verify before repeating any date in front of a room.',
 }
 
 export const LITERACY = {
@@ -93,6 +94,7 @@ export const TIMELINE = [
   { date: '1 August 2024', label: 'The AI Act enters into force', note: 'Regulation (EU) 2024/1689.' },
   { date: '2 February 2025', label: 'Prohibited practices and AI literacy apply', note: 'Articles 5 and 4.' },
   { date: '2 August 2025', label: 'Governance and general-purpose AI rules apply', note: 'Obligations on the makers of general-purpose models.' },
+  { date: '21 July 2026', label: 'Ireland’s implementing Act signed into law', note: 'The Regulation of Artificial Intelligence Act 2026 establishes the AI Office of Ireland (Oifig IS na hÉireann) and the national supervision structure. It adds no obligations beyond the EU Regulation.' },
   { date: '27 July 2026', label: 'The Digital Omnibus on AI enters into force', note: 'Regulation (EU) 2026/1744, published in the Official Journal on 24 July 2026. It amends the AI Act.', accent: true },
   { date: '2 August 2026', label: 'Transparency obligations apply', note: 'Article 50 — chatbot disclosure, marking of synthetic content, deepfake labelling. Not deferred.', accent: true },
   { date: '2 December 2026', label: 'End of transitional periods', note: 'For marking of some pre-existing systems, and for the two newly added prohibitions.' },
@@ -126,8 +128,9 @@ export const RESPONSIBILITIES = [
 
 export const SOURCES = [
   { label: 'European Commission — Regulatory framework for AI', url: 'https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai' },
-  { label: 'AI Act, Article 4 — AI literacy (full text)', url: 'https://artificialintelligenceact.eu/article/4/' },
+  { label: 'Regulation (EU) 2024/1689 — the AI Act (EUR-Lex)', url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+  { label: 'Regulation (EU) 2026/1744 — Digital Omnibus on AI (EUR-Lex)', url: 'https://eur-lex.europa.eu/eli/reg/2026/1744/oj' },
+  { label: 'European Commission — AI literacy: questions and answers', url: 'https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers' },
   { label: 'European Commission — AI talent, skills and literacy', url: 'https://digital-strategy.ec.europa.eu/en/policies/ai-talent-skills-and-literacy' },
-  { label: 'White & Case — EU AI Omnibus enters into force', url: 'https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act' },
-  { label: 'Gibson Dunn — Omnibus agreement and postponed deadlines', url: 'https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/' },
+  { label: 'AI Office of Ireland (Oifig IS na hÉireann)', url: 'https://aioffice.gov.ie/' },
 ]

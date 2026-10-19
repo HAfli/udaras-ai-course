@@ -19,8 +19,8 @@ const SEQUENCE = [
 
 const FW_COLOUR = ['text-atlantic', 'text-emerald', 'text-coral', 'text-gold-text']
 
-/* The three-session learning journey — aligned with what each session actually taught. */
-const PROGRESSION: { id: 's1' | 's2' | 's3'; label: string; title: string; qs: string[] }[] = [
+/* The four-session learning journey — aligned with what each session actually taught. */
+const PROGRESSION: { id: 's1' | 's2' | 's3' | 's4'; label: string; title: string; qs: string[] }[] = [
   { id: 's1', label: 'Session 1 · Fri 18 Sept', title: 'Understand and experiment',
     qs: ['What is AI, and what can generative AI do?', 'How do I start using it — and write a better prompt?', 'Why should I not blindly trust it?'] },
   { id: 's2', label: 'Session 2 · Mon 28 Sept', title: 'Use safely and critically',
@@ -28,6 +28,9 @@ const PROGRESSION: { id: 's1' | 's2' | 's3'; label: string; title: string; qs: s
   { id: 's3', label: 'Session 3 · Fri 9 Oct', title: 'Choose, ground, verify and adapt',
     qs: ['Which AI tool or workflow should I use?', 'How can AI work with my own documents — and how do I trace the evidence?',
          'How well does AI work with Irish — and is the Irish right for this audience and community?', 'Where must human judgement remain final?'] },
+  { id: 's4', label: 'Session 4 · Full day', title: 'Regulate, decide and apply',
+    qs: ['What does the EU AI Act mean for our organisations?', 'What information can we safely share with AI tools?',
+         'How do I use AI safely in my own work — and what will I do in the next 30 days?'] },
 ]
 
 export function LandingPage() {
@@ -73,8 +76,8 @@ export function LandingPage() {
 
       <section aria-labelledby="sofar-h" className="wrap py-16 sm:py-20">
         <p className="eyebrow">{tr('The course so far')}</p>
-        <h2 id="sofar-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">{tr('Three sessions, one journey')}</h2>
-        <ol className="mt-8 grid gap-6 lg:grid-cols-3">
+        <h2 id="sofar-h" className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-[1.15] sm:text-4xl">{tr('Four sessions, one journey')}</h2>
+        <ol className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {PROGRESSION.map(p => (
             <li key={p.id} className="flex flex-col border-t-2 border-ink pt-4">
               <p className="kicker">{tr(p.label)}</p>

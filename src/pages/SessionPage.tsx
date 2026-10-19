@@ -18,6 +18,7 @@ import { StudySession1 } from '../components/story/StudySession1'
 import { PrintableWorkshopSheets } from '../components/PrintableWorkshopSheets'
 import { SessionDownloads } from '../components/SessionDownloads'
 import { TeamsJoin } from '../components/TeamsJoin'
+import { Session4Intro } from '../components/Session4Intro'
 import { tr } from '../i18n/lang'
 
 // A rotating campaign colour per session, so each stage of the
@@ -193,7 +194,9 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
         </div>
       )}
 
-      {(s.id === 's1' || s.id === 's2' || s.id === 's3') && (
+      {s.id === 's4' && <Session4Intro />}
+
+      {(s.id === 's1' || s.id === 's2' || s.id === 's3' || s.id === 's4') && (
         <div className="wrap pt-10">
           <div className="border-t-2 border-ink pt-5"><SessionDownloads id={s.id} /></div>
         </div>

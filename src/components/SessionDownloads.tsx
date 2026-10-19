@@ -3,7 +3,7 @@ import { DOWNLOADS } from '../data/downloads'
 import { tr, getLang } from '../i18n/lang'
 
 /** The PDF downloads for one session. PDF only — see src/data/downloads.ts. Labels in the selected language only. */
-export function SessionDownloads({ id, heading = true }: { id: 's1' | 's2' | 's3'; heading?: boolean }) {
+export function SessionDownloads({ id, heading = true }: { id: 's1' | 's2' | 's3' | 's4'; heading?: boolean }) {
   const items = DOWNLOADS[id]
   const n = id.slice(1)
   const ga = getLang() === 'ga'
@@ -12,7 +12,7 @@ export function SessionDownloads({ id, heading = true }: { id: 's1' | 's2' | 's3
       {heading && (
         <>
           <h2 id={`dl-${id}`} className="kicker">{tr('Session {n} downloads (PDF)', { n })}</h2>
-          <p className="mt-2 text-sm text-ink-soft">{tr('The same files for everyone — in the room and on Teams.')}</p>
+          <p className="mt-2 text-sm text-ink-soft">{tr(id === 's4' ? 'The same files for everyone.' : 'The same files for everyone — in the room and on Teams.')}</p>
         </>
       )}
       <ul className="mt-3 flex flex-wrap gap-3">

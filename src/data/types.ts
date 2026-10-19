@@ -58,6 +58,15 @@ export type ExerciseKind =
   | 's3-irishdocs'
   | 's3-which'
   | 's3-dialect'
+  | 's4-recap'
+  | 's4-act'
+  | 's4-scenarios'
+  | 's4-privacy'
+  | 's4-public'
+  | 's4-business'
+  | 's4-workflow'
+  | 's4-plan'
+  | 's4-checklist'
 
 export interface Exercise {
   id: string
