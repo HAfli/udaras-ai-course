@@ -9,10 +9,10 @@
  "High-risk obligations for stand-alone systems (Annex III) deferred to 2 December 2027.": "Oibleagáidí ardriosca do chórais neamhspleácha (Iarscríbhinn III) curtha siar go 2 Nollaig 2027.",
  "High-risk obligations for AI embedded in regulated products (Annex I) deferred to 2 August 2028.": "Oibleagáidí ardriosca do AI atá leabaithe i dtáirgí rialáilte (Iarscríbhinn I) curtha siar go 2 Lúnasa 2028.",
  "Article 4 softened: measures to support AI literacy, with no requirement to guarantee a specific level.": "Airteagal 4 maolaithe: bearta chun tacú le litearthacht AI, gan aon cheanglas leibhéal sonrach a ráthú.",
- "Two prohibitions added, covering AI-generated child sexual abuse material and non-consensual intimate imagery.": "Dhá thoirmeasc curtha leis, a chlúdaíonn ábhar mí-úsáide gnéis leanaí ginte ag AI agus íomhánna pearsanta gan toiliú.",
+ "Two prohibitions added, covering AI-generated child sexual abuse material and non-consensual intimate imagery — applying from 2 December 2026.": "Dhá thoirmeasc curtha leis, a chlúdaíonn ábhar mí-úsáide gnéis leanaí ginte ag AI agus íomhánna pearsanta gan toiliú — i bhfeidhm ó 2 Nollaig 2026.",
  "The prohibitions in Article 5 — in force since February 2025.": "Na toirmisc in Airteagal 5 — i bhfeidhm ó Fheabhra 2025.",
  "The general-purpose AI rules — in force since August 2025.": "Na rialacha AI ilchuspóireach — i bhfeidhm ó Lúnasa 2025.",
- "The transparency obligations in Article 50 — applying from 2 August 2026.": "Na hoibleagáidí trédhearcachta in Airteagal 50 — i bhfeidhm ó 2 Lúnasa 2026.",
+ "The transparency obligations in Article 50 — applying from 2 August 2026 (marking by systems already on the market: by 2 December 2026).": "Na hoibleagáidí trédhearcachta in Airteagal 50 — i bhfeidhm ó 2 Lúnasa 2026 (marcáil ag córais a bhí ar an margadh cheana: faoi 2 Nollaig 2026).",
  "The AI literacy expectation itself, which still stands.": "An t-ionchas litearthachta AI féin, atá fós i bhfeidhm.",
  "This is a live area. Verify dates against the Official Journal or the Commission’s own pages before repeating them in front of a room — and say so to participants. Showing people how to check is part of the lesson.": "Réimse beo é seo. Fíoraigh na dátaí in aghaidh na hIrise Oifigiúla nó leathanaigh an Choimisiúin féin sula ndéantar iad a athrá os comhair seomra — agus abair é sin leis na rannpháirtithe. Is cuid den cheacht é a thaispeáint do dhaoine conas seiceáil.",
  "Provider": "Soláthraí",
@@ -932,5 +932,7 @@
  "Regulation (EU) 2024/1689 — the AI Act (EUR-Lex)": "Rialachán (AE) 2024/1689 — an tAcht AI (EUR-Lex)",
  "Regulation (EU) 2026/1744 — Digital Omnibus on AI (EUR-Lex)": "Rialachán (AE) 2026/1744 — an tOmnibus Digiteach ar AI (EUR-Lex)",
  "European Commission — AI literacy: questions and answers": "An Coimisiún Eorpach — Litearthacht AI: ceisteanna agus freagraí",
- "AI Office of Ireland (Oifig IS na hÉireann)": "Oifig IS na hÉireann"
+ "AI Office of Ireland (Oifig IS na hÉireann)": "Oifig IS na hÉireann",
+ "European Commission — AI Act Service Desk: implementation timeline": "An Coimisiún Eorpach — Deasc Seirbhíse an Achta AI: amlíne an chur chun feidhme",
+ "Regulation of Artificial Intelligence Act 2026 (No. 31 of 2026) — irishstatutebook.ie": "Regulation of Artificial Intelligence Act 2026 (Uimh. 31 de 2026) — irishstatutebook.ie"
 }

@@ -1,5 +1,5 @@
 /* EU AI Act — educational content, verified against EU and legal sources in
-   August 2026 and re-checked against official EU and Irish sources on 19 October 2026
+   August 2026 and re-checked against official EU and Irish sources on 19 and 20 October 2026
    (Session 4). See SOURCES at the foot of this file. Not legal advice. */
 
 export const AI_ACT_INTRO = {
@@ -53,14 +53,14 @@ export const CURRENT_POSITION = {
   banner: 'EU AI Act — current position: October 2026',
   disclaimer: 'Educational guidance — not legal advice.',
   note:
-    'Checked against official EU and Irish sources on 19 October 2026, including Regulation (EU) 2026/1744 and the Irish Regulation of Artificial Intelligence Act 2026. Verify before repeating any date in front of a room.',
+    'Checked against official EU and Irish sources on 20 October 2026, including Regulation (EU) 2026/1744 and the Irish Regulation of Artificial Intelligence Act 2026. Verify before repeating any date in front of a room.',
 }
 
 export const LITERACY = {
   article: 'Article 4 — AI literacy',
   applied: 'Applies since 2 February 2025; amended July 2026',
   framing:
-    'Providers and deployers of AI systems must take measures to support a sufficient level of AI literacy among the people who use those systems on their behalf — appropriate to those people’s role, knowledge, experience, training, and the context the AI is used in.',
+    'Providers and deployers of AI systems must take measures to support the development of AI literacy among the people who use those systems on their behalf — appropriate to those people’s role, knowledge, experience, training, and the context the AI is used in. No specific level has to be guaranteed.',
   quote:
     'Providers and deployers of AI systems shall take measures to ensure, to their best extent, a sufficient level of AI literacy of their staff and other persons dealing with the operation and use of AI systems on their behalf…',
   quoteNote:
@@ -94,10 +94,10 @@ export const TIMELINE = [
   { date: '1 August 2024', label: 'The AI Act enters into force', note: 'Regulation (EU) 2024/1689.' },
   { date: '2 February 2025', label: 'Prohibited practices and AI literacy apply', note: 'Articles 5 and 4.' },
   { date: '2 August 2025', label: 'Governance and general-purpose AI rules apply', note: 'Obligations on the makers of general-purpose models.' },
-  { date: '21 July 2026', label: 'Ireland’s implementing Act signed into law', note: 'The Regulation of Artificial Intelligence Act 2026 establishes the AI Office of Ireland (Oifig IS na hÉireann) and the national supervision structure. It adds no obligations beyond the EU Regulation.' },
+  { date: '21 July 2026', label: 'Ireland’s implementing Act signed into law', note: 'The Regulation of Artificial Intelligence Act 2026 (No. 31 of 2026) establishes the AI Office of Ireland (Oifig IS na hÉireann) and the national supervision structure. It adds no obligations beyond the EU Regulation.' },
   { date: '27 July 2026', label: 'The Digital Omnibus on AI enters into force', note: 'Regulation (EU) 2026/1744, published in the Official Journal on 24 July 2026. It amends the AI Act.', accent: true },
-  { date: '2 August 2026', label: 'Transparency obligations apply', note: 'Article 50 — chatbot disclosure, marking of synthetic content, deepfake labelling. Not deferred.', accent: true },
-  { date: '2 December 2026', label: 'End of transitional periods', note: 'For marking of some pre-existing systems, and for the two newly added prohibitions.' },
+  { date: '2 August 2026', label: 'Transparency obligations apply', note: 'Article 50 — chatbot disclosure, marking of synthetic content, deepfake labelling. Supervision and enforcement by national authorities also begin.', accent: true },
+  { date: '2 December 2026', label: 'New prohibitions apply; a marking transition ends', note: 'The two prohibitions added by the Digital Omnibus apply: AI systems that generate sexually explicit material of identifiable people without consent, or child sexual abuse material. Generative AI systems already on the market before 2 August 2026 must meet the Article 50(2) marking duty by this date.' },
   { date: '2 December 2027', label: 'High-risk systems (Annex III)', note: 'Deferred from 2 August 2026 by the Digital Omnibus.' },
   { date: '2 August 2028', label: 'High-risk systems in regulated products (Annex I)', note: 'Deferred from 2 August 2027.' },
 ]
@@ -108,12 +108,12 @@ export const OMNIBUS_NOTE = {
     'High-risk obligations for stand-alone systems (Annex III) deferred to 2 December 2027.',
     'High-risk obligations for AI embedded in regulated products (Annex I) deferred to 2 August 2028.',
     'Article 4 softened: measures to support AI literacy, with no requirement to guarantee a specific level.',
-    'Two prohibitions added, covering AI-generated child sexual abuse material and non-consensual intimate imagery.',
+    'Two prohibitions added, covering AI-generated child sexual abuse material and non-consensual intimate imagery — applying from 2 December 2026.',
   ],
   unchanged: [
     'The prohibitions in Article 5 — in force since February 2025.',
     'The general-purpose AI rules — in force since August 2025.',
-    'The transparency obligations in Article 50 — applying from 2 August 2026.',
+    'The transparency obligations in Article 50 — applying from 2 August 2026 (marking by systems already on the market: by 2 December 2026).',
     'The AI literacy expectation itself, which still stands.',
   ],
   caution:
@@ -132,5 +132,7 @@ export const SOURCES = [
   { label: 'Regulation (EU) 2026/1744 — Digital Omnibus on AI (EUR-Lex)', url: 'https://eur-lex.europa.eu/eli/reg/2026/1744/oj' },
   { label: 'European Commission — AI literacy: questions and answers', url: 'https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers' },
   { label: 'European Commission — AI talent, skills and literacy', url: 'https://digital-strategy.ec.europa.eu/en/policies/ai-talent-skills-and-literacy' },
+  { label: 'European Commission — AI Act Service Desk: implementation timeline', url: 'https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act' },
   { label: 'AI Office of Ireland (Oifig IS na hÉireann)', url: 'https://aioffice.gov.ie/' },
+  { label: 'Regulation of Artificial Intelligence Act 2026 (No. 31 of 2026) — irishstatutebook.ie', url: 'https://www.irishstatutebook.ie/eli/2026/act/31/enacted/en/html' },
 ]

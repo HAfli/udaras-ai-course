@@ -26,14 +26,14 @@ export const S4 = {
       "en": "Session 4 · The final session"
     },
     "date": {
-      "ga": "Dáta le deimhniú",
-      "en": "Date to be confirmed"
+      "ga": "Dé Luain, 2 Samhain 2026",
+      "en": "Monday, 2 November 2026"
     },
     "time": "10:00–15:00",
     "venue": "Campas Íosagáin",
     "durationLabel": {
-      "ga": "Lá iomlán · 10:00–15:00",
-      "en": "Full day · 10:00–15:00"
+      "ga": "Lá iomlán · 10:00–15:00 · Dé Luain, 2 Samhain 2026",
+      "en": "Full day · 10:00–15:00 · Monday, 2 November 2026"
     },
     "notLegal": {
       "ga": "Treoir oideachasúil — ní comhairle dlí í.",
@@ -44,8 +44,8 @@ export const S4 = {
       "en": "FICTIONAL TRAINING EXAMPLE – FOR TRAINING ONLY"
     },
     "checked": {
-      "ga": "Seiceáladh an t-eolas dlí in aghaidh foinsí oifigiúla an 19 Deireadh Fómhair 2026.",
-      "en": "Legal information checked against official sources on 19 October 2026."
+      "ga": "Seiceáladh an t-eolas dlí in aghaidh foinsí oifigiúla an 20 Deireadh Fómhair 2026.",
+      "en": "Legal information checked against official sources on 20 October 2026."
     },
     "promised": {
       "ga": "Gealladh i Seisiún 3: do cheisteanna, do shruth oibre agus do phlean. Tá na trí cinn ann inniu.",
@@ -805,8 +805,8 @@ export const S4 = {
       },
       "points": [
         {
-          "ga": "Síníodh Acht Éireannach 2026 a rialaíonn an intleacht shaorga ina dhlí an 21 Iúil 2026 (Regulation of Artificial Intelligence Act 2026). Bunaíonn sé Oifig IS na hÉireann mar údarás comhordaithe.",
-          "en": "The Regulation of Artificial Intelligence Act 2026 was signed into law on 21 July 2026. It establishes Oifig IS na hÉireann (the AI Office of Ireland) as the coordinating authority."
+          "ga": "Síníodh Acht Éireannach 2026 a rialaíonn an intleacht shaorga ina dhlí an 21 Iúil 2026 (Regulation of Artificial Intelligence Act 2026, Uimh. 31 de 2026). Bunaíonn sé Oifig IS na hÉireann mar chomhlacht reachtúil neamhspleách agus mar údarás comhordaithe.",
+          "en": "The Regulation of Artificial Intelligence Act 2026 (No. 31 of 2026) was signed into law on 21 July 2026. It establishes Oifig IS na hÉireann (the AI Office of Ireland) as an independent statutory body and the coordinating authority."
         },
         {
           "ga": "Tá an mhaoirseacht roinnte idir rialtóirí earnála — mar shampla an Coimisiún um Chosaint Sonraí, an Coimisiún um Chaidreamh san Áit Oibre agus an Coimisiún um Iomaíocht agus Cosaint Tomhaltóirí.",
@@ -822,6 +822,38 @@ export const S4 = {
       "ga": "Baineann an GDPR agus an dlí cosanta sonraí le haon sonraí pearsanta a chuirtear isteach in uirlis AI — beag beann ar an Acht AI.",
       "en": "The GDPR and data protection law apply to any personal data put into an AI tool — regardless of the AI Act."
     },
+    "newProhibitions": {
+      "ga": "Ó 2 Nollaig 2026, toirmiscthe freisin: córais AI a ghineann ábhar gáirsiúil de dhaoine in-sainaitheanta gan a dtoiliú, nó ábhar mí-úsáide gnéasaí ar leanaí.",
+      "en": "From 2 December 2026, also prohibited: AI systems that generate sexually explicit material of identifiable people without their consent, or child sexual abuse material."
+    },
+    "otherLaws": {
+      "title": {
+        "ga": "Ní thagann dlí amháin in áit na ndlíthe eile",
+        "en": "One law does not replace the others"
+      },
+      "items": [
+        {
+          "ga": "An GDPR agus an dlí cosanta sonraí: aon uair a bhíonn sonraí pearsanta i gceist.",
+          "en": "The GDPR and data protection law: whenever personal data is involved."
+        },
+        {
+          "ga": "Rúndacht: dualgais ó chonarthaí, ón bhfostaíocht nó ón ngairm.",
+          "en": "Confidentiality: duties arising from contracts, employment or a profession."
+        },
+        {
+          "ga": "Cóipcheart agus maoin intleachtúil: an t-ábhar a chuireann tú isteach agus an t-ábhar a thagann amach.",
+          "en": "Copyright and intellectual property: what you put in and what comes out."
+        },
+        {
+          "ga": "Dlí fostaíochta agus comhionannais: go háirithe i gcás earcaíochta agus bainistíochta foirne.",
+          "en": "Employment and equality law: especially in recruitment and staff management."
+        },
+        {
+          "ga": "Polasaithe agus rialacha soláthair d’eagraíochta féin.",
+          "en": "Your organisation’s own policies and procurement rules."
+        }
+      ]
+    },
     "review": {
       "title": {
         "ga": "Cathain is gá athbhreithniú eagraíochta?",
@@ -833,8 +865,8 @@ export const S4 = {
           "en": "Decisions about people: employment, eligibility, benefits, services or rights."
         },
         {
-          "ga": "Sonraí pearsanta, go háirithe sonraí catagóire speisialta (sláinte, reiligiún, eitneacht…).",
-          "en": "Personal data, especially special-category data (health, religion, ethnicity…)."
+          "ga": "Sonraí pearsanta, go háirithe catagóirí speisialta sonraí pearsanta (sláinte, reiligiún, eitneacht…).",
+          "en": "Personal data, especially special categories of personal data (health, religion, ethnicity…)."
         },
         {
           "ga": "Faisnéis rúnda, airgeadais nó atá íogair ó thaobh na tráchtála de.",
@@ -962,8 +994,8 @@ export const S4 = {
         "en": "2 December 2026"
       },
       "what": {
-        "ga": "Dhá thoirmeasc nua; deireadh le tréimhse idirthréimhseach marcála.",
-        "en": "Two new prohibitions; a marking transition period ends."
+        "ga": "Toirmisc nua (Airteagal 5); deireadh le tréimhse idirthréimhseach marcála.",
+        "en": "New prohibitions (Article 5); a marking transition period ends."
       }
     },
     {
@@ -1451,8 +1483,8 @@ export const S4 = {
       {
         "id": "special",
         "label": {
-          "ga": "Sonraí catagóire speisialta",
-          "en": "Special-category data"
+          "ga": "Catagóirí speisialta sonraí pearsanta",
+          "en": "Special categories of personal data"
         },
         "eg": {
           "ga": "Sláinte, reiligiún, eitneacht, tuairimí polaitiúla, ballraíocht ceardchumainn, gnéaschlaonadh, sonraí bithmhéadracha.",
@@ -2338,8 +2370,8 @@ export const S4 = {
           {
             "kind": "C",
             "text": {
-              "ga": "Sonraí catagóire speisialta nó úsáid nua, ar riosca ard: d’fhéadfadh measúnú tionchair ar chosaint sonraí a bheith ag teastáil.",
-              "en": "Special-category data or a new, high-risk use: a data protection impact assessment may be required."
+              "ga": "Catagóirí speisialta sonraí pearsanta, nó úsáid nua a bhféadfadh ardriosca a bheith ag baint léi: d’fhéadfadh measúnú tionchair ar chosaint sonraí a bheith ag teastáil.",
+              "en": "Special categories of personal data, or a new use likely to be high-risk: a data protection impact assessment may be required."
             }
           },
           {
@@ -2519,8 +2551,8 @@ export const S4 = {
       }
     ],
     "foot": {
-      "ga": "Treoir oideachasúil — ní comhairle dlí í. Seiceáilte in aghaidh foinsí oifigiúla an 19 Deireadh Fómhair 2026. Athraíonn rialacha agus uirlisí: seiceáil arís.",
-      "en": "Educational guidance — not legal advice. Checked against official sources on 19 October 2026. Rules and tools change: check again."
+      "ga": "Treoir oideachasúil — ní comhairle dlí í. Seiceáilte in aghaidh foinsí oifigiúla an 20 Deireadh Fómhair 2026. Athraíonn rialacha agus uirlisí: seiceáil arís.",
+      "en": "Educational guidance — not legal advice. Checked against official sources on 20 October 2026. Rules and tools change: check again."
     }
   },
   "MATERIALS": {
@@ -2609,12 +2641,98 @@ export const S4 = {
       }
     ],
     "formatNote": {
-      "ga": "Lá iomlán atá beartaithe don seisiún deiridh (10:00–15:00). Déantar cur síos air sna Téarmaí Rannpháirtíochta mar ‘leathlá críochnaithe’; le deimhniú i scríbhinn le hÚdarás na Gaeltachta. Níl an dáta deimhnithe fós.",
-      "en": "The final session is planned as a full day (10:00–15:00). The Terms of Engagement describe it as a ‘half-day wrap-up’; to be confirmed in writing with Údarás na Gaeltachta. The date is not yet confirmed."
+      "ga": "An seisiún deiridh: lá iomlán, Dé Luain, 2 Samhain 2026, 10:00–15:00, Campas Íosagáin.",
+      "en": "The final session: a full day, Monday, 2 November 2026, 10:00–15:00, Campas Íosagáin."
     },
     "bringTitle": {
       "ga": "Le tabhairt leat",
       "en": "What to bring"
+    },
+    "guide": {
+      "tab": {
+        "ga": "Treoir an tseisiúin",
+        "en": "Session guide"
+      },
+      "intro": {
+        "ga": "Compánach don chur i láthair: príomhábhar gach coda, na gníomhaíochtaí, agus naisc chuig na cleachtaí ar líne agus na comhaid PDF.",
+        "en": "A companion to the presentation: the main content of each part, the activities, and links to the online exercises and the PDF files."
+      },
+      "contents": {
+        "ga": "Clár an leathanaigh",
+        "en": "On this page"
+      },
+      "open": {
+        "ga": "Oscail an cleachtadh ar líne",
+        "en": "Open the activity online"
+      },
+      "about": {
+        "ga": "Faoin seisiún",
+        "en": "About this session"
+      },
+      "date": {
+        "ga": "Dáta",
+        "en": "Date"
+      },
+      "time": {
+        "ga": "Am",
+        "en": "Time"
+      },
+      "venue": {
+        "ga": "Ionad",
+        "en": "Venue"
+      },
+      "journey": {
+        "ga": "Trí sheisiún, turas amháin",
+        "en": "Three sessions, one journey"
+      },
+      "habits": {
+        "ga": "Ocht nós ó thrí sheisiún",
+        "en": "Eight habits from three sessions"
+      },
+      "scenarios": {
+        "ga": "Na cúig chás",
+        "en": "The five scenarios"
+      },
+      "sixQ": {
+        "ga": "Sé cheist do gach cás",
+        "en": "Six questions for every scenario"
+      },
+      "decisions": {
+        "ga": "Cúig chinneadh féideartha",
+        "en": "Five possible decisions"
+      },
+      "scenarioNote": {
+        "ga": "Pléitear na cásanna i ngrúpaí sa seomra. Níl freagraí táscacha an éascaitheora ar an suíomh seo: is é an réasúnú is tábhachtaí.",
+        "en": "The scenarios are discussed in groups in the room. The facilitator’s indicative answers are not on this website: the reasoning is what matters."
+      },
+      "cardsPdf": {
+        "ga": "Na cártaí cáis i bhfoirm PDF (sa phacáiste rannpháirtí)",
+        "en": "The scenario cards as a PDF (in the participant package)"
+      },
+      "kinds8": {
+        "ga": "Ocht gcineál eolais a dteastaíonn cúram leo",
+        "en": "Eight kinds of information that need care"
+      },
+      "checks7": {
+        "ga": "Seacht seiceáil sula n-úsáideann tú uirlis",
+        "en": "Seven checks before you use a tool with real information"
+      },
+      "fields10": {
+        "ga": "Tasc fíor amháin, deich gceist, leathanach amháin.",
+        "en": "One real task, ten questions, one page."
+      },
+      "commit6": {
+        "ga": "Sé ghealltanas don chéad 30 lá eile.",
+        "en": "Six commitments for the next 30 days."
+      },
+      "nextSteps": {
+        "ga": "Tar éis an chúrsa: úsáid an bhileog oibre arís do gach tasc nua, coinnigh an seicliosta in aice láimhe, agus seiceáil na rialacha arís — athraíonn siad.",
+        "en": "After the course: reuse the worksheet for each new task, keep the checklist to hand, and check the rules again — they change."
+      },
+      "sources": {
+        "ga": "Foinsí oifigiúla agus tuilleadh treorach",
+        "en": "Official sources and further guidance"
+      }
     },
     "questionsTitle": {
       "ga": "Cúig cheist an lae",
@@ -3121,19 +3239,24 @@ export const S4 = {
     ]
   },
   "CHECKED": {
-    "ga": "19 Deireadh Fómhair 2026",
-    "en": "19 October 2026"
+    "ga": "20 Deireadh Fómhair 2026",
+    "en": "20 October 2026"
   },
   "SOURCES": [
     {
       "title": "European Commission — AI Act (regulatory framework for AI)",
       "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
-      "publisher": "European Commission, page updated 19 Oct 2026"
+      "publisher": "European Commission, page updated 19 Oct 2026 (re-read 20 Oct 2026)"
+    },
+    {
+      "title": "European Commission — AI Act Service Desk: implementation timeline",
+      "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act",
+      "publisher": "European Commission (re-read 20 Oct 2026)"
     },
     {
       "title": "European Commission — AI Literacy: Questions & Answers",
       "url": "https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers",
-      "publisher": "European Commission, page updated 27 July 2026"
+      "publisher": "European Commission (re-read 20 Oct 2026)"
     },
     {
       "title": "Regulation (EU) 2024/1689 — the AI Act (Official Journal)",
@@ -3143,12 +3266,17 @@ export const S4 = {
     {
       "title": "Regulation (EU) 2026/1744 — Digital Omnibus on AI (Official Journal)",
       "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
-      "publisher": "EUR-Lex, Regulation of 8 July 2026, OJ L 24.7.2026; in force 27 July 2026"
+      "publisher": "EUR-Lex, Regulation of 8 July 2026, OJ L 24.7.2026; in force on the third day after publication (27 July 2026)"
+    },
+    {
+      "title": "Regulation of Artificial Intelligence Act 2026 (Act No. 31 of 2026)",
+      "url": "https://www.irishstatutebook.ie/eli/2026/act/31/enacted/en/html",
+      "publisher": "Irish Statute Book; Oireachtas Bill No. 69 of 2026, enacted 21 July 2026"
     },
     {
       "title": "AI Office of Ireland (Oifig IS na hÉireann)",
       "url": "https://aioffice.gov.ie/",
-      "publisher": "AI Office of Ireland; news item 30 July 2026"
+      "publisher": "AI Office of Ireland (re-read 20 Oct 2026)"
     },
     {
       "title": "Guidelines for the Responsible Use of AI in the Public Service",
@@ -3184,7 +3312,7 @@ export const S4 = {
         {
           "n": 2,
           "ga": "Clár ama",
-          "en": "Today’s timetable · full day 10:00–15:00 · Date to be confirmed"
+          "en": "Today’s timetable · Monday, 2 November 2026 · full day 10:00–15:00"
         },
         {
           "n": 3,
@@ -3266,7 +3394,7 @@ export const S4 = {
         {
           "n": 14,
           "ga": "In Éirinn, agus na dátaí",
-          "en": "In Ireland — and the dates, checked 19 October 2026"
+          "en": "In Ireland — and the dates, checked 20 October 2026"
         },
         {
           "n": 15,
@@ -3490,7 +3618,7 @@ export const S4 = {
         {
           "n": 39,
           "ga": "Foinsí oifigiúla",
-          "en": "Official sources — checked 19 October 2026"
+          "en": "Official sources — checked 20 October 2026"
         },
         {
           "n": 40,

@@ -68,7 +68,7 @@ src/
 | **Session 2** — Responsible AI and AI for Everyday Business | Full day | Week 4 |
 | *Between:* turn one task into a workflow | | Weeks 4–6 |
 | **Session 3** — AI, Irish and the Future of the Gaeltacht Workplace (*An Ghaeilge i ré AI*) | Half day · 10:00–13:00 · hybrid | Week 6 · Friday 9 October 2026 |
-| **Session 4** — AI in Practice: Regulation, Responsibility and Everyday Work (*AI sa Chleachtas*) | Full day · 10:00–15:00 | Week 8 · date to be confirmed |
+| **Session 4** — AI in Practice: Regulation, Responsibility and Everyday Work (*AI sa Chleachtas*) | Full day · 10:00–15:00 | Week 8 · Monday 2 November 2026 |
 
 ### Contractual vs proposed
 
@@ -241,9 +241,10 @@ planted-problem labels never reach the public site. Package and full description
 
 ## Session 4 — AI in Practice: Regulation, Responsibility and Everyday Work (the final session)
 
-**Full day, 10:00–15:00** (the Session 1 format), Campas Íosagáin, **date to be confirmed**. The contract's Appendix A
-describes Session 4 as a "Half-Day Wrap-Up (Week 8)"; the full day was requested by the course lead and is flagged on the
-site (programme notes and the Session 4 page) for written confirmation with Údarás.
+**Monday 2 November 2026, full day, 10:00–15:00** (the Session 1 format), Campas Íosagáin — final version 1.1 (20 October
+2026). The contract's Appendix A describes Session 4 as a "Half-Day Wrap-Up (Week 8)"; the course lead has confirmed the
+full day. The contract text is reproduced unchanged and the programme notes record the difference; the Session 4 page
+itself simply gives the confirmed day. In person or hybrid is not confirmed, so no Teams details are published.
 
 Source of truth (local only, git-ignored because it contains the scenario answer guide): `scripts/session4/`
 (`content_a.py`, `content_b.py`, `sources.py`, `terminology.py`). The same modules build the slides (`build_deck.py`,
@@ -258,17 +259,25 @@ facilitator guide, Irish QA report) and the website data (`export_site.py` → `
   break · safe workflow · 30-day plan.
 - **Exercises** (`src/components/exercises/Session4Exercises.tsx`, deep-linkable as `#/session/s4/exercises/<id>`):
   `s4-recap`, `s4-act`, `s4-scenarios`, `s4-privacy`, `s4-public`, `s4-business`, `s4-workflow`, `s4-plan`, `s4-checklist`.
-  Nothing typed is stored or sent. The page also shows the five questions, what to bring and the format/date note
+  Nothing typed is stored or sent. The page also shows the five questions, what to bring and the date line
   (`src/components/Session4Intro.tsx`).
-- **Legal content**: checked against official sources on 19 October 2026 (EUR-Lex 2024/1689 and 2026/1744, the Commission's
-  AI Act page and AI literacy Q&A, the AI Office of Ireland, DETE, the DPC, gov.ie public-service guidelines). Every legal
+- **Session guide** (`src/components/Session4Guide.tsx`, the first tab): a participant companion to the slides and the
+  workbook — about the day, recap, the AI Act, the five scenarios (questions only), privacy, public officers and community
+  organisations, Gaeltacht businesses, the safe workflow, the 30-day plan and checklist, and official sources — each
+  section linking to its interactive exercise. Built from the same generated data, so it cannot show an answer key.
+- **Legal content**: checked against official sources on 19 October 2026 and re-checked on 20 October 2026 (the Official
+  Journal texts of 2024/1689 and 2026/1744 in English and Irish, the Commission's AI Act page, AI Act Service Desk timeline
+  and AI literacy Q&A, the Irish Statute Book — Act No. 31 of 2026 — the AI Office of Ireland, DETE, the DPC, gov.ie
+  public-service guidelines). Every legal
   statement carries one of four tags: **L** legal obligation · **C** only in certain circumstances · **G** recommended
   practice · **P** personal precaution.
 - **Downloads — PDF only**: `Session-4-Participant-Package.pdf` (workbook + scenario cards + checklist),
   `Session-4-Slides.pdf`, `Session-4-Responsible-AI-Checklist.pdf` — built with
   `python scripts/build_public_downloads.py --only s4` (the Session 1–3 PDFs are not rebuilt).
 - **Irish**: reused lines copied exactly; all new Irish is An Gramadóir- and dictionary-checked and keeps
-  `needsValidation` (†). No dialect forms are written.
+  `needsValidation` (†). Legal terms were checked against the official Irish texts (20 October 2026): *riosca* is used for
+  every AI Act risk category, on the AI Act page too; special categories of personal data are *catagóirí speisialta
+  sonraí pearsanta*. No dialect forms are written.
 
 ---
 
@@ -386,6 +395,11 @@ Re-checked for Session 4 on 19 October 2026 against official sources only: the t
 **Regulation of Artificial Intelligence Act 2026**, signed into law on 21 July 2026 (AI Office of Ireland), the transparency
 line distinguishes the provider's chatbot duty, deep-fake disclosure and the human-review exception for text, and the
 source list cites EUR-Lex, the Commission and the AI Office of Ireland instead of law-firm commentary.
+Final re-check on 20 October 2026: the Article 4 framing follows the amended text (measures to support the development of
+AI literacy, no level to be guaranteed); 2 December 2026 is described as the date the two new prohibitions apply (not a
+transition), with the Article 50(2) marking deadline for systems already on the market; the Irish Act is cited from the
+Irish Statute Book (No. 31 of 2026) and the AI Act Service Desk timeline is added to the sources; the risk-tier labels use
+*riosca*, as the official Irish text does.
 
 Article 4 is framed as: providers and deployers must take measures to *support* AI literacy
 appropriate to people's role, knowledge, experience, training and context. The page states

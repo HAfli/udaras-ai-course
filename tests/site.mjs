@@ -1,5 +1,5 @@
 /* Site test, run once per language: sessions, dates, PDF downloads, the Session 3 Teams link (no meeting ID or
- * passcode anywhere), Session 2 approval wording, the Session 4 full-day page (10:00–15:00, date to be confirmed), exercises, accessibility (axe: no serious/critical issues),
+ * passcode anywhere), Session 2 approval wording, the Session 4 full-day page (Monday 2 November 2026, 10:00–15:00; session guide with no answer keys), exercises, accessibility (axe: no serious/critical issues),
  * console errors, 375 px layout, and that retired files are no longer served.
  * Usage: node tests/site.mjs [baseUrl]   (default http://localhost:4179/) */
 import { chromium } from 'playwright'
@@ -19,10 +19,12 @@ const EXPECT = {
 const T = {
   en: { dates: { s1: '18 September 2026', s2: '28 September 2026', s3: '9 October 2026' }, teamsHead: 'Microsoft Teams meeting', teamsLink: 'Join the Session 3 meeting online',
     landing: ['Four sessions, one journey', 'Understand and experiment', 'Use safely and critically', 'Choose, ground, verify and adapt', 'Regulate, decide and apply'],
-    sourcePack: 'Supporting Source Pack', approval: ['Approval', 'Not approved yet'], s4: ['Full day · 10:00–15:00', 'The date is not yet confirmed', 'AI in Practice'] },
+    sourcePack: 'Supporting Source Pack', approval: ['Approval', 'Not approved yet'], s4: ['Full day · 10:00–15:00 · Monday, 2 November 2026', 'AI in Practice', 'Campas Íosagáin', 'The final session: a full day, Monday, 2 November 2026'],
+    s4guide: ['Session guide', 'The five scenarios', 'Do not enter personal, confidential or commercially sensitive information', 'One law does not replace the others', 'My 30-day action plan', 'Official sources and further guidance'], landingDate: 'Week 8 · Mon 2 Nov 2026' },
   ga: { dates: { s1: '18 Meán Fómhair 2026', s2: '28 Meán Fómhair 2026', s3: '9 Deireadh Fómhair 2026' }, teamsHead: 'Cruinniú Microsoft Teams', teamsLink: 'Glac páirt ar líne trí Microsoft Teams',
     landing: ['Ceithre sheisiún, turas amháin', 'Tuig agus bain triail as', 'Úsáid go sábháilte agus go criticiúil', 'Roghnaigh, bunaigh, fíoraigh agus oiriúnaigh', 'Rialáil, cinntí agus cur i bhfeidhm'],
-    sourcePack: 'An Pacáiste Foinsí', approval: ['Ceadú', 'Gan cheadú go fóill'], s4: ['Lá iomlán · 10:00–15:00', 'Níl an dáta deimhnithe fós', 'AI sa Chleachtas'] },
+    sourcePack: 'An Pacáiste Foinsí', approval: ['Ceadú', 'Gan cheadú go fóill'], s4: ['Lá iomlán · 10:00–15:00 · Dé Luain, 2 Samhain 2026', 'AI sa Chleachtas', 'Campas Íosagáin', 'An seisiún deiridh: lá iomlán, Dé Luain, 2 Samhain 2026'],
+    s4guide: ['Treoir an tseisiúin', 'Na cúig chás', 'Ná cuir eolas pearsanta, rúnda', 'Ní thagann dlí amháin in áit na ndlíthe eile', 'Mo phlean gnímh 30 lá', 'Foinsí oifigiúla agus tuilleadh treorach'], landingDate: 'Seachtain 8 · Luan 2 Samhain 2026' },
 }
 const S4_EX = ['s4-recap', 's4-act', 's4-scenarios', 's4-privacy', 's4-public', 's4-business', 's4-workflow', 's4-plan', 's4-checklist']
 const S3_EX = ['s3-compare', 's3-notebook', 's3-irish', 's3-dialect', 's3-irishdocs', 's3-which', 's3-settings', 's3-scenario', 's3-toolkit', 's3-reflection', 's3-translate']
@@ -64,9 +66,14 @@ for (const lang of ['ga', 'en']) {
     }
     await audit(s)
   }
-  // Session 4 — the final, full-day session: no confirmed date is invented, no Teams link, three PDFs
+  // Session 4 — the final, full-day session on Monday 2 November 2026: no Teams link, three PDFs, the session guide
+  // first, and no facilitator answer key or date placeholder anywhere on the page
   await go('#/session/s4'); let t4 = await body()
   for (const x of L.s4) ok(t4.toLowerCase().includes(x.toLowerCase()), `${lang} Session 4: ${x}`)
+  for (const x of L.s4guide) ok(t4.toLowerCase().includes(x.toLowerCase()), `${lang} Session 4 guide: ${x}`)
+  ok((await p.locator('[role=tab]').first().innerText()).toLowerCase().includes(L.s4guide[0].toLowerCase()), `${lang} Session 4 guide is the first tab`)
+  ok(!/to be confirmed|le deimhniú|Indicative decision|Annex III point 4\(a\) lists|Planted errors|Deliberate trap|Gaiste d’aon ghnó/i.test(t4), `${lang} Session 4 placeholder or answer key visible`)
+  ok((await p.locator('a[href^="#/session/s4/exercises/"]').count()) >= 9, `${lang} Session 4 guide links to the exercises`)
   ok(!t4.includes('09:30') && !t4.includes('13:00 ·'), `${lang} Session 4 shows the old half-day time`)
   ok(await p.locator(`a[href="${TEAMS}"]`).count() === 0 && !CODES.test(t4), `${lang} Teams link/codes on s4`)
   const h4 = [...new Set(await p.locator('a[href$=".pdf"]').evaluateAll(as => as.map(a => a.getAttribute('href'))))]
@@ -78,6 +85,7 @@ for (const lang of ['ga', 'en']) {
   await audit('s4')
   await go('#/'); let t = await body()
   for (const x of L.landing) ok(t.includes(x), `${lang} landing: ${x}`)
+  ok(t.toLowerCase().includes(L.landingDate.toLowerCase()), `${lang} landing Session 4 date`)
   ok(!CODES.test(t), `${lang} landing Teams codes`)
   ok(new Set(await p.locator('a[href$=".pdf"]').evaluateAll(as => as.map(a => a.getAttribute('href')))).size === 10, `${lang} landing has 10 PDFs`)
   for (const s of ['s1', 's2', 's3', 's4']) ok(await p.locator(`a[href="#/session/${s}"]`).count() > 0, `${lang} landing link ${s}`)

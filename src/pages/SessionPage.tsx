@@ -19,7 +19,9 @@ import { PrintableWorkshopSheets } from '../components/PrintableWorkshopSheets'
 import { SessionDownloads } from '../components/SessionDownloads'
 import { TeamsJoin } from '../components/TeamsJoin'
 import { Session4Intro } from '../components/Session4Intro'
-import { tr } from '../i18n/lang'
+import { Session4Guide } from '../components/Session4Guide'
+import { S4 } from '../data/session4Content'
+import { tr, pick } from '../i18n/lang'
 
 // A rotating campaign colour per session, so each stage of the
 // programme reads as its own chapter rather than an identical template.
@@ -116,6 +118,7 @@ export function SessionPage({ id, initialTab, openExercise }: { id: string; init
 
   const tabs = [
     ...(s.id === 's1' ? [{ id: 'story', label: tr('The story'), content: <StoryPanel /> }] : []),
+    ...(s.id === 's4' ? [{ id: 'guide', label: pick(S4.SITE.guide.tab), content: <Session4Guide /> }] : []),
     { id: 'overview', label: t('overview'), content: <Overview s={s} /> },
     { id: 'timetable', label: t('timetable'), content: <Timetable slots={s.timetable} /> },
     ...(s.slideGroups.length ? [{

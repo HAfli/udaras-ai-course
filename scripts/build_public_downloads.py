@@ -15,7 +15,7 @@ PDF only. Nothing editable, facilitator-only or internal is copied to public/.
   Session-3-Slides.pdf               "Session 3/Udaras_AI_Course_Session_3_MTU_v1.0_DRAFT.pdf" (40 slides)
   Session-3-Source-Pack.pdf          the eight fictional sources in one PDF (source 4's personal data removed)
   Session-4-Participant-Package.pdf  Workbook + Scenario Cards + Responsible AI Checklist (final session)
-  Session-4-Slides.pdf               "Session 4/Udaras_AI_Course_Session_4_MTU_v1.0_DRAFT.pdf" (40 slides)
+  Session-4-Slides.pdf               "Session 4/Udaras_AI_Course_Session_4_MTU.pdf" (40 slides, final v1.1)
   Session-4-Responsible-AI-Checklist.pdf  the checklist on its own (2 pages)
 
 Usage: python scripts/build_public_downloads.py [--only s4]   (--only s4 rebuilds just the Session 4 files)
@@ -114,7 +114,7 @@ def session4():
     pk4 = os.path.join(S4, "Session_4_Participant_Package")
     merge([os.path.join(pk4, f) for f in ("Session_4_Participant_Workbook_GA_EN.pdf", "Session_4_Scenario_Cards_GA_EN.pdf",
                                           "Session_4_Responsible_AI_Checklist_GA_EN.pdf")], os.path.join(PUBLIC, "Session-4-Participant-Package.pdf"))
-    shutil.copyfile(os.path.join(S4, "Udaras_AI_Course_Session_4_MTU_v1.0_DRAFT.pdf"), os.path.join(PUBLIC, "Session-4-Slides.pdf"))
+    shutil.copyfile(os.path.join(S4, "Udaras_AI_Course_Session_4_MTU.pdf"), os.path.join(PUBLIC, "Session-4-Slides.pdf"))
     merge([os.path.join(pk4, "Session_4_Responsible_AI_Checklist_GA_EN.pdf")], os.path.join(PUBLIC, "Session-4-Responsible-AI-Checklist.pdf"))
 
 

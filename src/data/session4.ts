@@ -1,8 +1,8 @@
 import type { ExerciseKind, SessionMeta, SlideGroup, TimetableSlot } from './types'
 import { S4 } from './session4Content'
 
-/* Session 4 — the final session: a full day, 10:00–15:00 (organiser's request; the contract's Appendix A describes a
- * "Half-Day Wrap-Up (Week 8)" — to be confirmed in writing, see CONTRACT.contractNotes). Date not yet confirmed.
+/* Session 4 — the final session: Monday 2 November 2026, a full day, 10:00–15:00, Campas Íosagáin (confirmed by the
+ * course lead; the contract's Appendix A describes a "Half-Day Wrap-Up (Week 8)" — see CONTRACT.contractNotes).
  * Timetable, exercises and Irish wording come from the same source as the slides and Word documents
  * (scripts/session4). Reused Irish is copied exactly; all new Irish is grammar-checked but awaiting native
  * review (needsValidation). */

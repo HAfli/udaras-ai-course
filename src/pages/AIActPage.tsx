@@ -269,7 +269,7 @@ export function AIActPage() {
       <section aria-labelledby="src-h" className="wrap py-14">
         <h2 id="src-h" className="eyebrow">{tr('Sources')}</h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
-          {tr('Content on this page was checked against these official sources on 19 October 2026. Verify before repeating dates in front of a room — and show participants how you checked.')}
+          {tr('Content on this page was checked against these official sources on 20 October 2026. Verify before repeating dates in front of a room — and show participants how you checked.')}
         </p>
         <ul className="mt-4 space-y-1.5">
           {SOURCES.map(s => (

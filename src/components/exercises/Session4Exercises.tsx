@@ -47,7 +47,7 @@ export function KindTag({ k }: { k: Kind }) {
   )
 }
 
-function KindsLegend() {
+export function KindsLegend() {
   return (
     <div>
       <Label>{tr('Four kinds of statement')}</Label>

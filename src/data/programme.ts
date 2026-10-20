@@ -27,7 +27,7 @@ export const CONTRACT = {
     'Session timetables, slide plans, exercises and between-session tasks on this site are proposed pedagogical detail developed for delivery — not contractual commitments.',
     'The signed document notes that where new requirements emerge, MTU and Údarás na Gaeltachta re-evaluate and prioritise deliverables together within available budget.',
     'Appendix A carries an internal inconsistency: the Session 4 heading reads “Half-Day Wrap-Up (Week 8)” while the paragraph beneath refers to “week twelve”. Week 8 is used throughout this site, consistent with the heading and the stated 6–8 week duration. Worth confirming in writing with Údarás.',
-    'Session 4 is now planned as a full day (10:00–15:00) at the course lead’s request, rather than the half-day wrap-up in Appendix A. This change, and the date, are to be confirmed in writing with Údarás na Gaeltachta.',
+    'Session 4 runs as a full day (10:00–15:00) on Monday 2 November 2026, as confirmed by the course lead, rather than the half-day wrap-up described in Appendix A. The Appendix A text is reproduced unchanged.',
   ],
   disclaimer:
     'Educational guidance — not legal advice. Financial and commercial terms of the engagement are deliberately not reproduced on this site.',
@@ -88,7 +88,7 @@ export const JOURNEY: Stage[] = [
   {
     id: 's4', stage: 6, kind: 'session', route: '#/session/s4',
     label: { en: 'AI in Practice', ga: 'AI sa Chleachtas', needsValidation: true },
-    sub: 'Session 4 · Full day', when: 'Week 8 · date to be confirmed',
+    sub: 'Session 4 · Full day', when: 'Week 8 · Mon 2 Nov 2026',
     blurb: 'The final session: the EU AI Act, privacy and your own work — then a safe workflow and a 30-day plan.',
   },
 ]
